@@ -7,6 +7,7 @@
         livereload = require('gulp-livereload'),
         jade = require('gulp-jade'),
         exec = require('exec'),
+        gutil = require('gulp-util'),
         minifyCss = require('gulp-minify-css'),
         browserify = require('browserify'),
         source = require('vinyl-source-stream'),
@@ -32,6 +33,8 @@
             .pipe(jade({
                 locals: YOUR_LOCALS
             }))
+            .on('error', gutil.log)
+            .on('error', gutil.beep)
             .pipe(gulp.dest('./www/'));
     });
 
@@ -45,6 +48,8 @@
             .bundle()
             .pipe(source('app.bundle.js'))
             //.pipe(streamify(uglify()))
+            .on('error', gutil.log)
+            .on('error', gutil.beep)
             .pipe(gulp.dest(webPath('js/')));
     });
 
@@ -57,6 +62,8 @@
                 keepSpecialComments: 0
             }))
             .pipe(rename({ extname: '.min.css' }))
+            .on('error', gutil.log)
+            .on('error', gutil.beep)
             .pipe(gulp.dest('./www/css/'))
             .on('end', done);
     });
