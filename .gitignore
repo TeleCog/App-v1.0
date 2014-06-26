@@ -1,6 +1,12 @@
 node_modules/
 
+# Browserify bundle
+app.bundle.js
+
 # ANDROID / ECLIPSE
+
+ant-gen/
+ant-build/
 
 # built application files
 *.apk
