@@ -4,6 +4,7 @@
     var gulp = require('gulp'),
         sass = require('gulp-sass'),
         rename = require('gulp-rename'),
+        livereload = require('gulp-livereload'),
         exec = require('exec'),
         minifyCss = require('gulp-minify-css'),
         browserify = require('browserify'),
@@ -60,11 +61,14 @@
                 port: 4400
             };
 
+        // Start livereload server
+        livereload.listen();
+
         // Watch the JS directory for changes and re-run scripts task when it changes
-        gulp.watch(paths.js, ['scripts', 'refresh']);
+        gulp.watch(paths.js, ['scripts', 'refresh']).on('change', livereload.changed);
 
         // Watch the CSS directory for changes and re-run styles task when it changes
-        gulp.watch(paths.sass, ['sass', 'refresh']);
+        gulp.watch(paths.sass, ['sass', 'refresh']).on('change', livereload.changed);
 
         // Run scripts and styles tasks for the first time
         gulp.run('scripts');
