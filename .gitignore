@@ -3,6 +3,9 @@ node_modules/
 # Browserify bundle
 app.bundle.js
 
+# HTML files (since we're using Jade)
+www/*.html
+
 # ANDROID / ECLIPSE
 
 ant-gen/
