@@ -5,6 +5,7 @@
         sass = require('gulp-sass'),
         rename = require('gulp-rename'),
         livereload = require('gulp-livereload'),
+        jade = require('gulp-jade'),
         exec = require('exec'),
         minifyCss = require('gulp-minify-css'),
         browserify = require('browserify'),
@@ -23,12 +24,23 @@
         });
     });
 
+    // Compile Jade Templates
+    gulp.task('templates', function () {
+        var YOUR_LOCALS = {};
+
+        gulp.src('./jade/index.jade')
+            .pipe(jade({
+                locals: YOUR_LOCALS
+            }))
+            .pipe(gulp.dest('./www/'));
+    });
+
     // using vinyl-source-stream:
     gulp.task('scripts', function () {
         browserify({
             debug: true
         })
-            .add('./www/js/app.js')
+            .add('./js/app.js')
             //.transform('debowerify')
             .bundle()
             .pipe(source('app.bundle.js'))
@@ -53,7 +65,8 @@
     gulp.task('default', function () {
         var paths = {
                 sass: ['./scss/**/*.scss'],
-                js: ['./www/js/**/*.js']
+                js: ['./js/**/*.js'],
+                templates: ['./jade/**/*.jade']
             },
             options = {
                 keepAlive: false,
@@ -70,9 +83,13 @@
         // Watch the CSS directory for changes and re-run styles task when it changes
         gulp.watch(paths.sass, ['sass', 'refresh']).on('change', livereload.changed);
 
+        // Watch the Templates directory for changes and re-run scripts task when it changes
+        gulp.watch(paths.templates, ['templates', 'refresh']).on('change', livereload.changed);
+
         // Run scripts and styles tasks for the first time
         gulp.run('scripts');
         gulp.run('sass');
+        gulp.run('templates');
 
         // Start the ripple server
         ripple.emulate.start(options);
