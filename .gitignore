@@ -4,7 +4,7 @@ node_modules/
 app.bundle.js
 
 # HTML files (since we're using Jade)
-www/*.html
+/**/www/*.html
 
 # ANDROID / ECLIPSE
 

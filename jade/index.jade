@@ -15,8 +15,13 @@ html
         //- your app's js
         script(src='js/app.bundle.js')
 
-    body(ng-app='starter')
-        ion-pane
-            ion-header-bar.bar-stable
-                h1.title LiveWire App
-            ion-content
+    body(ng-app='livewireApp')
+        ion-nav-bar.bar-positive.nav-title-slide-ios7
+            ion-nav-back-button.button-icon.ion-arrow-left-c
+        ion-nav-view(animation="slide-left-right")
+
+        script(type="text/ng-template", id="sign-in.html")
+            include partials/signin
+
+        script(type="text/ng-template", id="dashboard.html")
+            include partials/dashboard
