@@ -19,7 +19,7 @@
             return path.join('./www/', p);
         };
 
-    gulp.task('refresh', function() {
+    gulp.task('refresh', function () {
         exec('cordova prepare', function () {
             console.log('Files copied to platform folders');
         });

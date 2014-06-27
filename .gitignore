@@ -5,6 +5,7 @@ app.bundle.js
 
 # HTML files (since we're using Jade)
 /**/www/*.html
+/**/www/css/*.css
 
 # ANDROID / ECLIPSE
 

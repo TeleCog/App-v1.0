@@ -1,7 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('livewireApp', ['ionic'])
+    var livewireApp = angular.module('livewireApp', ['ionic']);
+
+    livewireApp
 
         .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -38,4 +40,8 @@
                 }
             });
         });
+
+    // Register services
+    (require('./services/authservice'))(livewireApp);
+
 }());
