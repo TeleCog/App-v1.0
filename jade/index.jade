@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width')
+        title LiveWire App
+        link(href='css/ionic.app.css', rel='stylesheet')
+
+        //- ionic/angularjs js
+        script(src='lib/ionic/js/ionic.bundle.js')
+
+        //- cordova script (this will be a 404 during development)
+        script(src='cordova.js')
+
+        //- your app's js
+        script(src='js/app.bundle.js')
+
+    body(ng-app='livewireApp')
+        ion-nav-bar.bar-positive.nav-title-slide-ios7
+            ion-nav-back-button.button-icon.ion-arrow-left-c
+        ion-nav-view(animation="slide-left-right")
+
+        script(type="text/ng-template", id="sign-in.html")
+            include partials/signin
+
+        script(type="text/ng-template", id="dashboard.html")
+            include partials/dashboard
