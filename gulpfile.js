@@ -6,7 +6,7 @@
         rename = require('gulp-rename'),
         livereload = require('gulp-livereload'),
         jade = require('gulp-jade'),
-        exec = require('exec'),
+        exec = require('child_process').execFile,
         gutil = require('gulp-util'),
         minifyCss = require('gulp-minify-css'),
         browserify = require('browserify'),
@@ -20,9 +20,7 @@
         };
 
     gulp.task('refresh', function () {
-        exec('cordova prepare', function () {
-            console.log('Files copied to platform folders');
-        });
+        exec('./node_modules/cordova/bin/cordova', ['prepare']);
     });
 
     // Compile Jade Templates
@@ -66,6 +64,17 @@
             .on('error', gutil.beep)
             .pipe(gulp.dest('./www/css/'))
             .on('end', done);
+    });
+
+    // Compiles Release APK
+    gulp.task('android', ['refresh'], function () {
+        exec('./androidbuild.sh', function (error, stdout) {
+            if (error) {
+                console.warn(error);
+            }
+
+            console.log(stdout);
+        });
     });
 
     // The default task
