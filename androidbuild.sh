@@ -8,6 +8,7 @@ RELEASE_JAR="release/LiveWireApp.apk"
 ./node_modules/cordova/bin/cordova build android
 
 mkdir -p release/
+rm release/*
 
 # Copy jar to release
 cp "$ORIG_JAR" "$TMP_JAR"

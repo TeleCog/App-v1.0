@@ -68,9 +68,13 @@
 
     // Compiles Release APK
     gulp.task('android', ['refresh'], function () {
-        exec('./androidbuild.sh', function (error, stdout) {
+        exec('./androidbuild.sh', function (error, stdout, stderr) {
             if (error) {
                 console.warn(error);
+            }
+
+            if (stderr) {
+                console.warn(stderr);
             }
 
             console.log(stdout);
