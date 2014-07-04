@@ -11,13 +11,8 @@
         minifyCss = require('gulp-minify-css'),
         browserify = require('browserify'),
         source = require('vinyl-source-stream'),
-        path = require('path'),
         o = require('open'),
-        ripple = require('ripple-emulator'),
-
-        webPath = function (p) {
-            return path.join('./www/', p);
-        };
+        ripple = require('ripple-emulator');
 
     gulp.task('refresh', function () {
         exec('./node_modules/cordova/bin/cordova', ['prepare']);
@@ -27,7 +22,7 @@
     gulp.task('templates', function () {
         var YOUR_LOCALS = {};
 
-        gulp.src('./jade/index.jade')
+        gulp.src('./app/jade/index.jade')
             .pipe(jade({
                 locals: YOUR_LOCALS
             }))
@@ -41,21 +36,20 @@
         browserify({
             debug: true
         })
-            .add('./js/app.js')
+            .add('./app/js/app.js')
             //.transform('debowerify')
             .bundle()
             .pipe(source('app.bundle.js'))
             //.pipe(streamify(uglify()))
             .on('error', gutil.log)
             .on('error', gutil.beep)
-            .pipe(gulp.dest(webPath('js/')));
+            .pipe(gulp.dest('./www/js/'));
     });
 
     // Compiles the SASS styles
     gulp.task('sass', function (done) {
-        gulp.src('./scss/ionic.app.scss')
+        gulp.src('./app/scss/ionic.app.scss')
             .pipe(sass())
-            .pipe(gulp.dest('./www/css/'))
             .pipe(minifyCss({
                 keepSpecialComments: 0
             }))
@@ -66,7 +60,7 @@
             .on('end', done);
     });
 
-    // Compiles Release APK
+    // Compiles Debug APK
     gulp.task('android', ['refresh'], function () {
         exec('./androidbuild.sh', function (error, stdout, stderr) {
             if (error) {
@@ -84,9 +78,9 @@
     // The default task
     gulp.task('default', function () {
         var paths = {
-                sass: ['./scss/**/*.scss'],
-                js: ['./js/**/*.js'],
-                templates: ['./jade/**/*.jade']
+                sass: ['./app/scss/**/*.scss'],
+                js: ['./app/js/**/*.js'],
+                templates: ['./app/jade/**/*.jade']
             },
             options = {
                 keepAlive: false,
