@@ -2,19 +2,20 @@ ion-view(title="LiveWire Registration")
     ion-nav-bar.bar-positive
         ion-nav-back-button.button-icon.ion-arrow-left-c
     ion-content
-        .list
-            label(class="item {{authError}} validation-message", ng-show="authError") Incorrect Email/Password
-            label(class="item item-input {{authError}}")
-                span(class="input-label {{authError}}") Email
-                input(type="email", ng-model="user.email", class="{{authError}}")
-            label(class="item item-input {{authError}}")
-                span(class="input-label {{authError}}") Password
-                input(type="password", ng-model="user.password", class="{{authError}}")
-        .padding
-            button.button.button-block.button-positive(ng-click="signIn(user)", ng-disabled="signingIn")
-                div(ng-switch="signingIn ? 'true' : 'false'")
-                    i.ion-loading-c.validation-wait(ng-switch-when="true")
-                    span(ng-switch-when="false") Sign-In
-
-            p.text-center
-                a(href="#/register") Create new account
+        form(name="registrationForm" novalidate)
+            .list
+                label.item.item-input.item-stacked-label
+                    span.input-label First Name
+                    input(type="text", ng-model="user.first_name", placeholder="Isaac", required)
+                label.item.item-input.item-stacked-label
+                    span.input-label Last Name
+                    input(type="text", ng-model="user.last_name", placeholder="Newton", required)
+                label.item.item-input.item-stacked-label
+                    span.input-label Email
+                    input(type="email", ng-model="user.email", placeholder="isaac@newton.com", required)
+                label.item.item-input.item-stacked-label
+                    span.input-label Password
+                    input(type="password", ng-model="user.password", required)
+            .padding
+                button.button.button-block.button-positive(ng-click="termsOfService(user)")
+                    | Register
