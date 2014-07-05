@@ -1,9 +1,7 @@
 (function () {
     'use strict';
 
-    var livewireApp = angular.module('livewireApp', ['ionic']);
-
-    livewireApp
+    angular.module('livewireApp', ['ionic'])
 
         .run(function ($ionicPlatform) {
             $ionicPlatform.ready(function () {
@@ -48,8 +46,10 @@
             $urlRouterProvider.otherwise('/signin');
         });
 
+    // Register root-view controller
+    require('./controllers/app');
+
     // Register services
-    require('./controllers/signin');
-    (require('./services/authservice'))(livewireApp);
+    require('./services/auth');
 
 }());

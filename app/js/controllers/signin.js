@@ -1,6 +1,6 @@
-angular.module("livewireApp")
+angular.module('livewireApp')
 
-    .controller("SigninCtrl", function ($scope, $state, $ionicViewService, AuthService) {
+    .controller('SigninCtrl', function ($scope, $state, $ionicViewService, AuthService) {
         'use strict';
 
         $scope.signIn = function (credentials) {
@@ -25,7 +25,4 @@ angular.module("livewireApp")
                 }
             });
         };
-    })
-
-    .controller('AppCtrl', function () {
     });

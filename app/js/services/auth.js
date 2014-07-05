@@ -1,7 +1,7 @@
-module.exports = function (app) {
-    'use strict';
+angular.module('livewireApp')
+    .factory('AuthService', function ($http) {
+        'use strict';
 
-    app.factory('AuthService', function ($http) {
         return {
             login: function (credentials, response) {
                 var data = {
@@ -33,4 +33,3 @@ module.exports = function (app) {
 //            }
         };
     });
-};
