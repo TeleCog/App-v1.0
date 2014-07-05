@@ -1,7 +1,7 @@
-module.exports = function (app) {
-    'use strict';
+angular.module('livewireApp')
+    .factory('AuthService', function ($http) {
+        'use strict';
 
-    app.factory('AuthService', function ($http) {
         return {
             login: function (credentials, response) {
                 var data = {
@@ -13,7 +13,7 @@ module.exports = function (app) {
                 };
 
                 return $http
-                    .post('https://www.livewiremobiletest.tk/oauth/token', data)
+                    .post('http://www.lvh.me:3000/oauth/token', data)
                     .success(function (data) {
                         response.data = data;
                     }).error(function (data, status) {
@@ -33,4 +33,3 @@ module.exports = function (app) {
 //            }
         };
     });
-};
