@@ -1,7 +1,21 @@
 angular.module('livewireApp')
 
-    .controller('RegisterCtrl', function ($scope, $state, $ionicViewService, AuthService) {
+    .controller('RegisterCtrl', function ($scope, $state, $ionicModal, $ionicViewService, AuthService) {
         'use strict';
+
+        $ionicModal.fromTemplateUrl('partials/termsofservice.html', {
+            scope: $scope
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+
+        $scope.termsOfService = function () {
+            $scope.modal.show();
+        };
+
+        $scope.closeTermsOfService = function () {
+            $scope.modal.hide();
+        };
 
         $scope.signIn = function (credentials) {
             var response = {};
