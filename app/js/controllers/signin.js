@@ -11,7 +11,6 @@ angular.module('livewireApp')
             AuthService.login(credentials || {}, response).then(function () {
                 $scope.signingIn = false;
                 // So that there won't be back button to login page
-                // using the ionicViewService to hide the back button on next view
                 $ionicViewService.nextViewOptions({
                     disableAnimate: true,
                     disableBack: true
