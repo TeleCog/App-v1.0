@@ -5,7 +5,7 @@ angular.module('livewireApp')
 
         $ionicModal.fromTemplateUrl('partials/termsofservice.html', {
             scope: $scope
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.modal = modal;
         });
 
@@ -16,6 +16,18 @@ angular.module('livewireApp')
         $scope.closeTermsOfService = function () {
             $scope.modal.hide();
         };
+
+        $scope.passwordPattern = (function () {
+            var upper = new RegExp('[A-Z]'),
+                lower = new RegExp('[a-z]'),
+                digit = new RegExp('[0-9]');
+
+            return {
+                test: function (value) {
+                    return upper.test(value) && lower.test(value) && digit.test(value) && value.length >= 8;
+                }
+            };
+        }());
 
         $scope.signIn = function (credentials) {
             var response = {};
