@@ -9,6 +9,8 @@ angular.module('livewireApp')
             $scope.modal = modal;
         });
 
+        $scope.user = {};
+
         $scope.termsOfService = function () {
             $scope.modal.show();
         };
@@ -29,25 +31,26 @@ angular.module('livewireApp')
             };
         }());
 
-        $scope.signIn = function (credentials) {
+        $scope.register = function () {
             var response = {};
 
-            $scope.signingIn = true;
+            AuthService.register(angular.copy($scope.user), response).then(function () {
+                $scope.modal.hide();
+                if (response.data && response.data.customer
+                        && response.data.customer.oauth && response.data.customer.oauth.token) {
 
-            AuthService.login(credentials || {}, response).then(function () {
-                $scope.signingIn = false;
-                // So that there won't be back button to login page
-                $ionicViewService.nextViewOptions({
-                    disableAnimate: true,
-                    disableBack: true
-                });
-                $state.go('app.home');
-            }, function () {
-                // Incorrect Signin
-                $scope.signingIn = false;
-                if (Math.floor(response.status / 10) === 40) {
-                    $scope.authError = 'error';
+                    // So that there won't be back button to login page
+                    $ionicViewService.nextViewOptions({
+                        disableAnimate: true,
+                        disableBack: true
+                    });
+                    $state.go('app.home');
+
                 }
+            }, function () {
+                $scope.modal.hide();
+                // Registration did not work
             });
         };
+
     });
