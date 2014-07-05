@@ -8,3 +8,4 @@ angular.module('livewireApp')
 
 // Require sub controllers
 require('./signin');
+require('./register');
