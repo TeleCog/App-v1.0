@@ -13,7 +13,7 @@ module.exports = function (app) {
                 };
 
                 return $http
-                    .post('https://www.livewiremobiletest.tk/oauth/token', data)
+                    .post('http://www.lvh.me:3000/oauth/token', data)
                     .success(function (data) {
                         response.data = data;
                     }).error(function (data, status) {

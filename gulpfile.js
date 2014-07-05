@@ -22,7 +22,7 @@
     gulp.task('templates', function () {
         var YOUR_LOCALS = {};
 
-        gulp.src('./app/jade/index.jade')
+        gulp.src('./app/jade/**/*.jade')
             .pipe(jade({
                 locals: YOUR_LOCALS
             }))

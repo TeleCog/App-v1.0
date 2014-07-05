@@ -5,29 +5,6 @@
 
     livewireApp
 
-        .config(function ($stateProvider, $urlRouterProvider) {
-
-            $stateProvider
-                .state('signin', {
-                    url: "/sign-in",
-                    templateUrl: "sign-in.html",
-                    controller: require('./controllers/signinctrl')
-                })
-                .state('forgotpassword', {
-                    url: "/forgot-password",
-                    templateUrl: "forgot-password.html"
-                })
-                .state('dashboard', {
-                    url: "/dashboard",
-                    templateUrl: "dashboard.html",
-                    controller: require('./controllers/dashboardctrl')
-                });
-
-
-            $urlRouterProvider.otherwise("/sign-in");
-
-        })
-
         .run(function ($ionicPlatform) {
             $ionicPlatform.ready(function () {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -39,9 +16,40 @@
                     window.StatusBar.styleDefault();
                 }
             });
+        })
+
+        .config(function ($stateProvider, $urlRouterProvider) {
+
+            $stateProvider
+
+                .state('signin', {
+                    url: "/signin",
+                    templateUrl: "partials/signin.html",
+                    controller: "SigninCtrl"
+                })
+
+                .state('app', {
+                    url: "/app",
+                    abstract: true,
+                    templateUrl: "partials/menu.html",
+                    controller: 'AppCtrl'
+                })
+
+                .state('app.home', {
+                    url: "/home",
+                    views: {
+                        'menuContent': {
+                            templateUrl: "partials/home.html"
+                        }
+                    }
+                });
+
+            // if none of the above states are matched, use this as the fallback
+            $urlRouterProvider.otherwise('/signin');
         });
 
     // Register services
+    require('./controllers/signin');
     (require('./services/authservice'))(livewireApp);
 
 }());
