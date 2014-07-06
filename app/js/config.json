@@ -1,6 +1,6 @@
 {
     "paths": {
-        "prefix": "https://www.livewiremobile.tk",
+        "prefix": "https://www.livewiremobiletest.tk",
         "login": "/oauth/token",
         "register": "/api/customer/registrations.json"
     },
