@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('livewireApp', ['ionic'])
+    angular.module('livewireApp', ['ionic', 'templatescache'])
 
         .run(function ($ionicPlatform) {
             $ionicPlatform.ready(function () {
@@ -23,20 +23,20 @@
 
                 .state('signin', {
                     url: "/signin",
-                    templateUrl: "partials/signin.html",
+                    templateUrl: "/partials/signin.html",
                     controller: "SigninCtrl"
                 })
 
                 .state('register', {
                     url: "/register",
-                    templateUrl: "partials/register.html",
+                    templateUrl: "/partials/register.html",
                     controller: "RegisterCtrl"
                 })
 
                 .state('app', {
                     url: "/app",
                     abstract: true,
-                    templateUrl: "partials/menu.html",
+                    templateUrl: "/partials/menu.html",
                     controller: 'AppCtrl'
                 })
 
@@ -44,7 +44,7 @@
                     url: "/home",
                     views: {
                         'menuContent': {
-                            templateUrl: "partials/home.html"
+                            templateUrl: "/partials/home.html"
                         }
                     }
                 });
