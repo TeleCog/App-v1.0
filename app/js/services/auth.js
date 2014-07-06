@@ -20,6 +20,28 @@ angular.module('livewireApp')
                         response.data = data;
                         response.status = status;
                     });
+            },
+
+            register: function (credentials, response) {
+                var data = {
+                    "oauth_secret": "d2162e76a111e6df0dc37ded950280d7eba36092c6748a704c33b93b1590d261",
+                    "customer": {
+                        "email": credentials.email,
+                        "password": credentials.password,
+                        "first_name": credentials.first_name,
+                        "last_name": credentials.last_name
+                    }
+                };
+
+                return $http
+                    .post('https://www.livewiremobiletest.tk/api/customer/registrations.json', data, {'headers': {
+                        'Accept': 'application/vnd.livewire+json;version=1'
+                    }}).success(function (data) {
+                        response.data = data;
+                    }).error(function (data, status) {
+                        response.data = data;
+                        response.status = status;
+                    });
             }
 //            isAuthenticated: function () {
 //                return !!Session.userId;

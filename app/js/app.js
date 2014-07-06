@@ -26,6 +26,12 @@
                     controller: "SigninCtrl"
                 })
 
+                .state('register', {
+                    url: "/register",
+                    templateUrl: "partials/register.html",
+                    controller: "RegisterCtrl"
+                })
+
                 .state('app', {
                     url: "/app",
                     abstract: true,
