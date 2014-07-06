@@ -2,18 +2,20 @@ angular.module('livewireApp')
     .factory('AuthService', function ($http) {
         'use strict';
 
+        var config = require('../config.json');
+
         return {
             login: function (credentials, response) {
                 var data = {
                     "grant_type": "password",
-                    "client_id": "ae862467952b9fa06e25cb8b801bbb54b4f38e140f90a41f48386923cb043729",
-                    "client_secret": "d2162e76a111e6df0dc37ded950280d7eba36092c6748a704c33b93b1590d261",
+                    "client_id": config.oauth.client_id,
+                    "client_secret": config.oauth.client_secret,
                     "email": credentials.email,
                     "password": credentials.password
                 };
 
                 return $http
-                    .post('http://www.lvh.me:3000/oauth/token', data)
+                    .post(config.paths.prefix + config.paths.login, data)
                     .success(function (data) {
                         response.data = data;
                     }).error(function (data, status) {
@@ -24,7 +26,7 @@ angular.module('livewireApp')
 
             register: function (credentials, response) {
                 var data = {
-                    "oauth_secret": "d2162e76a111e6df0dc37ded950280d7eba36092c6748a704c33b93b1590d261",
+                    "oauth_secret": config.oauth.client_secret,
                     "customer": {
                         "email": credentials.email,
                         "password": credentials.password,
@@ -34,7 +36,7 @@ angular.module('livewireApp')
                 };
 
                 return $http
-                    .post('https://www.livewiremobiletest.tk/api/customer/registrations.json', data, {'headers': {
+                    .post(config.paths.prefix + config.paths.register, data, {'headers': {
                         'Accept': 'application/vnd.livewire+json;version=1'
                     }}).success(function (data) {
                         response.data = data;
