@@ -3,7 +3,7 @@ angular.module('livewireApp')
     .controller('RegisterCtrl', function ($scope, $state, $ionicModal, $ionicViewService, AuthService) {
         'use strict';
 
-        $ionicModal.fromTemplateUrl('partials/termsofservice.html', {
+        $ionicModal.fromTemplateUrl('/partials/termsofservice.html', {
             scope: $scope
         }).then(function (modal) {
             $scope.modal = modal;

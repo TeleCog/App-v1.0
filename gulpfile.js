@@ -8,6 +8,7 @@
         jade = require('gulp-jade'),
         exec = require('child_process').execFile,
         gutil = require('gulp-util'),
+        templateCache = require('gulp-angular-templatecache'),
         minifyCss = require('gulp-minify-css'),
         browserify = require('browserify'),
         source = require('vinyl-source-stream'),
@@ -28,7 +29,12 @@
             }))
             .on('error', gutil.log)
             .on('error', gutil.beep)
-            .pipe(gulp.dest('./www/'));
+            .pipe(gulp.dest('./www/'))
+            .pipe(templateCache('templates.js', {
+                module: 'templatescache',
+                standalone: true
+            }))
+            .pipe(gulp.dest('./www/js'));
     });
 
     // using vinyl-source-stream:
@@ -36,6 +42,7 @@
         browserify({
             debug: true
         })
+            .add('./www/js/templates.js')
             .add('./app/js/app.js')
             //.transform('debowerify')
             .bundle()
@@ -47,7 +54,7 @@
     });
 
     // Compiles the SASS styles
-    gulp.task('sass', function (done) {
+    gulp.task('sass', function () {
         gulp.src('./app/scss/ionic.app.scss')
             .pipe(sass())
             .pipe(minifyCss({
@@ -56,8 +63,7 @@
             .pipe(rename({ extname: '.min.css' }))
             .on('error', gutil.log)
             .on('error', gutil.beep)
-            .pipe(gulp.dest('./www/css/'))
-            .on('end', done);
+            .pipe(gulp.dest('./www/css/'));
     });
 
     // Compiles Debug APK
@@ -76,7 +82,7 @@
     });
 
     // The default task
-    gulp.task('default', function () {
+    gulp.task('default', ['templates', 'scripts', 'sass'], function () {
         var paths = {
                 sass: ['./app/scss/**/*.scss'],
                 js: ['./app/js/**/*.js'],
@@ -100,12 +106,8 @@
         // Watch the Templates directory for changes and re-run scripts task when it changes
         gulp.watch(paths.templates, ['templates', 'refresh']).on('change', livereload.changed);
 
-        // Run scripts and styles tasks for the first time
-        gulp.run('scripts');
-        gulp.run('sass');
-        gulp.run('templates');
-
         // Start the ripple server
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
         ripple.emulate.start(options);
 
         if (options.open) {
