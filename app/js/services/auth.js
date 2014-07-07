@@ -2,21 +2,29 @@ angular.module('livewireApp')
     .factory('AuthService', function ($http) {
         'use strict';
 
-        var config = require('../config.json');
+        var config = require('../config.json'),
+            persist = function (key, value) {
+                // Store in localStorage
+                var auth = angular.fromJson(window.localStorage.getItem("auth")) || {};
+                auth[key] = value;
+                window.localStorage.setItem("auth", angular.toJson(auth));
+            };
 
         return {
             login: function (credentials, response) {
                 var data = {
-                    "grant_type": "password",
-                    "client_id": config.oauth.client_id,
-                    "client_secret": config.oauth.client_secret,
-                    "email": credentials.email,
-                    "password": credentials.password
-                };
+                        "grant_type": "password",
+                        "client_id": config.oauth.client_id,
+                        "client_secret": config.oauth.client_secret,
+                        "email": credentials.email,
+                        "password": credentials.password
+                    };
 
                 return $http
                     .post(config.paths.prefix + config.paths.login, data)
                     .success(function (data) {
+                        persist("access_token", data.access_token);
+
                         response.data = data;
                     }).error(function (data, status) {
                         response.data = data;
@@ -39,6 +47,8 @@ angular.module('livewireApp')
                     .post(config.paths.prefix + config.paths.register, data, {'headers': {
                         'Accept': 'application/vnd.livewire+json;version=1'
                     }}).success(function (data) {
+                        persist("access_token", data.access_token);
+
                         response.data = data;
                     }).error(function (data, status) {
                         response.data = data;
