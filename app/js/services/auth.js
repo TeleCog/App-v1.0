@@ -58,7 +58,7 @@ angular.module('livewireApp')
                     .post(config.paths.prefix + config.paths.register, data, {'headers': {
                         'Accept': 'application/vnd.livewire+json;version=1'
                     }}).success(function (data) {
-                        persist("access_token", data.access_token);
+                        persist("access_token", data.customer.oauth.token);
 
                         response.data = data;
                     }).error(function (data, status) {
