@@ -7,6 +7,12 @@ app.bundle.js
 /**/www/*.html
 /**/www/css/*.css
 
+# Copied files
+platforms/android/assets/www/
+platforms/ios/www/
+www/js/templates.js
+www/partials
+
 release/
 
 # ANDROID / ECLIPSE

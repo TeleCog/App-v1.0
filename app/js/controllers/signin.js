@@ -1,15 +1,17 @@
 angular.module('livewireApp')
 
-    .controller('SigninCtrl', function ($scope, $state, $ionicViewService, AuthService) {
+    .controller('SigninCtrl', function ($scope, $state, $ionicLoading, $ionicViewService, AuthService) {
         'use strict';
 
         $scope.signIn = function (credentials) {
             var response = {};
 
-            $scope.signingIn = true;
+            $ionicLoading.show({
+                template: 'Signing In...'
+            });
 
             AuthService.login(credentials || {}, response).then(function () {
-                $scope.signingIn = false;
+                $ionicLoading.hide();
                 // So that there won't be back button to login page
                 $ionicViewService.nextViewOptions({
                     disableAnimate: true,
@@ -17,8 +19,8 @@ angular.module('livewireApp')
                 });
                 $state.go('app.home');
             }, function () {
+                $ionicLoading.hide();
                 // Incorrect Signin
-                $scope.signingIn = false;
                 if (Math.floor(response.status / 10) === 40) {
                     $scope.authError = 'error';
                 }
