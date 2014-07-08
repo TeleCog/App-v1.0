@@ -35,7 +35,7 @@ angular.module('livewireApp')
             var response = {};
 
             $ionicLoading.show({
-                template: 'Registering ...'
+                template: 'Registering <i class=ion-loading-c></i>'
             });
 
             AuthService.register(angular.copy($scope.user), response).then(function () {
@@ -49,7 +49,7 @@ angular.module('livewireApp')
                         disableAnimate: true,
                         disableBack: true
                     });
-                    $state.go('app.home');
+                    $state.go('app.providers');
 
                 }
             }, function () {

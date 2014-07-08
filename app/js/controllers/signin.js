@@ -3,21 +3,32 @@ angular.module('livewireApp')
     .controller('SigninCtrl', function ($scope, $state, $ionicLoading, $ionicViewService, AuthService) {
         'use strict';
 
-        $scope.signIn = function (credentials) {
-            var response = {};
-
+        var showLoading = function () {
             $ionicLoading.show({
-                template: 'Signing In...'
+                template: 'Signing In <i class=ion-loading-c></i>'
             });
-
-            AuthService.login(credentials || {}, response).then(function () {
-                $ionicLoading.hide();
+        },
+            goHome = function () {
                 // So that there won't be back button to login page
                 $ionicViewService.nextViewOptions({
                     disableAnimate: true,
                     disableBack: true
                 });
-                $state.go('app.home');
+                $state.go('app.providers');
+            };
+
+        if (AuthService.retrieveAccessToken()) {
+            goHome();
+        }
+
+        $scope.signIn = function (credentials) {
+            var response = {};
+
+            showLoading();
+
+            AuthService.login(credentials || {}, response).then(function () {
+                $ionicLoading.hide();
+                goHome();
             }, function () {
                 $ionicLoading.hide();
                 // Incorrect Signin

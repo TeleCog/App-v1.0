@@ -44,14 +44,15 @@
                     url: "/app",
                     abstract: true,
                     templateUrl: "/partials/menu.html",
-                    controller: 'AppCtrl'
+                    controller: "AppCtrl"
                 })
 
-                .state('app.home', {
-                    url: "/home",
+                .state('app.providers', {
+                    url: "/providers",
                     views: {
                         'menuContent': {
-                            templateUrl: "/partials/home.html"
+                            templateUrl: "/partials/main/providers.html",
+                            controller: "ProvidersCtrl"
                         }
                     }
                 });
@@ -64,6 +65,7 @@
     require('./controllers/app');
 
     // Register services
+    require('./services/api');
     require('./services/auth');
 
 }());
