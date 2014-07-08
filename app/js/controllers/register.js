@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-    .controller('RegisterCtrl', function ($scope, $state, $ionicModal, $ionicViewService, AuthService) {
+    .controller('RegisterCtrl', function ($scope, $state, $ionicLoading, $ionicModal, $ionicViewService, AuthService) {
         'use strict';
 
         $ionicModal.fromTemplateUrl('/partials/termsofservice.html', {
@@ -34,7 +34,12 @@ angular.module('livewireApp')
         $scope.register = function () {
             var response = {};
 
+            $ionicLoading.show({
+                template: 'Registering ...'
+            });
+
             AuthService.register(angular.copy($scope.user), response).then(function () {
+                $ionicLoading.hide();
                 $scope.modal.hide();
                 if (response.data && response.data.customer
                         && response.data.customer.oauth && response.data.customer.oauth.token) {
@@ -48,6 +53,7 @@ angular.module('livewireApp')
 
                 }
             }, function () {
+                $ionicLoading.hide();
                 $scope.modal.hide();
                 // Registration did not work
             });

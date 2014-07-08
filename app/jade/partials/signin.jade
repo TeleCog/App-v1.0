@@ -11,10 +11,8 @@ ion-view(title="LiveWire Sign-In")
                 span(class="input-label {{authError}}") Password
                 input(type="password", ng-model="user.password", class="{{authError}}")
         .padding
-            button.button.button-block.button-positive(ng-click="signIn(user)", ng-disabled="signingIn")
-                div(ng-switch="signingIn ? 'true' : 'false'")
-                    i.ion-loading-c.validation-wait(ng-switch-when="true")
-                    span(ng-switch-when="false") Sign-In
+            button.button.button-block.button-positive(ng-click="signIn(user)")
+                | Sign-In
 
             p.text-center
                 a(href="#/register") Create new account
