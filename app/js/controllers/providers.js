@@ -8,7 +8,7 @@ angular.module('livewireApp')
         });
 
         ApiService.providers.index().then(function () {
-            $scope.providers = ApiService.getApiData().providers.index;
+            $scope.providers = ApiService.getApiData().providers.index.providers;
             $ionicLoading.hide();
         }, function () {
             $ionicLoading.hide();
