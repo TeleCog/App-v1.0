@@ -4,7 +4,7 @@ angular.module('livewireApp')
         'use strict';
 
         $ionicLoading.show({
-            template: 'Loading ...'
+            template: 'Loading <i class=ion-loading-c></i>'
         });
 
         ApiService.providers.index().then(function () {

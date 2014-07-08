@@ -5,7 +5,7 @@ angular.module('livewireApp')
 
         var showLoading = function () {
             $ionicLoading.show({
-                template: 'Signing In...'
+                template: 'Signing In <i class=ion-loading-c></i>'
             });
         },
             goHome = function () {
