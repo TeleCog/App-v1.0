@@ -49,7 +49,7 @@ angular.module('livewireApp')
                         disableAnimate: true,
                         disableBack: true
                     });
-                    $state.go('app.home');
+                    $state.go('app.providers');
 
                 }
             }, function () {

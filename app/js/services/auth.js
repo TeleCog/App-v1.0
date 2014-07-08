@@ -11,6 +11,17 @@ angular.module('livewireApp')
             };
 
         return {
+            retrieveAccessToken: function () {
+                var auth = angular.fromJson(window.localStorage.getItem("auth"));
+                return (auth ? auth.access_token : null);
+            },
+
+            invalidateToken: function () {
+                var auth = angular.fromJson(window.localStorage.getItem("auth"));
+                delete auth.access_token;
+                window.localStorage.setItem("auth", angular.toJson(auth));
+            },
+
             login: function (credentials, response) {
                 var data = {
                         "grant_type": "password",

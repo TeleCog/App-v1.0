@@ -2,7 +2,12 @@
     "paths": {
         "prefix": "https://www.livewiremobiletest.tk",
         "login": "/oauth/token",
-        "register": "/api/customer/registrations.json"
+        "register": "/api/customer/registrations.json",
+        "api": {
+            "providers": {
+                "index": "/api/customer/providers.json"
+            }
+        }
     },
 
     "oauth": {

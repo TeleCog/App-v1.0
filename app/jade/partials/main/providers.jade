@@ -1,0 +1,11 @@
+ion-view(title="Home")
+    ion-nav-buttons(side="left")
+        button.button.button-icon.icon.ion-navicon(menu-toggle="left")
+    ion-content.has-header
+        .provider-cards
+            .list.card.provider-card(ng-repeat="provider in providers")
+                .item.item-avatar
+                    h2 {{provider.provider.name}}
+                    p {{provider.provider.type_abbr}} {{provider.provider.medical_specialty}}
+                .item.item-image
+                    img(src="http://livewiremedical.s3.amazonaws.com/uploads/provider/image/18/thumb_Mary_Lester.jpg")
