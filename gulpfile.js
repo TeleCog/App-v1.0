@@ -38,7 +38,7 @@
     });
 
     // using vinyl-source-stream:
-    gulp.task('scripts', function () {
+    gulp.task('scripts', ['templates'], function () {
         browserify({
             debug: true
         })
@@ -104,7 +104,8 @@
         gulp.watch(paths.sass, ['sass', 'refresh']).on('change', livereload.changed);
 
         // Watch the Templates directory for changes and re-run scripts task when it changes
-        gulp.watch(paths.templates, ['templates', 'refresh']).on('change', livereload.changed);
+        // Scripts depends on templates (semi-hack to get templates to run before scripts
+        gulp.watch(paths.templates, ['scripts', 'refresh']).on('change', livereload.changed);
 
         // Start the ripple server
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;

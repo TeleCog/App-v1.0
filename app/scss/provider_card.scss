@@ -1,0 +1,18 @@
+.provider-card {
+  max-width: 230px;
+  display: inline-block;
+
+  .item-avatar {
+    padding-left: 15px;
+    text-align: center;
+  }
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
+}
+
+.provider-cards {
+  margin: auto;
+  display: table;
+}
