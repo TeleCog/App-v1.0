@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		011B9D88C9EC487AB1293317 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588EF48BB2CE4C0B8B16E90A /* CoreText.framework */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
