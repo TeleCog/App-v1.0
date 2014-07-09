@@ -28,6 +28,9 @@
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
+    <feature name="HockeyApp">
+        <param name="ios-package" value="HockeyApp" />
+    </feature>
     <name>LiveWireApp</name>
     <description>
         LiveWire mobile app
@@ -44,8 +47,5 @@
     <preference name="BackupWebStorage" value="none" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
-    </feature>
-    <feature name="HockeyApp">
-        <param name="ios-package" value="HockeyApp" />
     </feature>
 </widget>
