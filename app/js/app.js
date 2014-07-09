@@ -16,6 +16,14 @@
                 if (window.StatusBar) {
                     window.StatusBar.styleDefault();
                 }
+                // HockeyApp SDK
+                if (!window.tinyHippos) {
+                    hockeyapp.start(function () {
+                        console.log("HockeyApp started");
+                    }, function () {
+                        console.log("HockeyApp could not start");
+                    }, "df827303790bb10d09a30f9622adf145");
+                }
 
                 // Print current time
                 console.log(currentdate.getHours() + ":"

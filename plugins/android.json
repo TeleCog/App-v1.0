@@ -15,6 +15,30 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"HockeyApp\"><param name=\"android-package\" value=\"com.zengularity.cordova.hockeyapp.HockeyApp\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest/application": [
+                        {
+                            "xml": "<activity android:name=\"net.hockeyapp.android.FeedbackActivity\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -29,6 +53,9 @@
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         },
         "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.livewiretax.livewireapp"
+        },
+        "com.zengularity.cordova.hockeyapp": {
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         }
     },
