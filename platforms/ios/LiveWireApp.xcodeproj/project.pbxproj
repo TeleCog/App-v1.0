@@ -42,6 +42,12 @@
 		609052C4FC724E718E659096 /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F6054EADE29349068C4DDF57 /* UIWebViewExtension.m */; };
 		99A3BDC7D22A4DD69F8E87EC /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAC482202F64B3CB7DE9E76 /* CDVLogger.m */; };
 		8D60B7C5785A44528B9AB1A1 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FE9EA1301B4A9F9BB5C801 /* CDVDevice.m */; };
+		7DE861E1294743E8B70E104C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B97EF449FAD4734BAF4CDA7 /* CoreText.framework */; };
+		F141AE24DC594DACBA41FE31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E00981A074F4A5E88CCA82A /* Foundation.framework */; };
+		AD9F802E8A8C47F98F01DB53 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D443E6BD6A4B9CA7F3A6BB /* Security.framework */; };
+		92CF555D4BCE472FA98862B7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15257B739644A319798A463 /* QuartzCore.framework */; };
+		AF29488EFB894836B694E2C8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E0BF007F4147999E811D63 /* SystemConfiguration.framework */; };
+		3CFC873C4929474981411A03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 963771E8DFF2418D860DE3CD /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +120,12 @@
 		2812BB439B7E48408D3EAF56 /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		42FE9EA1301B4A9F9BB5C801 /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		A90FC0E304A445C5A58BC602 /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		2B97EF449FAD4734BAF4CDA7 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreText.framework"; path = "System/Library/Frameworks/CoreText.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		7E00981A074F4A5E88CCA82A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		B6D443E6BD6A4B9CA7F3A6BB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Security.framework"; path = "System/Library/Frameworks/Security.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		F15257B739644A319798A463 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		55E0BF007F4147999E811D63 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		963771E8DFF2418D860DE3CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +138,12 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
+				7DE861E1294743E8B70E104C /* CoreText.framework in Frameworks */,
+				F141AE24DC594DACBA41FE31 /* Foundation.framework in Frameworks */,
+				AD9F802E8A8C47F98F01DB53 /* Security.framework in Frameworks */,
+				92CF555D4BCE472FA98862B7 /* QuartzCore.framework in Frameworks */,
+				AF29488EFB894836B694E2C8 /* SystemConfiguration.framework in Frameworks */,
+				3CFC873C4929474981411A03 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +237,12 @@
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
+				2B97EF449FAD4734BAF4CDA7 /* CoreText.framework */,
+				7E00981A074F4A5E88CCA82A /* Foundation.framework */,
+				B6D443E6BD6A4B9CA7F3A6BB /* Security.framework */,
+				F15257B739644A319798A463 /* QuartzCore.framework */,
+				55E0BF007F4147999E811D63 /* SystemConfiguration.framework */,
+				963771E8DFF2418D860DE3CD /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
