@@ -16,7 +16,6 @@ www/partials
 release/
 platforms/ios/*.ipa
 platforms/ios/*.dSYM.zip
-platforms/ios/*.xcodeproj/
 
 # ANDROID / ECLIPSE
 
