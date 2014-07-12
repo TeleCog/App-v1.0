@@ -51,6 +51,19 @@
 		E4341F67591C4552BADAABF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CE45E4FC794A64AA9BEC68 /* UIKit.framework */; };
 		EC150951832C4E1489A1B313 /* HockeyApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F9096ADAF45E6AFF6AD2E /* HockeyApp.m */; };
 		FE182DEC0CFF4BD8B105616A /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA33CD4AF154F6BA6F42B53 /* IonicKeyboard.m */; };
+		68FCBDC0B15D47359661E7F8 /* OpenTokPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3A42009AB5402FA61B44F6 /* OpenTokPlugin.m */; };
+		5AED56A6629E4276B20A51F1 /* Opentok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A5C9253F444134963179A7 /* Opentok.framework */; };
+		298DE5E52F2040ED866B1CCD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBE051D5806484FA23CF383 /* AVFoundation.framework */; };
+		403EF54D5CDF40DBA3359A44 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427BDD6DC8BE4C2BB2D04D1C /* OpenGLES.framework */; };
+		3AF26446C1A24A08B55D3861 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3A9F986F2346F8B1582228 /* CoreVideo.framework */; };
+		A3DCCC042B8645E499A06F07 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964EE717B61B4AA683DF5349 /* AudioToolbox.framework */; };
+		92188DB316614A70B2CFB1CC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0FFCF563CC49AB8F037ABD /* CoreMedia.framework */; };
+		9DF10558FA734E4DB751C9C1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A463DEE83AEF4D9D8E26F473 /* CFNetwork.framework */; };
+		300FAF4237874D829D7FD7C1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FEEAC0D1C424A0081820D66 /* CoreTelephony.framework */; };
+		B7B824E99B6C4445B022B28A /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F30D7D5D92414692D555BB /* libstdc++.6.0.9.dylib */; };
+		77068ED526A34ECE9B7676E3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 08934457874B4D599D7826FB /* libz.dylib */; };
+		791030061CA444E9AB69B90E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7066CEA62E30467A911B7680 /* libsqlite3.dylib */; };
+		6DC12C7E67A64BF0BBC07DEC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E77AF60D357144CFAA5B48F1 /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +146,20 @@
 		F6054EADE29349068C4DDF57 /* UIWebViewExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIWebViewExtension.m; path = com.ionic.keyboard/UIWebViewExtension.m; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = LiveWireApp/config.xml; sourceTree = "<group>"; };
 		FEAC482202F64B3CB7DE9E76 /* CDVLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVLogger.m; path = org.apache.cordova.console/CDVLogger.m; sourceTree = "<group>"; };
+		5A3A42009AB5402FA61B44F6 /* OpenTokPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "OpenTokPlugin.m"; path = "com.tokbox.cordova.opentok/OpenTokPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		EE72B70BA4344A6B96E158FC /* OpenTokPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "OpenTokPlugin.h"; path = "com.tokbox.cordova.opentok/OpenTokPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		B6A5C9253F444134963179A7 /* Opentok.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Opentok.framework"; path = "LiveWireApp/Plugins/com.tokbox.cordova.opentok/Opentok.framework"; sourceTree = "<group>"; };
+		DDBE051D5806484FA23CF383 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		427BDD6DC8BE4C2BB2D04D1C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "OpenGLES.framework"; path = "System/Library/Frameworks/OpenGLES.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		AA3A9F986F2346F8B1582228 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreVideo.framework"; path = "System/Library/Frameworks/CoreVideo.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		964EE717B61B4AA683DF5349 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		CA0FFCF563CC49AB8F037ABD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreMedia.framework"; path = "System/Library/Frameworks/CoreMedia.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		A463DEE83AEF4D9D8E26F473 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CFNetwork.framework"; path = "System/Library/Frameworks/CFNetwork.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		2FEEAC0D1C424A0081820D66 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreTelephony.framework"; path = "System/Library/Frameworks/CoreTelephony.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		43F30D7D5D92414692D555BB /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		08934457874B4D599D7826FB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libz.dylib"; path = "usr/lib/libz.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		7066CEA62E30467A911B7680 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsqlite3.dylib"; path = "usr/lib/libsqlite3.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		E77AF60D357144CFAA5B48F1 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libxml2.dylib"; path = "usr/lib/libxml2.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +179,18 @@
 				CB9F8D051977412F992E091D /* QuartzCore.framework in Frameworks */,
 				5E368B6E74CC4F18ADC56CA2 /* SystemConfiguration.framework in Frameworks */,
 				E4341F67591C4552BADAABF7 /* UIKit.framework in Frameworks */,
+				5AED56A6629E4276B20A51F1 /* Opentok.framework in Frameworks */,
+				298DE5E52F2040ED866B1CCD /* AVFoundation.framework in Frameworks */,
+				403EF54D5CDF40DBA3359A44 /* OpenGLES.framework in Frameworks */,
+				3AF26446C1A24A08B55D3861 /* CoreVideo.framework in Frameworks */,
+				A3DCCC042B8645E499A06F07 /* AudioToolbox.framework in Frameworks */,
+				92188DB316614A70B2CFB1CC /* CoreMedia.framework in Frameworks */,
+				9DF10558FA734E4DB751C9C1 /* CFNetwork.framework in Frameworks */,
+				300FAF4237874D829D7FD7C1 /* CoreTelephony.framework in Frameworks */,
+				B7B824E99B6C4445B022B28A /* libstdc++.6.0.9.dylib in Frameworks */,
+				77068ED526A34ECE9B7676E3 /* libz.dylib in Frameworks */,
+				791030061CA444E9AB69B90E /* libsqlite3.dylib in Frameworks */,
+				6DC12C7E67A64BF0BBC07DEC /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +292,18 @@
 				994A3F34B8AD4634924DF9DA /* QuartzCore.framework */,
 				088DFB968AE14D518979F6D9 /* SystemConfiguration.framework */,
 				B5CE45E4FC794A64AA9BEC68 /* UIKit.framework */,
+				B6A5C9253F444134963179A7 /* Opentok.framework */,
+				DDBE051D5806484FA23CF383 /* AVFoundation.framework */,
+				427BDD6DC8BE4C2BB2D04D1C /* OpenGLES.framework */,
+				AA3A9F986F2346F8B1582228 /* CoreVideo.framework */,
+				964EE717B61B4AA683DF5349 /* AudioToolbox.framework */,
+				CA0FFCF563CC49AB8F037ABD /* CoreMedia.framework */,
+				A463DEE83AEF4D9D8E26F473 /* CFNetwork.framework */,
+				2FEEAC0D1C424A0081820D66 /* CoreTelephony.framework */,
+				43F30D7D5D92414692D555BB /* libstdc++.6.0.9.dylib */,
+				08934457874B4D599D7826FB /* libz.dylib */,
+				7066CEA62E30467A911B7680 /* libsqlite3.dylib */,
+				E77AF60D357144CFAA5B48F1 /* libxml2.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -278,6 +329,8 @@
 				A90FC0E304A445C5A58BC602 /* CDVDevice.h */,
 				4E6F9096ADAF45E6AFF6AD2E /* HockeyApp.m */,
 				A9A198A948C147A0AF974816 /* HockeyApp.h */,
+				5A3A42009AB5402FA61B44F6 /* OpenTokPlugin.m */,
+				EE72B70BA4344A6B96E158FC /* OpenTokPlugin.h */,
 			);
 			name = Plugins;
 			path = LiveWireApp/Plugins;
@@ -478,6 +531,7 @@
 				99A3BDC7D22A4DD69F8E87EC /* CDVLogger.m in Sources */,
 				8D60B7C5785A44528B9AB1A1 /* CDVDevice.m in Sources */,
 				EC150951832C4E1489A1B313 /* HockeyApp.m in Sources */,
+				68FCBDC0B15D47359661E7F8 /* OpenTokPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +591,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"LiveWireApp/Plugins/com.zengularity.cordova.hockeyapp\"",
+					"\"LiveWireApp/Plugins/com.tokbox.cordova.opentok\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -575,6 +630,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"LiveWireApp/Plugins/com.zengularity.cordova.hockeyapp\"",
+					"\"LiveWireApp/Plugins/com.tokbox.cordova.opentok\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveWireApp/LiveWireApp-Prefix.pch";
