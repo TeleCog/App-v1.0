@@ -31,6 +31,11 @@
     <feature name="HockeyApp">
         <param name="ios-package" value="HockeyApp" />
     </feature>
+    <plugins>
+        <feature name="OpenTokPlugin">
+            <param name="ios-package" value="OpenTokPlugin" />
+        </feature>
+    </plugins>
     <name>LiveWireApp</name>
     <description>
         LiveWire mobile app
@@ -48,9 +53,4 @@
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
-    <plugins>
-        <feature name="OpenTokPlugin">
-            <param name="ios-package" value="OpenTokPlugin" />
-        </feature>
-    </plugins>
 </widget>
