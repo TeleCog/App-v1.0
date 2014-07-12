@@ -6,6 +6,10 @@
         "api": {
             "providers": {
                 "index": "/api/customer/providers.json"
+            },
+
+            "institutions": {
+                "index": "/api/customer/institutions.json"
             }
         }
     },
