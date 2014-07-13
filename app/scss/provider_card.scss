@@ -14,6 +14,9 @@
 
 .provider-cards {
   display: inline-flex;
+  display: -webkit-inline-flex;
   flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
   justify-content: center;
+  -webkit-justify-content: center;
 }
