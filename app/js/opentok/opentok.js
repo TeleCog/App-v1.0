@@ -23,8 +23,8 @@ angular.module('opentok', [])
         $rootScope.$broadcast('opentokLoading');
 
         scope.$evalAsync(function () {
-            publisher = TB.initPublisher("44851592", 'opentok-publisher', {height: 300, width: 300});
-            session = TB.initSession("44851592", "2_MX40NDg1MTU5Mn5-V2VkIEp1biAxOCAxODoyNDoxMSBQRFQgMjAxNH4wLjQ0NzQ2MzYzfn4");
+            publisher = TB.initPublisher("44903192", 'opentok-publisher', {height: 300, width: 300});
+            session = TB.initSession("44903192", "1_MX40NDkwMzE5Mn5-VGh1IEp1bCAxNyAxMDowMjoyNCBQRFQgMjAxNH4wLjEyNDU0NTc1fn4");
 
             session.on({
                 'streamCreated': function (event) {
@@ -34,7 +34,7 @@ angular.module('opentok', [])
                     div.className += ' opentok-subscriber';
                 }
             });
-            session.connect("T1==cGFydG5lcl9pZD00NDg1MTU5MiZzaWc9MzFjNjk4NDExNDgyYjY2YzQ1N2IyNzliNWQ5MDk5MWM1MGEyOGJhNzpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTJfTVg0ME5EZzFNVFU1TW41LVYyVmtJRXAxYmlBeE9DQXhPRG95TkRveE1TQlFSRlFnTWpBeE5INHdMalEwTnpRMk16WXpmbjQmY3JlYXRlX3RpbWU9MTQwMzE0MTA1NyZub25jZT0wLjc3ODY1NzMyNzUxMDQ5MiZleHBpcmVfdGltZT0xNDA1NzMzMDQz", function () {
+            session.connect("T1==cGFydG5lcl9pZD00NDkwMzE5MiZzaWc9NDllY2NhM2EyOThkMmE2MTNkNjA0NmRkMDE5NDZlZWZlZDU0ZjA5Zjpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0ME5Ea3dNekU1TW41LVZHaDFJRXAxYkNBeE55QXhNRG93TWpveU5DQlFSRlFnTWpBeE5INHdMakV5TkRVME5UYzFmbjQmY3JlYXRlX3RpbWU9MTQwNTYxNjU3NCZub25jZT0wLjIxMjgyNTY1NDQ4OTkwODc2JmV4cGlyZV90aW1lPTE0MDgyMDg0NTc=", function () {
                 session.publish(publisher);
             });
 
