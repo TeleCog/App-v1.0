@@ -1,16 +1,19 @@
 (function () {
     'use strict';
 
-    angular.module('livewireApp', ['ionic', 'templatescache'])
+    // Load npm dependencies
+    require('./opentok/opentok');
 
-        .run(function ($ionicPlatform) {
-            $ionicPlatform.ready(function () {
-                var currentdate = new Date();
+    angular.module('livewireApp', ['ionic', 'templatescache', 'opentok'])
 
-                // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-                // for form inputs)
-                if (window.cordova && window.cordova.plugins.Keyboard
-                        && !window.tinyHippos) {
+    .run(function ($ionicPlatform) {
+        $ionicPlatform.ready(function () {
+            var currentdate = new Date();
+
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            if (window.cordova && window.cordova.plugins.Keyboard
+                && !window.tinyHippos) {
                     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 }
                 if (window.StatusBar) {
@@ -27,47 +30,56 @@
 
                 // Print current time
                 console.log(currentdate.getHours() + ":"
-                    + currentdate.getMinutes() + ":"
-                    + currentdate.getSeconds());
-            });
+                            + currentdate.getMinutes() + ":"
+                            + currentdate.getSeconds());
+        });
+    })
+
+    .config(function ($stateProvider, $urlRouterProvider) {
+
+        $stateProvider
+
+        .state('signin', {
+            url: "/signin",
+            templateUrl: "/partials/signin.html",
+            controller: "SigninCtrl"
         })
 
-        .config(function ($stateProvider, $urlRouterProvider) {
+        .state('register', {
+            url: "/register",
+            templateUrl: "/partials/register.html",
+            controller: "RegisterCtrl"
+        })
 
-            $stateProvider
+        .state('app', {
+            url: "/app",
+            abstract: true,
+            templateUrl: "/partials/menu.html",
+            controller: "AppCtrl"
+        })
 
-                .state('signin', {
-                    url: "/signin",
-                    templateUrl: "/partials/signin.html",
-                    controller: "SigninCtrl"
-                })
+        .state('app.providers', {
+            url: "/providers",
+            views: {
+                'menuContent': {
+                    templateUrl: "/partials/main/providers.html",
+                    controller: "ProvidersCtrl"
+                }
+            }
+        })
 
-                .state('register', {
-                    url: "/register",
-                    templateUrl: "/partials/register.html",
-                    controller: "RegisterCtrl"
-                })
-
-                .state('app', {
-                    url: "/app",
-                    abstract: true,
-                    templateUrl: "/partials/menu.html",
-                    controller: "AppCtrl"
-                })
-
-                .state('app.providers', {
-                    url: "/providers",
-                    views: {
-                        'menuContent': {
-                            templateUrl: "/partials/main/providers.html",
-                            controller: "ProvidersCtrl"
-                        }
-                    }
-                });
-
-            // if none of the above states are matched, use this as the fallback
-            $urlRouterProvider.otherwise('/signin');
+        .state('app.video', {
+            url: "/video",
+            views: {
+                'menuContent': {
+                    templateUrl: '/partials/main/video.html',
+                    controller: "VideoCtrl"
+                }
+            }
         });
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/signin');
+    });
 
     // Register root-view controller
     require('./controllers/app');
@@ -75,5 +87,4 @@
     // Register services
     require('./services/api');
     require('./services/auth');
-
 }());
