@@ -16,10 +16,10 @@
                 p {{currentProvider.provider.medical_specialty}}
             label.item.item-input.item-stacked-label
                 span.input-label Provider Type
-                p Placeholder
+                p {{currentProvider.provider.provider_type || 'None'}}
             label.item.item-input.item-stacked-label
                 span.input-label State(s) of license or certification
-                p Placeholder
+                p {{currentProvider.provider.states_filing_specialties.join(', ')}}
             label.item.item-input.item-stacked-label
                 span.input-label Location
                 p Placeholder
