@@ -3,23 +3,38 @@ angular.module('livewireApp')
 .controller('ProvidersCtrl', function ($scope, $ionicModal, $ionicLoading, ApiService) {
     'use strict';
 
+    // Create modal show/hide function in scope
+    var createVisibleModalFn = function (name, modal) {
+        var normalizedName;
+
+        $scope[name] = modal; // Add modal to scope
+
+        normalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+        $scope['show' + normalizedName] = function () {
+            $scope[name].show();
+        };
+        $scope['close' + normalizedName] = function () {
+            $scope[name].hide();
+        };
+    };
+
+    // Filters Modal
     $ionicModal.fromTemplateUrl('/partials/main/_filters.html', {
         scope: $scope
     }).then(function (modal) {
-        $scope.modal = modal;
+        createVisibleModalFn('filtersModal', modal);
+    });
+
+    // Providers Description Modal
+    $ionicModal.fromTemplateUrl('/partials/main/_provider.html', {
+        scope: $scope
+    }).then(function (modal) {
+        createVisibleModalFn('providerModal', modal);
     });
 
     $ionicLoading.show({
         template: 'Loading <i class=ion-loading-c></i>'
     });
-
-    $scope.showFilters = function () {
-        $scope.modal.show();
-    };
-
-    $scope.closeFilters = function () {
-        $scope.modal.hide();
-    };
 
     $scope.evalProvider = function (provider) {
         var specialty_key = '',

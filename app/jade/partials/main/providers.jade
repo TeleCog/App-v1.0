@@ -2,7 +2,7 @@ ion-view(title="Providers")
     ion-nav-buttons(side="left")
         button.button.button-icon.icon.ion-navicon(menu-toggle="left")
     ion-content.has-header
-        button.button.button-full.button-dark(style="margin-top:0", ng-click="showFilters()")
+        button.button.button-full.button-dark(style="margin-top:0", ng-click="showFiltersModal()")
             i.ion-funnel
         .provider-cards
             .list.card.provider-card(ng-repeat="provider in providers | filter:evalProvider")
