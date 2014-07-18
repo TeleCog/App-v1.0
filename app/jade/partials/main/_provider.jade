@@ -7,7 +7,10 @@
         .list
             label.item.item-input.item-stacked-label
                 span.input-label Provider Organization
-                p Placeholder
+                p
+                    | {{institutions[currentProvider.provider.institution_id - 1].institution.name}},
+                    | {{institutions[currentProvider.provider.institution_id - 1].institution.city}},
+                    | {{institutions[currentProvider.provider.institution_id - 1].institution.state}}
             label.item.item-input.item-stacked-label
                 span.input-label Medical Specialty
                 p Placeholder
