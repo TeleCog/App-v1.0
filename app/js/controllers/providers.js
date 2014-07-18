@@ -74,6 +74,11 @@ angular.module('livewireApp')
         createVisibleModalFn('providerModal', modal);
     });
 
+    $scope.showProvider = function (provider) {
+        $scope.currentProvider = provider;
+        $scope.showProviderModal();
+    };
+
     $ionicLoading.show({
         template: 'Loading <i class=ion-loading-c></i>'
     });

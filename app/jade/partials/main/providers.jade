@@ -8,7 +8,7 @@ ion-view(title="Providers")
         button.button.button-full.button-dark(style="margin-top:0", ng-click="showFiltersModal()")
             i.ion-funnel
         .provider-cards
-            .list.card.provider-card(ng-repeat="provider in (filteredProviders || providers)")
+            .list.card.provider-card(ng-repeat="provider in (filteredProviders || providers)", ng-click="showProvider(provider)")
                 .item.item-avatar
                     h2 {{provider.provider.name}}
                     p {{provider.provider.type_abbr}} {{provider.provider.medical_specialty}}
