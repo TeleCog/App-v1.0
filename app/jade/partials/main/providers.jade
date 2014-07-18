@@ -1,6 +1,9 @@
 ion-view(title="Providers")
     ion-nav-buttons(side="left")
         button.button.button-icon.icon.ion-navicon(menu-toggle="left")
+    ion-nav-buttons(side="right")
+        button.button(ng-click="signOut()")
+            | Sign Out
     ion-content.has-header
         button.button.button-full.button-dark(style="margin-top:0", ng-click="showFiltersModal()")
             i.ion-funnel
