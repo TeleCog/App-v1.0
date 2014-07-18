@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-.controller('ProvidersCtrl', function ($scope, $ionicModal, $ionicLoading, ApiService) {
+.controller('ProvidersCtrl', function ($scope, $ionicModal, $ionicLoading, filterFilter, ApiService) {
     'use strict';
 
     // Create modal show/hide function in scope
@@ -16,6 +16,48 @@ angular.module('livewireApp')
         $scope['close' + normalizedName] = function () {
             $scope[name].hide();
         };
+    },
+
+    // Filter providers
+    evalProvider = function (provider) {
+        var specialty_key = '',
+        institution_key = '',
+        result = false,
+        count = 0;
+
+        // Medical Specialty
+        for (specialty_key in $scope.filterToggles.medical_specialty) {
+            count += 1;
+
+            if ($scope.filterToggles.medical_specialty[specialty_key]
+                && provider.provider.medical_specialty === specialty_key) {
+                    result = true;
+                    break;
+                }
+        }
+        if (count === 0) {
+            result = true; // If customer has not yet filtered
+        }
+
+        // Return if medical specialty does not match
+        if (!result) {
+            return !!result;
+        }
+
+        // Institution key is ID
+        for (institution_key in $scope.filterToggles.institutions) {
+            count += 1;
+
+            if ($scope.filterToggles.institutions[institution_key]) {
+                result = (provider.provider.institution_id === parseInt(institution_key, 10));
+
+                if (result) {
+                    break;
+                }
+            }
+        }
+
+        return !!result;
     };
 
     // Filters Modal
@@ -36,43 +78,10 @@ angular.module('livewireApp')
         template: 'Loading <i class=ion-loading-c></i>'
     });
 
-    $scope.evalProvider = function (provider) {
-        var specialty_key = '',
-        institution_key = '',
-        result = false,
-        count = 0;
-
-        // Medical Specialty
-        for (specialty_key in $scope.filterToggles.medical_specialty) {
-            count += 1;
-
-            if ($scope.filterToggles.medical_specialty[specialty_key]
-                && provider.provider.medical_specialty === specialty_key) {
-                    result = true;
-                    break;
-                }
-        }
-        if (count === 0) {
-            result = true; // If customer has not yet filtered
-        }
-
-        // Institution key is ID
-        for (institution_key in $scope.filterToggles.institutions) {
-            count += 1;
-
-            if ($scope.filterToggles.institutions[institution_key]) {
-                result = (provider.provider.institution_id === parseInt(institution_key, 10));
-
-                if (result) {
-                    break;
-                }
-            }
-        }
-
-        return !!result;
+    $scope.filterProviders = function (providers) {
+        $scope.filteredProviders = filterFilter(providers, evalProvider);
+        $scope.closeFiltersModal();
     };
-
-
 
     ApiService.institutions.index().then(function () {
         $scope.institutions = ApiService.getApiData().institutions.index;
