@@ -1,0 +1,30 @@
+.provider-card {
+  max-width: 230px;
+  display: inline-block;
+
+  .item-avatar {
+    padding-left: 15px;
+    text-align: center;
+  }
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
+
+  .provider-availability {
+    width: 100%;
+    color: white;
+    border-radius: 0px
+  }
+}
+
+.provider-cards {
+  &>.list {
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    justify-content: center;
+    -webkit-justify-content: center;
+  }
+}

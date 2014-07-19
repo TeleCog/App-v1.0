@@ -1,0 +1,20 @@
+ion-view(title="Providers")
+    ion-nav-buttons(side="left")
+        button.button.button-icon.icon.ion-navicon(menu-toggle="left")
+    ion-nav-buttons(side="right")
+        button.button(ng-click="signOut()")
+            | Sign Out
+    ion-content.has-header
+        ion-refresher(pulling-text="Pull to refresh...", on-refresh="doRefresh()")
+        button.button.button-full.button-dark(style="margin-top:0", ng-click="showFiltersModal()")
+            i.ion-funnel
+        ion-list.provider-cards
+            .list.card.provider-card(ng-repeat="provider in (filteredProviders || providers)", ng-click="showProvider(provider)")
+                .item.item-avatar
+                    h2(ng-class="{ balanced: provider.provider.availability_new }")
+                        | {{provider.provider.name}}
+                    p {{provider.provider.type_abbr}} {{provider.provider.medical_specialty}}
+                .item.item-image
+                    img(src="http://livewiremedical.s3.amazonaws.com/uploads/provider/image/18/thumb_Mary_Lester.jpg")
+                .badge.badge-balanced.provider-availability(ng-show="provider.provider.availability_new")
+                    span Available Now

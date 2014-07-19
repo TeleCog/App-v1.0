@@ -1,0 +1,22 @@
+.modal
+    ion-header-bar
+        h1.title Filter Providers
+        .buttons
+            button.button.button-clear(ng-click="filterProviders(providers)") Done
+    ion-content
+        .padding
+            .list
+                .item.item-divider
+                    | Institution
+                ul.list
+                    li.item.item-checkbox(ng-repeat="institution in institutions")
+                        label.checkbox
+                            input(type="checkbox", ng-model="filterToggles.institutions[institution.institution.id]")
+                        | {{institution.institution.name}} ({{institution.institution.city}}, {{institution.institution.state}})
+                .item.item-divider
+                    | Medical Specialty
+                ul.list
+                    li.item.item-checkbox(ng-repeat="specialty in filters.medical_specialty")
+                        label.checkbox
+                            input(type="checkbox", ng-model="filterToggles.medical_specialty[specialty]")
+                        | {{specialty}}

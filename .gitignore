@@ -1,6 +1,26 @@
 node_modules/
 
+# Browserify bundle
+app.bundle.js
+
+# HTML files (since we're using Jade)
+/**/www/*.html
+/**/www/css/*.css
+
+# Copied files
+platforms/android/assets/www/
+platforms/ios/www/
+www/js/templates.js
+www/partials
+
+release/
+platforms/ios/*.ipa
+platforms/ios/*.dSYM.zip
+
 # ANDROID / ECLIPSE
+
+ant-gen/
+ant-build/
 
 # built application files
 *.apk
