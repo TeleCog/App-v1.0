@@ -10,13 +10,21 @@
   &:last-child {
     margin-bottom: 20px;
   }
+
+  .provider-availability {
+    width: 100%;
+    color: white;
+    border-radius: 0px
+  }
 }
 
 .provider-cards {
-  display: inline-flex;
-  display: -webkit-inline-flex;
-  flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  justify-content: center;
-  -webkit-justify-content: center;
+  &>.list {
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    justify-content: center;
+    -webkit-justify-content: center;
+  }
 }

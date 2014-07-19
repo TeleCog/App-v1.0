@@ -1,27 +1,25 @@
 angular.module('livewireApp')
 
-.controller('ProvidersCtrl', function ($scope, $ionicModal, $ionicLoading, ApiService) {
+.controller('ProvidersCtrl', function ($scope, $ionicModal, $ionicLoading, filterFilter, orderByFilter, ApiService) {
     'use strict';
 
-    $ionicModal.fromTemplateUrl('/partials/main/_filters.html', {
-        scope: $scope
-    }).then(function (modal) {
-        $scope.modal = modal;
-    });
+    // Create modal show/hide function in scope
+    var createVisibleModalFn = function (name, modal) {
+        var normalizedName;
 
-    $ionicLoading.show({
-        template: 'Loading <i class=ion-loading-c></i>'
-    });
+        $scope[name] = modal; // Add modal to scope
 
-    $scope.showFilters = function () {
-        $scope.modal.show();
-    };
+        normalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+        $scope['show' + normalizedName] = function () {
+            $scope[name].show();
+        };
+        $scope['close' + normalizedName] = function () {
+            $scope[name].hide();
+        };
+    },
 
-    $scope.closeFilters = function () {
-        $scope.modal.hide();
-    };
-
-    $scope.evalProvider = function (provider) {
+    // Filter providers
+    evalProvider = function (provider) {
         var specialty_key = '',
         institution_key = '',
         result = false,
@@ -41,6 +39,11 @@ angular.module('livewireApp')
             result = true; // If customer has not yet filtered
         }
 
+        // Return if medical specialty does not match
+        if (!result) {
+            return !!result;
+        }
+
         // Institution key is ID
         for (institution_key in $scope.filterToggles.institutions) {
             count += 1;
@@ -57,7 +60,45 @@ angular.module('livewireApp')
         return !!result;
     };
 
+    // Filters Modal
+    $ionicModal.fromTemplateUrl('/partials/main/_filters.html', {
+        scope: $scope
+    }).then(function (modal) {
+        createVisibleModalFn('filtersModal', modal);
+    });
 
+    // Providers Description Modal
+    $ionicModal.fromTemplateUrl('/partials/main/_provider.html', {
+        scope: $scope
+    }).then(function (modal) {
+        createVisibleModalFn('providerModal', modal);
+    });
+
+    $scope.showProvider = function (provider) {
+        $scope.currentProvider = provider;
+        $scope.showProviderModal();
+    };
+
+    $ionicLoading.show({
+        template: 'Loading <i class=ion-loading-c></i>'
+    });
+
+    $scope.filterProviders = function (providers) {
+        $scope.filteredProviders = filterFilter(providers, evalProvider);
+        $scope.filteredProviders = orderByFilter($scope.filteredProviders, 'provider.availability_new');
+        $scope.closeFiltersModal();
+    };
+
+    // Refresh On Slide Up
+    $scope.doRefresh = function () {
+        ApiService.providers.index().then(function () {
+            $scope.providers = ApiService.getApiData().providers.index.providers;
+            $scope.filters = ApiService.getApiData().providers.index.filters;
+            $scope.$broadcast('scroll.refreshComplete');
+        }, function () {
+            console.log("Error");
+        });
+    };
 
     ApiService.institutions.index().then(function () {
         $scope.institutions = ApiService.getApiData().institutions.index;
