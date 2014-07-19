@@ -85,7 +85,7 @@ angular.module('livewireApp')
 
     $scope.filterProviders = function (providers) {
         $scope.filteredProviders = filterFilter(providers, evalProvider);
-        $scope.filteredProviders = orderByFilter($scope.filteredProviders, 'provider.availability_new');
+        $scope.filteredProviders = orderByFilter($scope.filteredProviders, '-provider.availability_new');
         $scope.closeFiltersModal();
     };
 
@@ -94,6 +94,7 @@ angular.module('livewireApp')
         ApiService.providers.index().then(function () {
             $scope.providers = ApiService.getApiData().providers.index.providers;
             $scope.filters = ApiService.getApiData().providers.index.filters;
+            $scope.filterProviders($scope.providers);
             $scope.$broadcast('scroll.refreshComplete');
         }, function () {
             console.log("Error");
@@ -107,6 +108,7 @@ angular.module('livewireApp')
     ApiService.providers.index().then(function () {
         $scope.providers = ApiService.getApiData().providers.index.providers;
         $scope.filters = ApiService.getApiData().providers.index.filters;
+        $scope.filterProviders($scope.providers);
         $ionicLoading.hide();
     }, function () {
         $ionicLoading.hide();
