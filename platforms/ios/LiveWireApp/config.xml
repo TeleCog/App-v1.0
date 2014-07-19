@@ -44,6 +44,7 @@
       LiveWire Team
     </author>
     <content src="index.html" />
+    <access origin="*" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
@@ -52,5 +53,4 @@
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
-    <access origin="*" />
 </widget>
