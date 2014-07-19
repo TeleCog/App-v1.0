@@ -10,7 +10,10 @@ ion-view(title="Providers")
         .provider-cards
             .list.card.provider-card(ng-repeat="provider in (filteredProviders || providers)", ng-click="showProvider(provider)")
                 .item.item-avatar
-                    h2 {{provider.provider.name}}
+                    h2(ng-class="{ balanced: provider.provider.availability_new }")
+                        | {{provider.provider.name}}
                     p {{provider.provider.type_abbr}} {{provider.provider.medical_specialty}}
                 .item.item-image
                     img(src="http://livewiremedical.s3.amazonaws.com/uploads/provider/image/18/thumb_Mary_Lester.jpg")
+                .badge.badge-balanced.provider-availability(ng-show="provider.provider.availability_new")
+                    span Available Now
