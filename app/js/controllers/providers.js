@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-.controller('ProvidersCtrl', function ($scope, $ionicModal, $ionicLoading, filterFilter, ApiService) {
+.controller('ProvidersCtrl', function ($scope, $ionicModal, $ionicLoading, filterFilter, orderByFilter, ApiService) {
     'use strict';
 
     // Create modal show/hide function in scope
@@ -85,6 +85,7 @@ angular.module('livewireApp')
 
     $scope.filterProviders = function (providers) {
         $scope.filteredProviders = filterFilter(providers, evalProvider);
+        $scope.filteredProviders = orderByFilter($scope.filteredProviders, 'provider.availability_new');
         $scope.closeFiltersModal();
     };
 
