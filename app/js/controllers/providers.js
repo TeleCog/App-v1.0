@@ -89,6 +89,17 @@ angular.module('livewireApp')
         $scope.closeFiltersModal();
     };
 
+    // Refresh On Slide Up
+    $scope.doRefresh = function () {
+        ApiService.providers.index().then(function () {
+            $scope.providers = ApiService.getApiData().providers.index.providers;
+            $scope.filters = ApiService.getApiData().providers.index.filters;
+            $scope.$broadcast('scroll.refreshComplete');
+        }, function () {
+            console.log("Error");
+        });
+    };
+
     ApiService.institutions.index().then(function () {
         $scope.institutions = ApiService.getApiData().institutions.index;
     });
