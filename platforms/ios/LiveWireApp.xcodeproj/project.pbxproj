@@ -51,7 +51,7 @@
 		E4341F67591C4552BADAABF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CE45E4FC794A64AA9BEC68 /* UIKit.framework */; };
 		EC150951832C4E1489A1B313 /* HockeyApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F9096ADAF45E6AFF6AD2E /* HockeyApp.m */; };
 		FE182DEC0CFF4BD8B105616A /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA33CD4AF154F6BA6F42B53 /* IonicKeyboard.m */; };
-		BFF7E3F553A548AFAA6630A6 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C255990DFE31491386E092B8 /* libstdc++.6.0.9.dylib */; };
+		24CD51AA0BA140E69C24DF86 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26597B5BC3D74D32A9844DAB /* libstdc++.6.0.9.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,7 +147,7 @@
 		F6054EADE29349068C4DDF57 /* UIWebViewExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIWebViewExtension.m; path = com.ionic.keyboard/UIWebViewExtension.m; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = LiveWireApp/config.xml; sourceTree = "<group>"; };
 		FEAC482202F64B3CB7DE9E76 /* CDVLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVLogger.m; path = org.apache.cordova.console/CDVLogger.m; sourceTree = "<group>"; };
-		C255990DFE31491386E092B8 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		26597B5BC3D74D32A9844DAB /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +167,7 @@
 				CB9F8D051977412F992E091D /* QuartzCore.framework in Frameworks */,
 				5E368B6E74CC4F18ADC56CA2 /* SystemConfiguration.framework in Frameworks */,
 				E4341F67591C4552BADAABF7 /* UIKit.framework in Frameworks */,
-				BFF7E3F553A548AFAA6630A6 /* libstdc++.6.0.9.dylib in Frameworks */,
+				24CD51AA0BA140E69C24DF86 /* libstdc++.6.0.9.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +280,7 @@
 				08934457874B4D599D7826FB /* libz.dylib */,
 				7066CEA62E30467A911B7680 /* libsqlite3.dylib */,
 				E77AF60D357144CFAA5B48F1 /* libxml2.dylib */,
-				C255990DFE31491386E092B8 /* libstdc++.6.0.9.dylib */,
+				26597B5BC3D74D32A9844DAB /* libstdc++.6.0.9.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
