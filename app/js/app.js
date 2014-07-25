@@ -87,4 +87,5 @@
     // Register services
     require('./services/api');
     require('./services/auth');
+    require('./services/opentok.js');
 }());

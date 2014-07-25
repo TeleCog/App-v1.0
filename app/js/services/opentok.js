@@ -3,7 +3,7 @@ buffer = require('buffer'),
 config = require('../config.json');
 
 angular.module('livewireApp')
-.factory('OpentokService', function () {
+.factory('OpentokService', function ($http) {
     var sessionID, token;
 
     return {
@@ -33,14 +33,25 @@ angular.module('livewireApp')
             preCoded = "partner_id=" + config.opentok.apiKey + "&sig=" + hash + ":" + data;
             token = "T1==" + (new buffer.Buffer(preCoded)).toString('base64');
 
-            console.log(preCoded);
-            console.log(token);
-
             return token;
         },
 
         requestSessionID: function () {
-            // TODO
+            return $http({
+                method: 'POST',
+                url: 'https://api.opentok.com/hl/session/create',
+                data: {"p2p.preference": "disabled"},
+                headers: {
+                    'X-TB-PARTNER-AUTH': config.opentok.apiKey + ':' + config.opentok.apiSecret,
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }).success(function (data) {
+                var regex = /<session_id>(.+)<\/session_id>/;
+                var match = regex.exec(data);
+                sessionID = match[1];
+            }).error(function () {
+                console.log("error");
+            });
         }
     };
 
