@@ -103,8 +103,8 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
           float widthRatio = (float) mProperty.getDouble(6),
                 heightRatio = (float) mProperty.getDouble(7);
 
-          mView.setY( mProperty.getInt(1) * widthRatio );
-          mView.setX( mProperty.getInt(2) * heightRatio );
+          mView.setY( mProperty.getInt(1) * heightRatio );
+          mView.setX( mProperty.getInt(2) * widthRatio );
           ViewGroup.LayoutParams params = mView.getLayoutParams();
           params.height = (int) (mProperty.getInt(4) * heightRatio);
           params.width = (int) (mProperty.getInt(3) * widthRatio);
@@ -157,10 +157,10 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
         mPublisher.setPublisherListener(this);
         try{
           // Camera is swapped in streamCreated event
-          if( compareStrings(this.mProperty.getString(7), "false") ){
+          if( compareStrings(this.mProperty.getString(9), "false") ){
             mPublisher.setPublishVideo(false); // default is true
           }
-          if( compareStrings(this.mProperty.getString(6), "false") ){
+          if( compareStrings(this.mProperty.getString(8), "false") ){
             mPublisher.setPublishAudio(false); // default is true
           }
           Log.i(TAG, "all set up for publisher");
@@ -185,7 +185,7 @@ public class OpenTokAndroidPlugin extends CordovaPlugin implements
     public void onStreamCreated(PublisherKit arg0, Stream arg1) {
       Log.i(TAG, "publisher stream received");
       try{
-        if( compareStrings(this.mProperty.getString(8), "back") ){
+        if( compareStrings(this.mProperty.getString(10), "back") ){
           Log.i(TAG, "swapping camera");
           mPublisher.swapCamera(); // default is front
         }
