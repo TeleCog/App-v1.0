@@ -3,8 +3,10 @@
 
     // Load npm dependencies
     require('./opentok/opentok');
+    require('firebase');
+    require('angularfire');
 
-    angular.module('livewireApp', ['ionic', 'templatescache', 'opentok'])
+    angular.module('livewireApp', ['ionic', 'templatescache', 'opentok', 'firebase'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {

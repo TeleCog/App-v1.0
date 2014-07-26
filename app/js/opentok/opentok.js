@@ -1,6 +1,8 @@
+var config = require('../config.json');
+
 angular.module('opentok', [])
 
-.directive('opentokContainer', function ($rootScope) {
+.directive('opentokContainer', function ($rootScope, $firebase, OpentokService) {
     var updateViews = function () {
         var publisherDiv, subscriberDiv;
 
@@ -22,9 +24,9 @@ angular.module('opentok', [])
 
         $rootScope.$broadcast('opentokLoading');
 
-        scope.$evalAsync(function () {
-            publisher = TB.initPublisher("44903192", 'opentok-publisher', {height: 300, width: 300});
-            session = TB.initSession("44903192", "1_MX40NDkwMzE5Mn5-VGh1IEp1bCAxNyAxMDowMjoyNCBQRFQgMjAxNH4wLjEyNDU0NTc1fn4");
+        OpentokService.requestSessionID().then(function () {
+            publisher = TB.initPublisher(config.opentok.apiKey, 'opentok-publisher', {height: 300, width: 300});
+            session = TB.initSession(config.opentok.apiKey, OpentokService.getSessionID());
 
             session.on({
                 'streamCreated': function (event) {
@@ -34,16 +36,37 @@ angular.module('opentok', [])
                     div.className += ' opentok-subscriber';
                 }
             });
-            session.connect("T1==cGFydG5lcl9pZD00NDkwMzE5MiZzaWc9NDllY2NhM2EyOThkMmE2MTNkNjA0NmRkMDE5NDZlZWZlZDU0ZjA5Zjpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0ME5Ea3dNekU1TW41LVZHaDFJRXAxYkNBeE55QXhNRG93TWpveU5DQlFSRlFnTWpBeE5INHdMakV5TkRVME5UYzFmbjQmY3JlYXRlX3RpbWU9MTQwNTYxNjU3NCZub25jZT0wLjIxMjgyNTY1NDQ4OTkwODc2JmV4cGlyZV90aW1lPTE0MDgyMDg0NTc=", function () {
+
+            session.connect(OpentokService.generateToken(), function () {
                 session.publish(publisher);
+                publisher.on({
+                    'streamCreated': function (event) {
+                        // Notify provider
+                        console.log("Notifying Provider");
+                        var sessionID = OpentokService.getSessionID(),
+                        sessionRef = new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] + '/vccameramode/pendingsessions/' + sessionID + '/node');
+                        sessionRef.set({
+                            customerId: 38,
+                            sessionId: sessionID,
+                            isvalid: 1,
+                            ifWebRTCSupported: true,
+                            agentIdToCall: 1,
+                            ifAdminCalling: 0,
+                            streamId: event.stream.streamId,
+                            customerName: 'Jon Skeet'
+                        });
+                    }
+                });
             });
 
-            updateViews();
-
             $rootScope.$broadcast('opentokLoaded');
-            document.addEventListener("orientationchange", updateViews);
         });
     };
+
+    window.addEventListener("orientationchange", function () {
+        console.log("Orientation changed");
+        updateViews();
+    });
 
     return {
         restrict: 'E',

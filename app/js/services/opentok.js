@@ -52,6 +52,10 @@ angular.module('livewireApp')
             }).error(function () {
                 console.log("error");
             });
+        },
+
+        getSessionID: function () {
+            return sessionID;
         }
     };
 
