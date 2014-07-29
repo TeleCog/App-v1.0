@@ -13,15 +13,15 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"HockeyApp\"><param name=\"ios-package\" value=\"HockeyApp\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"HockeyApp\"><param name=\"ios-package\" value=\"HockeyApp\" /></feature>",
                             "count": 1
                         },
                         {
@@ -155,13 +155,13 @@
         "com.ionic.keyboard": {
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         },
+        "com.zengularity.cordova.hockeyapp": {
+            "PACKAGE_NAME": "com.livewiretax.livewireapp"
+        },
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         },
         "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.livewiretax.livewireapp"
-        },
-        "com.zengularity.cordova.hockeyapp": {
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         },
         "com.tokbox.cordova.opentok": {
