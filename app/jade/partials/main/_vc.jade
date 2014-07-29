@@ -5,4 +5,4 @@
             button.button.button-clear(ng-click="closeVcModal()") Close
     ion-content
         div(ng-controller="VideoCtrl")
-            opentok-container(user-id="{{user.id}}", user-name="{{user.first_name}}")
+            opentok-container(user-id="{{user.id}}", user-name="{{user.first_name}}", agent-id="{{currentProvider.provider.id}}")

@@ -60,7 +60,7 @@ angular.module('opentok', [])
                             sessionId: sessionID,
                             isvalid: 1,
                             ifWebRTCSupported: true,
-                            agentIdToCall: 1,
+                            agentIdToCall: attrs.agentId,
                             ifAdminCalling: 0,
                             streamId: event.stream.streamId,
                             customerName: attrs.userName
