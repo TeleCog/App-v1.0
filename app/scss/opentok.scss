@@ -1,9 +1,17 @@
 #opentok-publisher {
     position: absolute;
-    z-index: 2;
+    z-index: 20;
 }
 
 .opentok-subscriber {
     position: absolute;
-    z-index: 0;
+    z-index: 2;
+}
+
+.vc-modal {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
 }

@@ -8,6 +8,10 @@
                 "index": "/api/customer/providers.json"
             },
 
+            "customers": {
+                "me": "/api/customer/customers/me.json"
+            },
+
             "institutions": {
                 "index": "/api/customer/institutions.json"
             }

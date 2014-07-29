@@ -3,29 +3,38 @@ var config = require('../config.json');
 angular.module('opentok', [])
 
 .directive('opentokContainer', function ($rootScope, $firebase, OpentokService) {
-    var updateViews = function () {
+    var calculatePublisherSize = function () {
+        return Math.floor(Math.min(document.height, document.width) * 0.30);
+    },
+
+    updateViews = function () {
         var publisherDiv, subscriberDiv;
 
         publisherDiv = document.getElementById('opentok-publisher');
-        publisherDiv.style.width = Math.floor(Math.min(document.height, document.width) * 0.30) + 'px';
-        publisherDiv.style.height = publisherDiv.style.width;
+        if (publisherDiv.style) {
+            publisherDiv.style.width = calculatePublisherSize() + 'px';
+            publisherDiv.style.height = publisherDiv.style.width;
+            publisherDiv.style.zindex = 20;
+        }
 
         subscriberDiv = document.getElementsByClassName('opentok-subscriber')[0];
         if (subscriberDiv.style) {
             subscriberDiv.style.width = document.width + 'px';
             subscriberDiv.style.height = document.height + 'px';
+            subscriberDiv.style.zindex = 2;
         }
 
         TB.updateViews();
     },
 
     link = function (scope, element, attrs) {
-        var publisher, session;
+        var publisher, session, publisherSize;
 
         $rootScope.$broadcast('opentokLoading');
 
         OpentokService.requestSessionID().then(function () {
-            publisher = TB.initPublisher(config.opentok.apiKey, 'opentok-publisher', {height: 300, width: 300});
+            publisherSize = calculatePublisherSize();
+            publisher = TB.initPublisher(config.opentok.apiKey, 'opentok-publisher', {height: publisherSize, width: publisherSize});
             session = TB.initSession(config.opentok.apiKey, OpentokService.getSessionID());
 
             session.on({
@@ -34,6 +43,7 @@ angular.module('opentok', [])
                     div.id = 'stream' + event.stream.streamId;
                     session.subscribe(event.stream, div.id, {subscribeToAudio: true});
                     div.className += ' opentok-subscriber';
+                    updateViews();
                 }
             });
 
@@ -46,14 +56,14 @@ angular.module('opentok', [])
                         var sessionID = OpentokService.getSessionID(),
                         sessionRef = new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] + '/vccameramode/pendingsessions/' + sessionID + '/node');
                         sessionRef.set({
-                            customerId: 38,
+                            customerId: attrs.userId,
                             sessionId: sessionID,
                             isvalid: 1,
                             ifWebRTCSupported: true,
                             agentIdToCall: 1,
                             ifAdminCalling: 0,
                             streamId: event.stream.streamId,
-                            customerName: 'Jon Skeet'
+                            customerName: attrs.userName
                         });
                     }
                 });
@@ -71,6 +81,16 @@ angular.module('opentok', [])
     return {
         restrict: 'E',
         template: '<div id="opentok-publisher"></div><div class="opentok-subscribers"><div class="opentok-subscriber"></div></div>',
-        link: link
+        link: function (scope, elem, attrs) {
+            if (scope.isDataLoaded) {
+                link(scope, elem, attrs);
+            } else {
+                $rootScope.$on('videoCtrlDataLoaded', function () {
+                    $rootScope.$on('providersCtrlVCModalShown', function () {
+                        link(scope, elem, attrs);
+                    });
+                });
+            }
+        }
     };
 });

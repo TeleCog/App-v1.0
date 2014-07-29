@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-.controller('ProvidersCtrl', function ($scope, $ionicModal, $ionicLoading, filterFilter, orderByFilter, ApiService) {
+.controller('ProvidersCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, filterFilter, orderByFilter, ApiService) {
     'use strict';
 
     // Create modal show/hide function in scope
@@ -73,6 +73,19 @@ angular.module('livewireApp')
     }).then(function (modal) {
         createVisibleModalFn('providerModal', modal);
     });
+
+    // Video Conferencing Modal
+    $ionicModal.fromTemplateUrl('/partials/main/_vc.html', {
+        scope: $scope
+    }).then(function (modal) {
+        createVisibleModalFn('vcModal', modal);
+    });
+
+    $scope.showVC = function () {
+        $scope.vcModal.show().then(function () {
+            $rootScope.$broadcast('providersCtrlVCModalShown');
+        });
+    };
 
     $scope.showProvider = function (provider) {
         $scope.currentProvider = provider;
