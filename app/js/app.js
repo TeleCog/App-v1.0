@@ -68,17 +68,8 @@
                     controller: "ProvidersCtrl"
                 }
             }
-        })
-
-        .state('app.video', {
-            url: "/video",
-            views: {
-                'menuContent': {
-                    templateUrl: '/partials/main/video.html',
-                    controller: "VideoCtrl"
-                }
-            }
         });
+
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/signin');
     });
