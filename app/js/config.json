@@ -1,6 +1,6 @@
 {
     "paths": {
-        "prefix": "https://www.livewiremobiletest.tk",
+        "prefix": "https://www.livewiremedical.com",
         "login": "/oauth/token",
         "register": "/api/customer/registrations.json",
         "api": {
