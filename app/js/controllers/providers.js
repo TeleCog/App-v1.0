@@ -67,6 +67,14 @@ angular.module('livewireApp')
         }).then(function (modal) {
             createVisibleModalFn('vcModal', modal);
         });
+    },
+
+    createChatModal = function () {
+        $ionicModal.fromTemplateUrl('/partials/main/_chat.html', {
+            scope: $scope
+        }).then(function (modal) {
+            createVisibleModalFn('chatModal', modal);
+        });
     };
 
     // Filters Modal
@@ -85,6 +93,8 @@ angular.module('livewireApp')
 
     createVCModal();
 
+    createChatModal();
+
     $scope.showVC = function () {
         $scope.vcModal.show().then(function () {
             $rootScope.$broadcast('providersCtrlVCModalShown');
@@ -95,6 +105,12 @@ angular.module('livewireApp')
         $rootScope.$broadcast('opentokSessionDisconnect');
         $scope.vcModal.remove().then(function () {
             createVCModal();
+        });
+    };
+
+    $scope.showChat = function () {
+        $scope.chatModal.show().then(function () {
+            $rootScope.$broadcast('providersCtrlChatModalShown');
         });
     };
 

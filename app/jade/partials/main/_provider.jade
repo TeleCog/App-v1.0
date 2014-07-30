@@ -15,7 +15,7 @@
                             | Audio Call
                 .row.provider-actions
                     .col
-                        button.button.button-outline.button-block.icon-left.ion-ios7-chatboxes-outline(ng-class="{'button-energized': currentProvider.provider.availability_new}")
+                        button.button.button-outline.button-block.icon-left.ion-ios7-chatboxes-outline(ng-class="{'button-energized': currentProvider.provider.availability_new}", ng-click="showChat()")
                             | Send Message
             label.item.item-input.item-stacked-label
                 span.input-label Provider Organization

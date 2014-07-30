@@ -77,6 +77,9 @@
     // Register root-view controller
     require('./controllers/app');
 
+    // Register directives
+    require('./directives/chat');
+
     // Register services
     require('./services/api');
     require('./services/auth');
