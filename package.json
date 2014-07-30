@@ -4,7 +4,8 @@
   "description": "LiveWire mobile app",
   "dependencies": {
     "browserify": "^4.1.11",
-    "cordova": "^3.5.0-0.2.4",
+    "cordova": "^3.5.0-0.2.6",
+    "cordova-lib": "^0.21.6",
     "debowerify": "^0.8.1",
     "gulp": "^3.5.6",
     "gulp-angular-templatecache": "^1.2.1",
