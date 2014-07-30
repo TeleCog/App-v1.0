@@ -87,6 +87,11 @@ angular.module('livewireApp')
         });
     };
 
+    $scope.closeVC = function () {
+        $rootScope.$broadcast('opentokSessionDisconnect');
+        $scope.closeVcModal();
+    };
+
     $scope.showProvider = function (provider) {
         $scope.currentProvider = provider;
         $scope.showProviderModal();

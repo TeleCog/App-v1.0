@@ -69,6 +69,11 @@ angular.module('opentok', [])
                 });
             });
 
+            $rootScope.$on('opentokSessionDisconnect', function () {
+                session.disconnect();
+                console.log("Disconnecting Session");
+            });
+
             $rootScope.$broadcast('opentokLoaded');
         });
     };
