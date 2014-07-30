@@ -58,6 +58,15 @@ angular.module('livewireApp')
         }
 
         return !!result;
+    },
+
+    createVCModal = function () {
+        // Video Conferencing Modal
+        $ionicModal.fromTemplateUrl('/partials/main/_vc.html', {
+            scope: $scope
+        }).then(function (modal) {
+            createVisibleModalFn('vcModal', modal);
+        });
     };
 
     // Filters Modal
@@ -74,12 +83,7 @@ angular.module('livewireApp')
         createVisibleModalFn('providerModal', modal);
     });
 
-    // Video Conferencing Modal
-    $ionicModal.fromTemplateUrl('/partials/main/_vc.html', {
-        scope: $scope
-    }).then(function (modal) {
-        createVisibleModalFn('vcModal', modal);
-    });
+    createVCModal();
 
     $scope.showVC = function () {
         $scope.vcModal.show().then(function () {
@@ -89,7 +93,9 @@ angular.module('livewireApp')
 
     $scope.closeVC = function () {
         $rootScope.$broadcast('opentokSessionDisconnect');
-        $scope.closeVcModal();
+        $scope.vcModal.remove().then(function () {
+            createVCModal();
+        });
     };
 
     $scope.showProvider = function (provider) {

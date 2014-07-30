@@ -40,6 +40,12 @@ angular.module('opentok', [])
             session.on({
                 'streamCreated': function (event) {
                     var div = document.getElementsByClassName('opentok-subscriber')[0];
+
+                    if (!div) {
+                        div = document.createElement('div');
+                        document.getElementsByClassName('opentok-subscribers')[0].appendChild(div);
+                    }
+
                     div.id = 'stream' + event.stream.streamId;
                     session.subscribe(event.stream, div.id, {subscribeToAudio: true});
                     div.className += ' opentok-subscriber';
