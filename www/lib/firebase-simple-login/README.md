@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/firebase/firebase-simple-login.png?branch=master)](https://travis-ci.org/firebase/firebase-simple-login) [![Dependency Status](https://gemnasium.com/firebase/firebase-simple-login.png)](https://gemnasium.com/firebase/firebase-simple-login)
+[![Build Status](https://api.travis-ci.org/firebase/firebase-simple-login.svg?branch=master)](https://travis-ci.org/firebase/firebase-simple-login)
+[![Dependency Status](https://gemnasium.com/firebase/firebase-simple-login.png)](https://gemnasium.com/firebase/firebase-simple-login)
+[![GitHub version](https://badge.fury.io/gh/firebase%2Ffirebase-simple-login.svg)](http://badge.fury.io/gh/firebase%2Ffirebase-simple-login)
 
 # Firebase Simple Login - Web Client
 
@@ -25,12 +27,15 @@ for complete documentation and API reference.
 ## Configuration
 
 Firebase Simple Login supports email & password, Facebook, Google,
-GitHub, Persona, Twitter, and anonymous authentication methods. Before adding to
+GitHub, Twitter, and anonymous authentication methods. Before adding to
 your application, you'll need to first enable these auth. providers in your app.
 
 To get started, visit the Simple Login tab in Firebase Forge, at
 `https://<YOUR-FIREBASE>.firebaseio.com`. There you may enable / disable auth.
 providers, setup OAuth credentials, and configure valid OAuth request origins.
+
+__Note:__ Persona was removed as an authentication provider in Firebase Simple
+Login as of version 1.5.0.
 
 ## Usage
 
@@ -64,7 +69,7 @@ auth.login('<provider>'); // 'password', 'facebook', 'github', 'google', etc.
 ## Testing / Compiling From Source
 
 Interested in manually debugging from source, or submitting a pull request?
-Don't forget to read the [Contribution Guidelines](../CONTRIBUTING.md) in
+Don't forget to read the [Contribution Guidelines](./CONTRIBUTING.md) in
 addition to following the steps below.
 
 ### Install Dependencies
