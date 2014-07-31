@@ -3,10 +3,11 @@
 
     // Load npm dependencies
     require('./opentok/opentok');
+    require('./chat/chat');
     require('firebase');
     require('angularfire');
 
-    angular.module('livewireApp', ['ionic', 'templatescache', 'opentok', 'firebase'])
+    angular.module('livewireApp', ['ionic', 'templatescache', 'opentok', 'chat', 'firebase'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -76,9 +77,6 @@
 
     // Register root-view controller
     require('./controllers/app');
-
-    // Register directives
-    require('./directives/chat');
 
     // Register services
     require('./services/api');

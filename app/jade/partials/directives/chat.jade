@@ -2,6 +2,6 @@
     h1.title Chat
 ion-content
 .bar.bar-subfooter
-    textarea
-button.bar.bar-footer.bar-energized
+    textarea(ng-model="chat.message")
+button.bar.bar-footer.bar-energized(ng-click="addMessage(chat.message)")
     h1.title Send

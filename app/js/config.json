@@ -29,6 +29,7 @@
     },
 
     "firebase": {
-        "videoConferencingURL": "https://telecogvideoconferencing.firebaseio.com/"
+        "videoConferencingURL": "https://telecogvideoconferencing.firebaseio.com/",
+        "chatURL": "https://telecogchat.firebaseio.com/"
     }
 }
