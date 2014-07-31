@@ -19,16 +19,17 @@ class TBPublisher
     @sanitizeInputs( one,two, three )
     pdebug "creating publisher", {}
     position = getPosition(@domId)
-    name="TBNameHolder"
+    name=""
     publishAudio="true"
     publishVideo="true"
     cameraName = "front"
     zIndex = TBGetZIndex(document.getElementById(@domId))
+    ratios = TBGetScreenRatios()
 
     if @properties?
       width = @properties.width ? position.width
       height = @properties.height ? position.height
-      name = @properties.name ? "TBNameHolder"
+      name = @properties.name ? ""
       cameraName = @properties.cameraName ? "front"
       if(@properties.publishAudio? and @properties.publishAudio==false)
         publishAudio="false"
@@ -41,7 +42,7 @@ class TBPublisher
     position = getPosition(@domId)
     TBUpdateObjects()
     OT.getHelper().eventing(@)
-    Cordova.exec(TBSuccess, TBError, OTPlugin, "initPublisher", [name, position.top, position.left, width, height, zIndex, publishAudio, publishVideo, cameraName] )
+    Cordova.exec(TBSuccess, TBError, OTPlugin, "initPublisher", [name, position.top, position.left, width, height, zIndex, publishAudio, publishVideo, cameraName, ratios.widthRatio, ratios.heightRatio] )
     Cordova.exec(@eventReceived, TBSuccess, OTPlugin, "addEvent", ["publisherEvents"] )
   setSession: (session) =>
     @session = session
@@ -129,3 +130,4 @@ class TBPublisher
     else
       @domId = TBGenerateDomHelper()
     @domId = if( @domId and document.getElementById( @domId ) ) then @domId else TBGenerateDomHelper()
+    @apiKey = @apiKey.toString()

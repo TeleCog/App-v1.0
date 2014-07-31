@@ -1,53 +1,107 @@
+var config = require('../config.json');
+
 angular.module('opentok', [])
 
-.directive('opentokContainer', function ($rootScope) {
-    var updateViews = function () {
+.directive('opentokContainer', function ($rootScope, $firebase, OpentokService) {
+    var calculatePublisherSize = function () {
+        return Math.floor(Math.min(document.height, document.width) * 0.30);
+    },
+
+    updateViews = function () {
         var publisherDiv, subscriberDiv;
 
         publisherDiv = document.getElementById('opentok-publisher');
-        publisherDiv.style.width = Math.floor(Math.min(document.height, document.width) * 0.30) + 'px';
-        publisherDiv.style.height = publisherDiv.style.width;
+        if (publisherDiv.style) {
+            publisherDiv.style.width = calculatePublisherSize() + 'px';
+            publisherDiv.style.height = publisherDiv.style.width;
+            publisherDiv.style.zindex = 20;
+        }
 
         subscriberDiv = document.getElementsByClassName('opentok-subscriber')[0];
         if (subscriberDiv.style) {
             subscriberDiv.style.width = document.width + 'px';
             subscriberDiv.style.height = document.height + 'px';
+            subscriberDiv.style.zindex = 2;
         }
 
         TB.updateViews();
     },
 
     link = function (scope, element, attrs) {
-        var publisher, session;
+        var publisher, session, publisherSize;
 
         $rootScope.$broadcast('opentokLoading');
 
-        scope.$evalAsync(function () {
-            publisher = TB.initPublisher("44903192", 'opentok-publisher', {height: 300, width: 300});
-            session = TB.initSession("44903192", "1_MX40NDkwMzE5Mn5-VGh1IEp1bCAxNyAxMDowMjoyNCBQRFQgMjAxNH4wLjEyNDU0NTc1fn4");
+        OpentokService.requestSessionID().then(function () {
+            publisherSize = calculatePublisherSize();
+            publisher = TB.initPublisher(config.opentok.apiKey, 'opentok-publisher', {height: publisherSize, width: publisherSize});
+            session = TB.initSession(config.opentok.apiKey, OpentokService.getSessionID());
 
             session.on({
                 'streamCreated': function (event) {
                     var div = document.getElementsByClassName('opentok-subscriber')[0];
+
+                    if (!div) {
+                        div = document.createElement('div');
+                        document.getElementsByClassName('opentok-subscribers')[0].appendChild(div);
+                    }
+
                     div.id = 'stream' + event.stream.streamId;
                     session.subscribe(event.stream, div.id, {subscribeToAudio: true});
                     div.className += ' opentok-subscriber';
+                    updateViews();
                 }
             });
-            session.connect("T1==cGFydG5lcl9pZD00NDkwMzE5MiZzaWc9NDllY2NhM2EyOThkMmE2MTNkNjA0NmRkMDE5NDZlZWZlZDU0ZjA5Zjpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0ME5Ea3dNekU1TW41LVZHaDFJRXAxYkNBeE55QXhNRG93TWpveU5DQlFSRlFnTWpBeE5INHdMakV5TkRVME5UYzFmbjQmY3JlYXRlX3RpbWU9MTQwNTYxNjU3NCZub25jZT0wLjIxMjgyNTY1NDQ4OTkwODc2JmV4cGlyZV90aW1lPTE0MDgyMDg0NTc=", function () {
+
+            session.connect(OpentokService.generateToken(), function () {
                 session.publish(publisher);
+                publisher.on({
+                    'streamCreated': function (event) {
+                        // Notify provider
+                        console.log("Notifying Provider");
+                        var sessionID = OpentokService.getSessionID(),
+                        sessionRef = new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] + '/vccameramode/pendingsessions/' + sessionID + '/node');
+                        sessionRef.set({
+                            customerId: attrs.userId,
+                            sessionId: sessionID,
+                            isvalid: 1,
+                            ifWebRTCSupported: true,
+                            agentIdToCall: attrs.agentId,
+                            ifAdminCalling: 0,
+                            streamId: event.stream.streamId,
+                            customerName: attrs.userName
+                        });
+                    }
+                });
             });
 
-            updateViews();
+            $rootScope.$on('opentokSessionDisconnect', function () {
+                session.disconnect();
+                console.log("Disconnecting Session");
+            });
 
             $rootScope.$broadcast('opentokLoaded');
-            document.addEventListener("orientationchange", updateViews);
         });
     };
+
+    window.addEventListener("orientationchange", function () {
+        console.log("Orientation changed");
+        updateViews();
+    });
 
     return {
         restrict: 'E',
         template: '<div id="opentok-publisher"></div><div class="opentok-subscribers"><div class="opentok-subscriber"></div></div>',
-        link: link
+        link: function (scope, elem, attrs) {
+            if (scope.isDataLoaded) {
+                link(scope, elem, attrs);
+            } else {
+                $rootScope.$on('videoCtrlDataLoaded', function () {
+                    $rootScope.$on('providersCtrlVCModalShown', function () {
+                        link(scope, elem, attrs);
+                    });
+                });
+            }
+        }
     };
 });

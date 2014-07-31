@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-.controller('ProvidersCtrl', function ($scope, $ionicModal, $ionicLoading, filterFilter, orderByFilter, ApiService) {
+.controller('ProvidersCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, filterFilter, orderByFilter, ApiService) {
     'use strict';
 
     // Create modal show/hide function in scope
@@ -58,6 +58,23 @@ angular.module('livewireApp')
         }
 
         return !!result;
+    },
+
+    createVCModal = function () {
+        // Video Conferencing Modal
+        $ionicModal.fromTemplateUrl('/partials/main/_vc.html', {
+            scope: $scope
+        }).then(function (modal) {
+            createVisibleModalFn('vcModal', modal);
+        });
+    },
+
+    createChatModal = function () {
+        $ionicModal.fromTemplateUrl('/partials/main/_chat.html', {
+            scope: $scope
+        }).then(function (modal) {
+            createVisibleModalFn('chatModal', modal);
+        });
     };
 
     // Filters Modal
@@ -73,6 +90,35 @@ angular.module('livewireApp')
     }).then(function (modal) {
         createVisibleModalFn('providerModal', modal);
     });
+
+    createVCModal();
+
+    createChatModal();
+
+    $scope.showVC = function () {
+        $scope.vcModal.show().then(function () {
+            $rootScope.$broadcast('providersCtrlVCModalShown');
+        });
+    };
+
+    $scope.closeVC = function () {
+        $rootScope.$broadcast('opentokSessionDisconnect');
+        $scope.vcModal.remove().then(function () {
+            createVCModal();
+        });
+    };
+
+    $scope.showChat = function () {
+        $scope.chatModal.show().then(function () {
+            $rootScope.$broadcast('providersCtrlChatModalShown');
+        });
+    };
+
+    $scope.closeChat = function () {
+        $scope.chatModal.remove().then(function () {
+            createChatModal();
+        });
+    };
 
     $scope.showProvider = function (provider) {
         $scope.currentProvider = provider;

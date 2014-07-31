@@ -1,0 +1,8 @@
+.modal.vc-modal
+    ion-header-bar
+        h1.title Video Conferencing
+        .buttons
+            button.button.button-clear(ng-click="closeVC()") Close
+    ion-content
+        div(ng-controller="VideoCtrl")
+            opentok-container(user-id="{{user.id}}", user-name="{{user.first_name}}", agent-id="{{currentProvider.provider.id}}")
