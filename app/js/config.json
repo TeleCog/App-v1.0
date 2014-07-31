@@ -3,6 +3,7 @@
         "prefix": "https://www.livewiremedical.com",
         "login": "/oauth/token",
         "register": "/api/customer/registrations.json",
+        "chat": "/chats/send_message",
         "api": {
             "providers": {
                 "index": "/api/customer/providers.json"

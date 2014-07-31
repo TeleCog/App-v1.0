@@ -1,7 +1,13 @@
-.bar.bar-subheader.bar-positive
+ion-header-bar.bar.bar-subheader.bar-positive
     h1.title Chat
-ion-content
-.bar.bar-subfooter
+ion-content(has-header="true", has-subheader="true", has-footer="true", has-subfooter="true")
+    .list
+        label.item-input.item-stacked-label(ng-repeat="item in messages")
+            span.input-label {{item.name}}
+            p
+                | {{item.message}}
+ion-footer-bar.bar.bar-subfooter
     textarea(ng-model="chat.message")
-button.bar.bar-footer.bar-energized(ng-click="addMessage(chat.message)")
-    h1.title Send
+ion-footer-bar.bar.bar-footer.bar-energized(ng-click="addMessage(chat.message)", keyboard-attach)
+    button.button.button-clear.send-button
+        | Send
