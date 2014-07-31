@@ -6,8 +6,9 @@ ion-content.has-header.has-subheader.has-footer.has-subfooter(has-header="true",
             span.input-label {{item.name}}
             p
                 | {{item.message}}
-ion-footer-bar.bar.bar-subfooter
-    textarea(ng-model="chat.message", placeholder="Enter Message", is-focused="true")
-ion-footer-bar.bar.bar-footer.bar-energized(ng-click="addMessage(chat.message)", keyboard-attach)
-    button.button.button-clear.send-button
-        | Send
+div.chat-controls(keyboard-attach)
+    ion-footer-bar.bar.bar-subfooter
+        textarea(ng-model="chat.message", placeholder="Enter Message", is-focused="true")
+    ion-footer-bar.bar.bar-footer.bar-energized(ng-click="addMessage(chat.message)")
+        button.button.button-clear.send-button
+            | Send

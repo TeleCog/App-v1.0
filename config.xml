@@ -5,7 +5,7 @@
         LiveWire mobile app
     </description>
     <author email="rishi@livewiretax.com" href="http://livewiretax.com/">
-      LiveWire Team
+        LiveWire Team
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -20,7 +20,11 @@
     <preference name="BackupWebStorage" value="none" />
 
     <feature name="StatusBar">
-      <param name="ios-package" value="CDVStatusBar" onload="true" />
+        <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
+
+    <feature name="Keyboard">
+        <param name="ios-package" value="IonicKeyboard" onload="true" />
     </feature>
 
     <icon src="res/icons/" />
