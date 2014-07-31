@@ -3,8 +3,11 @@
 
     // Load npm dependencies
     require('./opentok/opentok');
+    require('./chat/chat');
+    require('firebase');
+    require('angularfire');
 
-    angular.module('livewireApp', ['ionic', 'templatescache', 'opentok'])
+    angular.module('livewireApp', ['ionic', 'templatescache', 'opentok', 'chat', 'firebase'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -66,17 +69,8 @@
                     controller: "ProvidersCtrl"
                 }
             }
-        })
-
-        .state('app.video', {
-            url: "/video",
-            views: {
-                'menuContent': {
-                    templateUrl: '/partials/main/video.html',
-                    controller: "VideoCtrl"
-                }
-            }
         });
+
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/signin');
     });
@@ -87,4 +81,5 @@
     // Register services
     require('./services/api');
     require('./services/auth');
+    require('./services/opentok.js');
 }());

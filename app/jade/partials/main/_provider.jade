@@ -5,14 +5,18 @@
             button.button.button-clear(ng-click="closeProviderModal()") Close
     ion-content
         .list
-            .padding(ng-show="currentProvider.provider.availability_new")
-                .row.provider-actions
+            .padding
+                .row.provider-actions(ng-show="currentProvider.provider.availability_new")
                     .col
-                        button.button.button-outline.button-block.button-energized.icon-left.ion-ios7-videocam-outline
+                        button.button.button-outline.button-block.button-energized.icon-left.ion-ios7-videocam-outline(ng-click="showVC()")
                             | Video Call
                     .col
                         button.button.button-outline.button-block.button-energized.icon-left.ion-ios7-telephone-outline
                             | Audio Call
+                .row.provider-actions
+                    .col
+                        button.button.button-outline.button-block.icon-left.ion-ios7-chatboxes-outline(ng-class="{'button-energized': currentProvider.provider.availability_new}", ng-click="showChat()")
+                            | Send Message
             label.item.item-input.item-stacked-label
                 span.input-label Provider Organization
                 p

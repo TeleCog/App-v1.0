@@ -15,6 +15,6 @@ ion-view(title="Providers")
                         | {{provider.provider.name}}
                     p {{provider.provider.type_abbr}} {{provider.provider.medical_specialty}}
                 .item.item-image
-                    img(src="http://livewiremedical.s3.amazonaws.com/uploads/provider/image/18/thumb_Mary_Lester.jpg")
+                    img(src="{{provider.provider.img}}")
                 .badge.badge-balanced.provider-availability(ng-show="provider.provider.availability_new")
                     span Available Now

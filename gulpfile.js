@@ -2,18 +2,18 @@
     'use strict';
 
     var gulp = require('gulp'),
-        sass = require('gulp-sass'),
-        rename = require('gulp-rename'),
-        livereload = require('gulp-livereload'),
-        jade = require('gulp-jade'),
-        exec = require('child_process').execFile,
-        gutil = require('gulp-util'),
-        templateCache = require('gulp-angular-templatecache'),
-        minifyCss = require('gulp-minify-css'),
-        browserify = require('browserify'),
-        source = require('vinyl-source-stream'),
-        o = require('open'),
-        ripple = require('ripple-emulator');
+    sass = require('gulp-sass'),
+    rename = require('gulp-rename'),
+    livereload = require('gulp-livereload'),
+    jade = require('gulp-jade'),
+    exec = require('child_process').execFile,
+    gutil = require('gulp-util'),
+    templateCache = require('gulp-angular-templatecache'),
+    minifyCss = require('gulp-minify-css'),
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream'),
+    o = require('open'),
+    ripple = require('ripple-emulator');
 
     gulp.task('refresh', function () {
         exec('./node_modules/cordova/bin/cordova', ['prepare']);
@@ -24,17 +24,17 @@
         var YOUR_LOCALS = {};
 
         gulp.src('./app/jade/**/*.jade')
-            .pipe(jade({
-                locals: YOUR_LOCALS
-            }))
-            .on('error', gutil.log)
-            .on('error', gutil.beep)
-            .pipe(gulp.dest('./www/'))
-            .pipe(templateCache('templates.js', {
-                module: 'templatescache',
-                standalone: true
-            }))
-            .pipe(gulp.dest('./www/js'));
+        .pipe(jade({
+            locals: YOUR_LOCALS
+        }))
+        .on('error', gutil.log)
+        .on('error', gutil.beep)
+        .pipe(gulp.dest('./www/'))
+        .pipe(templateCache('templates.js', {
+            module: 'templatescache',
+            standalone: true
+        }))
+        .pipe(gulp.dest('./www/js'));
     });
 
     // using vinyl-source-stream:
@@ -42,28 +42,28 @@
         browserify({
             debug: true
         })
-            .add('./www/js/templates.js')
-            .add('./app/js/app.js')
-            //.transform('debowerify')
-            .bundle()
-            .pipe(source('app.bundle.js'))
-            //.pipe(streamify(uglify()))
-            .on('error', gutil.log)
-            .on('error', gutil.beep)
-            .pipe(gulp.dest('./www/js/'));
+        .add('./www/js/templates.js')
+        .add('./app/js/app.js')
+        .transform('debowerify')
+        .bundle()
+        .pipe(source('app.bundle.js'))
+        //.pipe(streamify(uglify()))
+        .on('error', gutil.log)
+        .on('error', gutil.beep)
+        .pipe(gulp.dest('./www/js/'));
     });
 
     // Compiles the SASS styles
     gulp.task('sass', function () {
         gulp.src('./app/scss/ionic.app.scss')
-            .pipe(sass())
-            .pipe(minifyCss({
-                keepSpecialComments: 0
-            }))
-            .pipe(rename({ extname: '.min.css' }))
-            .on('error', gutil.log)
-            .on('error', gutil.beep)
-            .pipe(gulp.dest('./www/css/'));
+        .pipe(sass())
+        .pipe(minifyCss({
+            keepSpecialComments: 0
+        }))
+        .pipe(rename({ extname: '.min.css' }))
+        .on('error', gutil.log)
+        .on('error', gutil.beep)
+        .pipe(gulp.dest('./www/css/'));
     });
 
     // Compiles Debug APK
@@ -84,15 +84,15 @@
     // The default task
     gulp.task('default', ['templates', 'scripts', 'sass'], function () {
         var paths = {
-                sass: ['./app/scss/**/*.scss'],
-                js: ['./app/js/**/*.js'],
-                templates: ['./app/jade/**/*.jade']
-            },
-            options = {
-                keepAlive: false,
-                open: true,
-                port: 4400
-            };
+            sass: ['./app/scss/**/*.scss'],
+            js: ['./app/js/**/*.js'],
+            templates: ['./app/jade/**/*.jade']
+        },
+        options = {
+            keepAlive: false,
+            open: true,
+            port: 4400
+        };
 
         // Start livereload server
         livereload.listen();

@@ -1,6 +1,13 @@
 angular.module('livewireApp')
 
-.controller('VideoCtrl', function ($scope, $rootScope, $ionicLoading) {
+.controller('VideoCtrl', function ($scope, $rootScope, $ionicLoading, ApiService) {
+
+    // Request Customer Information
+    ApiService.customers.me().then(function () {
+        $scope.user = ApiService.getApiData().customers.me;
+        $rootScope.$broadcast('videoCtrlDataLoaded');
+        $scope.isDataLoaded = true;
+    });
 
     $rootScope.$on('opentokLoading', function () {
         console.log('Received: OpentokLoading');

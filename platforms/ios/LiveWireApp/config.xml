@@ -22,14 +22,14 @@
     <feature name="Keyboard">
         <param name="ios-package" onload="true" value="IonicKeyboard" />
     </feature>
+    <feature name="HockeyApp">
+        <param name="ios-package" value="HockeyApp" />
+    </feature>
     <feature name="Console">
         <param name="ios-package" value="CDVLogger" />
     </feature>
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
-    </feature>
-    <feature name="HockeyApp">
-        <param name="ios-package" value="HockeyApp" />
     </feature>
     <plugins>
         <feature name="OpenTokPlugin">
@@ -53,4 +53,5 @@
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
+    <icon src="res/icons/" />
 </widget>
