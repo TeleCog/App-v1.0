@@ -114,6 +114,12 @@ angular.module('livewireApp')
         });
     };
 
+    $scope.closeChat = function () {
+        $scope.chatModal.remove().then(function () {
+            createChatModal();
+        });
+    };
+
     $scope.showProvider = function (provider) {
         $scope.currentProvider = provider;
         $scope.showProviderModal();

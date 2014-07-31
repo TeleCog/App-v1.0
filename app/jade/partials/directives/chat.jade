@@ -7,7 +7,7 @@ ion-content(has-header="true", has-subheader="true", has-footer="true", has-subf
             p
                 | {{item.message}}
 ion-footer-bar.bar.bar-subfooter
-    textarea(ng-model="chat.message")
+    textarea(ng-model="chat.message", placeholder="Enter Message")
 ion-footer-bar.bar.bar-footer.bar-energized(ng-click="addMessage(chat.message)", keyboard-attach)
     button.button.button-clear.send-button
         | Send
