@@ -1,3 +1,18 @@
 .send-button {
     width: 100%;
 }
+
+.chat-modal {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.chat-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
