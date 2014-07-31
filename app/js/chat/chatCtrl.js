@@ -55,6 +55,9 @@ module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, 
 
                     // Make the chat window scroll to the bottom 
                     $ionicScrollDelegate.scrollBottom();
+
+                    // Clear textarea
+                    $scope.chat.message = '';
                 });
             };
         });
