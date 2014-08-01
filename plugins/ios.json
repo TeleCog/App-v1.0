@@ -13,6 +13,10 @@
                             "count": 1
                         },
                         {
+                            "xml": "<access origin=\"*\" />",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"HockeyApp\"><param name=\"ios-package\" value=\"HockeyApp\" /></feature>",
                             "count": 1
                         },
@@ -22,10 +26,6 @@
                         },
                         {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<access origin=\"*\" />",
                             "count": 1
                         }
                     ],
@@ -39,37 +39,7 @@
             },
             "framework": {
                 "parents": {
-                    "CoreText.framework": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
-                    "CoreGraphics.framework": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
                     "Foundation.framework": [
-                        {
-                            "xml": "false",
-                            "count": 2
-                        }
-                    ],
-                    "Security.framework": [
-                        {
-                            "xml": "false",
-                            "count": 2
-                        }
-                    ],
-                    "QuartzCore.framework": [
-                        {
-                            "xml": "false",
-                            "count": 2
-                        }
-                    ],
-                    "SystemConfiguration.framework": [
                         {
                             "xml": "false",
                             "count": 2
@@ -85,6 +55,12 @@
                         {
                             "xml": "false",
                             "count": 1
+                        }
+                    ],
+                    "QuartzCore.framework": [
+                        {
+                            "xml": "false",
+                            "count": 2
                         }
                     ],
                     "OpenGLES.framework": [
@@ -105,10 +81,22 @@
                             "count": 1
                         }
                     ],
+                    "Security.framework": [
+                        {
+                            "xml": "false",
+                            "count": 2
+                        }
+                    ],
                     "CoreMedia.framework": [
                         {
                             "xml": "false",
                             "count": 1
+                        }
+                    ],
+                    "SystemConfiguration.framework": [
+                        {
+                            "xml": "false",
+                            "count": 2
                         }
                     ],
                     "CFNetwork.framework": [
@@ -146,6 +134,18 @@
                             "xml": "false",
                             "count": 1
                         }
+                    ],
+                    "CoreText.framework": [
+                        {
+                            "xml": "false",
+                            "count": 1
+                        }
+                    ],
+                    "CoreGraphics.framework": [
+                        {
+                            "xml": "false",
+                            "count": 1
+                        }
                     ]
                 }
             }
@@ -155,6 +155,9 @@
         "com.ionic.keyboard": {
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         },
+        "com.tokbox.cordova.opentok": {
+            "PACKAGE_NAME": "com.livewiretax.livewireapp"
+        },
         "com.zengularity.cordova.hockeyapp": {
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         },
@@ -162,9 +165,6 @@
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         },
         "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.livewiretax.livewireapp"
-        },
-        "com.tokbox.cordova.opentok": {
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         }
     },
