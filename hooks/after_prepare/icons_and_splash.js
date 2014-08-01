@@ -70,17 +70,17 @@
         },
         android: {
             icon:'res/drawable-{$density}',
-            splash:'res/drawable-{$density}',
+            splash:'res/drawable-{$orientation}-{$density}',
             platformsDir: 'android',
             nameMap: {
                 'icon-36-ldpi.png': 'icon.png',
                 'icon-48-mdpi.png': 'icon.png',
                 'icon-72-hdpi.png': 'icon.png',
                 'icon-96-xhdpi.png': 'icon.png',
-                'screen-ldpi-portrait.png': 'ic_launcher.png',
-                'screen-mdpi-portrait.png': 'ic_launcher.png',
-                'screen-hdpi-portrait.png': 'ic_launcher.png',
-                'screen-xhdpi-portrait.png': 'ic_launcher.png'
+                'screen-ldpi-portrait.png': 'screen.png',
+                'screen-mdpi-portrait.png': 'screen.png',
+                'screen-hdpi-portrait.png': 'screen.png',
+                'screen-xhdpi-portrait.png': 'screen.png'
             }
         },
         blackberry10: {},
@@ -99,8 +99,9 @@
 
     function copyAsset (scope, node) {
 
-        var platform = node.attrib['gap:platform'];
-        var density  = node.attrib['gap:density'];
+        var platform = node.attrib['gap:platform'] || node.attrib.platform;
+        var density  = node.attrib['gap:density'] || node.attrib.density;
+        var orientation = node.attrib['gap:orientation'] || node.attrib.orientation;
         var assetDirTmpl = platformDir[platform] && platformDir[platform][scope];
 
         if (!assetDirTmpl) {
@@ -109,10 +110,11 @@
 
         var dict = {
             projectName: projectConfig.name(),
-            density: density
+            density: density,
+            orientation: orientation
         };
 
-        var assetDir = assetDirTmpl.replace(/{\$([^}]+)}/, function (match, p1) {
+        var assetDir = assetDirTmpl.replace(/{\$([^}]+)}/g, function (match, p1) {
             return dict[p1];
         });
 
@@ -214,7 +216,7 @@
     });
 
     projectConfig.doc.findall('*').filter(function (node) {
-        return (node.tag === 'gap:splash');
+        return (node.tag === 'splash');
     }).map(function (node) {
         copyAsset ('splash', node);
     });

@@ -15,27 +15,31 @@
 
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
-            if (window.cordova && window.cordova.plugins.Keyboard
-                && !window.tinyHippos) {
-                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                    cordova.plugins.Keyboard.disableScroll(true);
-                }
-                if (window.StatusBar) {
-                    window.StatusBar.styleDefault();
-                }
-                // HockeyApp SDK
-                if (!window.tinyHippos) {
-                    hockeyapp.start(function () {
-                        console.log("HockeyApp started");
-                    }, function () {
-                        console.log("HockeyApp could not start");
-                    }, "df827303790bb10d09a30f9622adf145");
-                }
+            if (window.cordova && window.cordova.plugins.Keyboard && !window.tinyHippos) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                cordova.plugins.Keyboard.disableScroll(true);
+            }
 
-                // Print current time
-                console.log(currentdate.getHours() + ":"
-                            + currentdate.getMinutes() + ":"
-                            + currentdate.getSeconds());
+            if (window.StatusBar) {
+                window.StatusBar.styleDefault();
+            }
+
+            // HockeyApp SDK
+            if (!window.tinyHippos) {
+                hockeyapp.start(function () {
+                    console.log("HockeyApp started");
+                }, function () {
+                    console.log("HockeyApp could not start");
+                }, "df827303790bb10d09a30f9622adf145");
+            }
+
+            // Hide Splash Screen
+            navigator.splashscreen.hide();
+
+            // Print current time
+            console.log(currentdate.getHours() + ":"
+                        + currentdate.getMinutes() + ":"
+                        + currentdate.getSeconds());
         });
     })
 

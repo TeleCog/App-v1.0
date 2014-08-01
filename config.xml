@@ -27,5 +27,23 @@
         <param name="ios-package" value="IonicKeyboard" onload="true" />
     </feature>
 
+    <!-- Splash Screens -->
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+
+    <!-- So the build script knows where to find the splash screens -->
+    <splash platform="ios" src="res/splash/ios/screen-ipad-landscape-2x.png" />
+    <splash platform="ios" src="res/splash/ios/screen-ipad-landscape.png" />
+    <splash platform="ios" src="res/splash/ios/screen-ipad-portrait-2x.png" />
+    <splash platform="ios" src="res/splash/ios/screen-ipad-portrait.png" />
+    <splash platform="ios" src="res/splash/ios/screen-iphone-portrait-2x.png" />
+    <splash platform="ios" src="res/splash/ios/screen-iphone-portrait.png" />
+    <splash platform="ios" src="res/splash/ios/screen-iphone-portrait-568h-2x.png" />
+
+    <splash platform="android" density="ldpi" src="res/splash/android/screen-ldpi-portrait.png" orientation="port" />
+    <splash platform="android" density="mdpi" src="res/splash/android/screen-mdpi-portrait.png" orientation="port" />
+    <splash platform="android" density="hdpi" src="res/splash/android/screen-hdpi-portrait.png" orientation="port" />
+    <splash platform="android" density="xhdpi" src="res/splash/android/screen-xhdpi-portrait.png" orientation="port" />
+
     <icon src="res/icons/" />
 </widget>

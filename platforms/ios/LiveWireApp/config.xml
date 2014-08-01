@@ -28,6 +28,10 @@
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="ios-package" value="CDVSplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
     <plugins>
         <feature name="OpenTokPlugin">
             <param name="ios-package" value="OpenTokPlugin" />
@@ -53,5 +57,18 @@
     <feature name="Keyboard">
         <param name="ios-package" onload="true" value="IonicKeyboard" />
     </feature>
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <splash platform="ios" src="res/splash/ios/screen-ipad-landscape-2x.png" />
+    <splash platform="ios" src="res/splash/ios/screen-ipad-landscape.png" />
+    <splash platform="ios" src="res/splash/ios/screen-ipad-portrait-2x.png" />
+    <splash platform="ios" src="res/splash/ios/screen-ipad-portrait.png" />
+    <splash platform="ios" src="res/splash/ios/screen-iphone-portrait-2x.png" />
+    <splash platform="ios" src="res/splash/ios/screen-iphone-portrait.png" />
+    <splash platform="ios" src="res/splash/ios/screen-iphone-portrait-568h-2x.png" />
+    <splash density="ldpi" orientation="port" platform="android" src="res/splash/android/screen-ldpi-portrait.png" />
+    <splash density="mdpi" orientation="port" platform="android" src="res/splash/android/screen-mdpi-portrait.png" />
+    <splash density="hdpi" orientation="port" platform="android" src="res/splash/android/screen-hdpi-portrait.png" />
+    <splash density="xhdpi" orientation="port" platform="android" src="res/splash/android/screen-xhdpi-portrait.png" />
     <icon src="res/icons/" />
 </widget>

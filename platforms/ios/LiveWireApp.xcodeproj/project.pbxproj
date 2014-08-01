@@ -64,6 +64,7 @@
 		6F4E213203744725844A47B6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F087D1A92A49C39AEBDEF1 /* CoreText.framework */; };
 		9502A8E6B41A4B01B3781365 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 56546F9A5A35478985AE48CC /* CDVLogger.m */; };
 		1C428A5DB05F4BF4804721B9 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A334F9783B49F88F954C5F /* CDVDevice.m */; };
+		7B2B6B9F9C4149EEB3CC430C /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 310BB24D40E146988FD083E7 /* CDVSplashScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,8 @@
 		D6BC1C8D66AA4202A9FDD120 /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		22A334F9783B49F88F954C5F /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		E08082A0CCDD4B819E537151 /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		310BB24D40E146988FD083E7 /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		81F125C58BA6414EB3A92D70 /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +334,8 @@
 				D6BC1C8D66AA4202A9FDD120 /* CDVLogger.h */,
 				22A334F9783B49F88F954C5F /* CDVDevice.m */,
 				E08082A0CCDD4B819E537151 /* CDVDevice.h */,
+				310BB24D40E146988FD083E7 /* CDVSplashScreen.m */,
+				81F125C58BA6414EB3A92D70 /* CDVSplashScreen.h */,
 			);
 			name = Plugins;
 			path = "LiveWireApp/Plugins";
@@ -532,6 +537,7 @@
 				48A57C54C0E14056B85C055C /* HockeyApp.m in Sources */,
 				9502A8E6B41A4B01B3781365 /* CDVLogger.m in Sources */,
 				1C428A5DB05F4BF4804721B9 /* CDVDevice.m in Sources */,
+				7B2B6B9F9C4149EEB3CC430C /* CDVSplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

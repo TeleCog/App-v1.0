@@ -27,6 +27,10 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/*/plugins": [
@@ -144,7 +148,7 @@
                     "CoreGraphics.framework": [
                         {
                             "xml": "false",
-                            "count": 1
+                            "count": 2
                         }
                     ]
                 }
@@ -165,6 +169,9 @@
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         },
         "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.livewiretax.livewireapp"
+        },
+        "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         }
     },
