@@ -49,20 +49,20 @@
 
         .state('signin', {
             url: "/signin",
-            templateUrl: "/partials/signin.html",
+            templateUrl: "/partials/signin/signin.html",
             controller: "SigninCtrl"
         })
 
         .state('register', {
             url: "/register",
-            templateUrl: "/partials/register.html",
+            templateUrl: "/partials/register/register.html",
             controller: "RegisterCtrl"
         })
 
         .state('app', {
             url: "/app",
             abstract: true,
-            templateUrl: "/partials/menu.html",
+            templateUrl: "/partials/app/menu.html",
             controller: "AppCtrl"
         })
 
@@ -70,7 +70,7 @@
             url: "/providers",
             views: {
                 'menuContent': {
-                    templateUrl: "/partials/main/providers.html",
+                    templateUrl: "/partials/app/providers/providers.html",
                     controller: "ProvidersCtrl"
                 }
             }

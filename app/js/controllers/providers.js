@@ -62,7 +62,7 @@ angular.module('livewireApp')
 
     createVCModal = function () {
         // Video Conferencing Modal
-        $ionicModal.fromTemplateUrl('/partials/main/_vc.html', {
+        $ionicModal.fromTemplateUrl('/partials/app/providers/_vc.html', {
             scope: $scope
         }).then(function (modal) {
             createVisibleModalFn('vcModal', modal);
@@ -70,21 +70,21 @@ angular.module('livewireApp')
     };
 
     // Filters Modal
-    $ionicModal.fromTemplateUrl('/partials/main/_filters.html', {
+    $ionicModal.fromTemplateUrl('/partials/app/providers/_filters.html', {
         scope: $scope
     }).then(function (modal) {
         createVisibleModalFn('filtersModal', modal);
     });
 
     // Providers Description Modal
-    $ionicModal.fromTemplateUrl('/partials/main/_provider.html', {
+    $ionicModal.fromTemplateUrl('/partials/app/providers/_provider.html', {
         scope: $scope
     }).then(function (modal) {
         createVisibleModalFn('providerModal', modal);
     });
 
     // Chat Messages Modal
-    $ionicModal.fromTemplateUrl('/partials/main/_chat.html', {
+    $ionicModal.fromTemplateUrl('/partials/app/providers/_chat.html', {
         scope: $scope
     }).then(function (modal) {
         createVisibleModalFn('chatModal', modal);
