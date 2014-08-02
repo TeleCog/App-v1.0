@@ -33,6 +33,8 @@ module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, 
                 // Make the chat window scroll to the bottom 
                 if (chatWindowOpen) {
                     $ionicScrollDelegate.scrollBottom();
+                } else {
+                    $rootScope.$broadcast('chatReceived', providerId);
                 }
 
                 syncCustomer.$remove(indexToRemove);

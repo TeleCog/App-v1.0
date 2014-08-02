@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-.controller('ProvidersCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, filterFilter, orderByFilter, ApiService) {
+.controller('ProvidersCtrl', function ($scope, $rootScope, $ionicModal, $ionicPopup, $ionicLoading, filterFilter, orderByFilter, ApiService) {
     'use strict';
 
     // Create modal show/hide function in scope
@@ -121,6 +121,35 @@ angular.module('livewireApp')
         $scope.currentProvider = provider;
         $scope.showProviderModal();
     };
+
+    // Chat Message Notification Popup
+    // Triggered on a button click, or some other target
+    $scope.showChatPopup = function (provider) {
+        // An elaborate, custom popup
+        var chatPopup = $ionicPopup.confirm({
+            template: 'You have a new message from ' + provider.provider.name,
+            title: 'New Message',
+            cancelText: 'Close',
+            okText: 'View',
+            okType: 'button-calm'
+        });
+        chatPopup.then(function(res) {
+            if (res) {
+                $scope.currentProvider = provider;
+                $scope.showChat();
+            }
+        });
+    };
+    $rootScope.$on('chatReceived', function (chatEvent, providerId) {
+        var i, l;
+
+        for (i = 0, l = $scope.providers.length; i < l; i++) {
+            if ($scope.providers[i].provider.id === parseInt(providerId, 10)) {
+                $scope.showChatPopup($scope.providers[i]);
+                return;
+            }
+        }
+    });
 
     $ionicLoading.show({
         template: 'Loading <i class=ion-loading-c></i>'
