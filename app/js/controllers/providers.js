@@ -136,6 +136,7 @@ angular.module('livewireApp')
         chatPopup.then(function(res) {
             if (res) {
                 $scope.currentProvider = provider;
+                chatPopup.close();
                 $scope.showChat();
             }
         });
