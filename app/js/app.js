@@ -78,6 +78,24 @@
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/signin');
+    })
+
+    .run(function ($rootScope, AuthService) {
+        var role, roles, roleFn;
+        roles = AuthService.Role;
+
+        roleFn = function (roleToCheck) {
+            return function () {
+                return AuthService.getRole() === roleToCheck;
+            };
+        };
+
+        // isRole functions
+        for (role in roles) {
+            if (Object.prototype.hasOwnProperty.call(roles, role)) {
+                $rootScope['is' + roles[role].charAt(0).toUpperCase() + roles[role].slice(1)] = roleFn(roles[role]);
+            }
+        }
     });
 
     // Register root-view controller

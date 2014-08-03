@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-.controller('SigninCtrl', function ($scope, $state, $ionicLoading, $ionicViewService, AuthService) {
+.controller('SigninCtrl', function ($scope, $state, $ionicModal, $ionicLoading, $ionicViewService, AuthService) {
     'use strict';
 
     var showLoading = function () {
@@ -19,14 +19,27 @@ angular.module('livewireApp')
 
     if (AuthService.retrieveAccessToken()) {
         goHome();
+    } else if (!$scope.roleSelection) {
+        // Select Role Modal
+        $ionicModal.fromTemplateUrl('/partials/signin/_selectrole.html', {
+            scope: $scope
+        }).then(function (modal) {
+            $scope.selectRoleModal = modal;
+            $scope.selectRoleModal.show();
+        });
     }
+
+    $scope.selectRole = function (selectedRole) {
+        $scope.roleSelection = selectedRole;
+        $scope.selectRoleModal.remove();
+    };
 
     $scope.signIn = function (credentials) {
         var response = {};
 
         showLoading();
 
-        AuthService.login(credentials || {}, response).then(function () {
+        AuthService.login(credentials || {}, $scope.roleSelection, response).then(function () {
             $ionicLoading.hide();
             goHome();
         }, function () {
