@@ -23,7 +23,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 // Custom styles
-@import "signin"; // Sign In Page
+@import "signin/signin"; // Sign In Page
+@import "signin/selectrole";
+
 @import "termsofservice";
 @import "provider_card";
 @import "provider_view";

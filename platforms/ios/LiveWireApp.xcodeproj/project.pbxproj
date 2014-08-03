@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		1850DBF248F04AA785AF8696 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C0096AA241C14DD9803CF548 /* libz.dylib */; };
 		1B99FA7A55CA40CEA32F6208 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937B71E1C32942B587E87348 /* CoreTelephony.framework */; };
