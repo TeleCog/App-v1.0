@@ -1,0 +1,7 @@
+{
+    "browser": true,
+    "devel": true,
+    "indent": 4,
+    "unused": "var",
+    "predef": ["OT","TB","Firebase","hockeyapp","require","process","angular","module","cordova"]
+}
