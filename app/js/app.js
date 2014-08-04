@@ -37,9 +37,9 @@
             navigator.splashscreen.hide();
 
             // Print current time
-            console.log(currentdate.getHours() + ":"
-                        + currentdate.getMinutes() + ":"
-                        + currentdate.getSeconds());
+            console.log(currentdate.getHours() + ":" +
+                        currentdate.getMinutes() + ":" +
+                        currentdate.getSeconds());
         });
     })
 
