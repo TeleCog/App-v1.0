@@ -34,5 +34,6 @@ ion-view(title="LiveWire Registration")
                         label.item.item-input
                             input(type="password", name="password", ng-pattern!="passwordPattern", ng-model="user.password", placeholder="Password", required)
             .padding
-                button.button.button-block.button-calm(type="submit", ng-disabled!="registrationForm.$invalid")
-                    | Register
+                .row
+                    button.button.button-block.button-calm.col.col-75(type="submit", ng-disabled!="registrationForm.$invalid")
+                        | Register

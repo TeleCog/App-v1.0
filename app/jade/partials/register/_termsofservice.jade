@@ -182,8 +182,8 @@ ion-modal-view
                 .foot
                     .padding
                         li.item.item-checkbox
-                            label.checkbox
+                            label.checkbox.checkbox-calm
                                 input(type="checkbox", ng-model="agreeToTerms")
                             p I acknowledge that I have read and agree to the above Terms and Conditions
-                        button.button.button-block.button-positive(ng-click="register()", ng-disabled!="!agreeToTerms")
+                        button.button.button-block.button-calm(ng-click="register()", ng-disabled!="!agreeToTerms")
                             | Register
