@@ -19,7 +19,7 @@ angular.module('livewireApp')
 
     if (AuthService.retrieveAccessToken()) {
         goHome();
-    } else if (!$scope.roleSelection) {
+    } else if (!$scope.roleSelection && !window.sessionStorage.getItem("roleSelection")) {
         // Select Role Modal
         $ionicModal.fromTemplateUrl('/partials/signin/_selectrole.html', {
             scope: $scope
@@ -31,7 +31,12 @@ angular.module('livewireApp')
 
     $scope.selectRole = function (selectedRole) {
         $scope.roleSelection = selectedRole;
+        window.sessionStorage.setItem("roleSelection", selectedRole);
         $scope.selectRoleModal.remove();
+    };
+
+    $scope.getRoleSelection = function () {
+        return $scope.roleSelection || window.sessionStorage.getItem("roleSelection");
     };
 
     $scope.signIn = function (credentials) {

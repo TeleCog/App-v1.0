@@ -1,0 +1,23 @@
+.livewire-registration {
+    .list-inset {
+        margin-bottom: 0;
+    }
+
+    .row {
+        justify-content: center;
+        -webkit-justify-content: center;
+    }
+
+    .item-input {
+        border-radius: 5px !important;
+    }
+
+    input {
+        text-align: center;
+    }
+
+    button {
+        border-radius: 30px;
+        border: none;
+    }
+}

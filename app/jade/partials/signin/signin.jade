@@ -15,7 +15,7 @@ ion-view(title="LiveWire Sign-In")
         .row
             button.button.button-calm.col.col-75(ng-click="signIn(user)")
                 | Enter LiveWire
-        .padding(ng-hide="roleSelection === 'provider'")
+        .padding(ng-hide="getRoleSelection() === 'provider'")
             .row
                 p.text-center.col.col-75
                     a.calm(href="#/register") New to LiveWire? Sign up here
