@@ -41,17 +41,16 @@ angular.module('livewireApp')
         AuthService.register(angular.copy($scope.user), response).then(function () {
             $ionicLoading.hide();
             $scope.modal.hide();
-            if (response.data && response.data.customer
-                && response.data.customer.oauth && response.data.customer.oauth.token) {
+            if (response.data && response.data.customer && response.data.customer.oauth && response.data.customer.oauth.token) {
 
-                    // So that there won't be back button to login page
-                    $ionicViewService.nextViewOptions({
-                        disableAnimate: true,
-                        disableBack: true
-                    });
-                    $state.go('app.providers');
+                // So that there won't be back button to login page
+                $ionicViewService.nextViewOptions({
+                    disableAnimate: true,
+                    disableBack: true
+                });
+                $state.go('app.providers');
 
-                }
+            }
         }, function () {
             $ionicLoading.hide();
             $scope.modal.hide();

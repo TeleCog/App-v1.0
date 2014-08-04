@@ -27,37 +27,37 @@ angular.module('livewireApp')
 
         providers: {
             index: function () {
-                return $http.get(config.paths.prefix + config.paths.api.providers.index
-                                 + '?access_token=' + encodeURIComponent(AuthService.retrieveAccessToken()),
-                                 {
-                                     'headers': {
-                                         'Accept': 'application/vnd.livewire+json;version=1'
-                                     }
-                                 })
-                                 .success(function (data) {
-                                     apiData.providers = apiData.providers || {};
-                                     apiData.providers.index = data;
-                                 })
-                                 .error(function (data, status) {
-                                     authFailure(status);
-                                 });
+                return $http.get(config.paths.prefix + config.paths.api.providers.index +
+                                 '?access_token=' + encodeURIComponent(AuthService.retrieveAccessToken()),
+                {
+                    'headers': {
+                        'Accept': 'application/vnd.livewire+json;version=1'
+                    }
+                })
+                .success(function (data) {
+                    apiData.providers = apiData.providers || {};
+                    apiData.providers.index = data;
+                })
+                .error(function (data, status) {
+                    authFailure(status);
+                });
             }
         },
 
         customers: {
             me: function () {
-                return $http.get(config.paths.prefix + config.paths.api.customers.me
-                                 + '?access_token=' + encodeURIComponent(AuthService.retrieveAccessToken()),
-                                 {
-                                     'headers': {
-                                         'Accept': 'application/vnd.livewire+json;version=1'
-                                     }
-                                 }).success(function (data) {
-                                     apiData.customers = apiData.customers || {};
-                                     apiData.customers.me = data;
-                                 }).error(function (data, status) {
-                                     authFailure(status);
-                                 });
+                return $http.get(config.paths.prefix + config.paths.api.customers.me +
+                                 '?access_token=' + encodeURIComponent(AuthService.retrieveAccessToken()),
+                {
+                    'headers': {
+                        'Accept': 'application/vnd.livewire+json;version=1'
+                    }
+                }).success(function (data) {
+                    apiData.customers = apiData.customers || {};
+                    apiData.customers.me = data;
+                }).error(function (data, status) {
+                    authFailure(status);
+                });
 
 
             }
@@ -65,20 +65,20 @@ angular.module('livewireApp')
 
         institutions: {
             index: function () {
-                return $http.get(config.paths.prefix + config.paths.api.institutions.index
-                                 + '?access_token=' + encodeURIComponent(AuthService.retrieveAccessToken()),
-                                 {
-                                     'headers': {
-                                         'Accept': 'application/vnd.livewire+json;version=1'
-                                     }
-                                 })
-                                 .success(function (data) {
-                                     apiData.institutions = apiData.institutions || {};
-                                     apiData.institutions.index = data;
-                                 })
-                                 .error(function (data, status) {
-                                     authFailure(status);
-                                 });
+                return $http.get(config.paths.prefix + config.paths.api.institutions.index +
+                                 '?access_token=' + encodeURIComponent(AuthService.retrieveAccessToken()),
+                {
+                    'headers': {
+                        'Accept': 'application/vnd.livewire+json;version=1'
+                    }
+                })
+                .success(function (data) {
+                    apiData.institutions = apiData.institutions || {};
+                    apiData.institutions.index = data;
+                })
+                .error(function (data, status) {
+                    authFailure(status);
+                });
             }
         }
     };

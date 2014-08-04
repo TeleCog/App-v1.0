@@ -19,12 +19,12 @@ angular.module('livewireApp')
 
             time = Math.floor(Date.now() / 1000);
 
-            data = "session_id=" + sessionID
-            + "&create_time=" + time
-            + "&expire_time=" + (time + 86400) // seconds in a day
-            + "&role=" + 'publisher'
-            + "&connection_data="
-            + "&nonce=" + Math.floor(Math.random() * 999999); // Pseudo-random nonce (could use a better PRNG)
+            data = "session_id=" + sessionID +
+                "&create_time=" + time +
+                "&expire_time=" + (time + 86400) + // seconds in a day
+                "&role=" + 'publisher' +
+                "&connection_data=" +
+                "&nonce=" + Math.floor(Math.random() * 999999); // Pseudo-random nonce (could use a better PRNG)
 
             hash = crypto.createHmac('sha1', config.opentok.apiSecret)
             .update(data)
