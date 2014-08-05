@@ -16,18 +16,18 @@ ion-view(title="Providers")
                         | Specialty
                     button.button.button-light.col
                         | Provider Type
-    ion-content.has-header
+    ion-content.has-header.livewire-providers
         ion-refresher(pulling-text="Pull to refresh...", on-refresh="doRefresh()")
         .bar.bar-positive.bar-filterinfo
             .row
                 h5.col Select the provider's picture to view more information, send a message, or start a call
         ion-list.provider-cards
             .list.card.provider-card(ng-repeat="provider in (filteredProviders || providers)", ng-click="showProvider(provider)")
-                .item.item-avatar
-                    h2(ng-class="{ balanced: provider.provider.availability_new }")
+                .item.item-avatar(ng-class="{ available: provider.provider.availability_new }")
+                    h2
                         | {{provider.provider.name}}
                     p {{provider.provider.type_abbr}} {{provider.provider.medical_specialty}}
                 .item.item-image
                     img(src="{{provider.provider.img}}")
-                .badge.badge-balanced.provider-availability(ng-show="provider.provider.availability_new")
+                .badge.badge-energized.provider-availability(ng-show="provider.provider.availability_new")
                     span Available Now

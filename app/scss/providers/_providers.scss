@@ -49,3 +49,46 @@
         margin: 0 !important;
     }
 }
+
+.provider-cards {
+    &>.list {
+        display: inline-flex;
+        display: -webkit-inline-flex;
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        justify-content: center;
+        -webkit-justify-content: center;
+    }
+}
+
+.provider-card {
+  width: 195px;
+  display: inline-block;
+
+  .available {
+      background: $energized !important;
+  }
+
+  .item {
+      background: $positive;
+
+      h2, p {
+          color: $light;
+      }
+  }
+
+  .item-avatar {
+    padding-left: 15px;
+    text-align: center;
+  }
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
+
+  .provider-availability {
+    width: 100%;
+    color: white;
+    border-radius: 0px
+  }
+}
