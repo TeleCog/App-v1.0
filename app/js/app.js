@@ -101,8 +101,11 @@
     // Register root-view controller
     require('./controllers/app');
 
+    // Register Directives
+    require('./directives/pushContent');
+
     // Register services
     require('./services/api');
     require('./services/auth');
-    require('./services/opentok.js');
+    require('./services/opentok');
 }());

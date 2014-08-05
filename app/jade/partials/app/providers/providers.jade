@@ -4,10 +4,23 @@ ion-view(title="Providers")
     ion-nav-buttons(side="right")
         button.button(ng-click="signOut()")
             | Sign Out
+    ion-header-bar.bar.bar-subheader.bar-calm.livewire-filterbar(push-content="true")
+        .row.responsive-sm
+            h5.col.col-25
+                | Refine your search:
+            .col.col-filterbuttons
+                .row
+                    button.button.button-light.col
+                        | Institution
+                    button.button.button-light.col
+                        | Specialty
+                    button.button.button-light.col
+                        | Provider Type
     ion-content.has-header
         ion-refresher(pulling-text="Pull to refresh...", on-refresh="doRefresh()")
-        button.button.button-full.button-dark(style="margin-top:0", ng-click="showFiltersModal()")
-            i.ion-funnel
+        .bar.bar-positive.bar-filterinfo
+            .row
+                h5.col Select the provider's picture to view more information, send a message, or start a call
         ion-list.provider-cards
             .list.card.provider-card(ng-repeat="provider in (filteredProviders || providers)", ng-click="showProvider(provider)")
                 .item.item-avatar

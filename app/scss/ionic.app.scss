@@ -29,7 +29,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "register/register";
 @import "register/_termsofservice";
 
+@import "providers/providers";
+
 @import "provider_card";
-@import "provider_view";
 @import "opentok";
 @import "chat";
