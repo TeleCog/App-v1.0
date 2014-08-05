@@ -89,7 +89,7 @@ angular.module('livewireApp')
     // Filters selection
     $scope.selectFilter = function(filter) {
         $scope.currentFilter = filter;
-        $scope.showFiltersModal();
+        $scope.filtersModal.show();
     };
 
     // Filters Modal
@@ -179,10 +179,13 @@ angular.module('livewireApp')
         template: 'Loading <i class=ion-loading-c></i>'
     });
 
-    $scope.filterProviders = function (providers) {
+    $scope.filterProviders = function (providers, show) {
         $scope.filteredProviders = filterFilter(providers, evalProvider);
         $scope.filteredProviders = orderByFilter($scope.filteredProviders, '-provider.availability_new');
-        $scope.closeFiltersModal();
+
+        if (!show) {
+            $scope.closeFiltersModal();
+        }
     };
 
     // Refresh On Slide Up
@@ -204,8 +207,11 @@ angular.module('livewireApp')
     ApiService.providers.index().then(function () {
         $scope.providers = ApiService.getApiData().providers.index.providers;
         $scope.filters = ApiService.getApiData().providers.index.filters;
-        $scope.filterProviders($scope.providers);
+        $scope.filterProviders($scope.providers, true);
         $ionicLoading.hide();
+
+        // Select Institution
+        $scope.selectFilter('institution');
     }, function () {
         $ionicLoading.hide();
         console.log("Error");
