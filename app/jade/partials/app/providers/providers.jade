@@ -10,11 +10,11 @@ ion-view(title="Providers")
                 | Refine your search:
             .col.col-filterbuttons
                 .row
-                    button.button.button-light.col
+                    button.button.button-light.col(ng-click="selectFilter('institution')")
                         | Institution
-                    button.button.button-light.col
+                    button.button.button-light.col(ng-click="selectFilter('specialty')")
                         | Specialty
-                    button.button.button-light.col
+                    button.button.button-light.col(ng-click="selectFilter('providerType')")
                         | Provider Type
     ion-content.has-header.livewire-providers
         ion-refresher(pulling-text="Pull to refresh...", on-refresh="doRefresh()")

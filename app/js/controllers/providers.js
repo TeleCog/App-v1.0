@@ -22,6 +22,7 @@ angular.module('livewireApp')
     evalProvider = function (provider) {
         var specialty_key = '',
         institution_key = '',
+        providerType_key = '',
         result = false,
         count = 0;
 
@@ -56,6 +57,23 @@ angular.module('livewireApp')
             }
         }
 
+        // Return if institution does not match
+        if (!result) {
+            return !!result;
+        }
+
+        // Provider type
+        for (providerType_key in $scope.filterToggles.provider_type) {
+            count += 1;
+
+            if ($scope.filterToggles.provider_type[providerType_key]) {
+                result = provider.provider.provider_type === providerType_key;
+                if (result) {
+                    break;
+                }
+            }
+        }
+
         return !!result;
     },
 
@@ -66,6 +84,12 @@ angular.module('livewireApp')
         }).then(function (modal) {
             createVisibleModalFn('vcModal', modal);
         });
+    };
+
+    // Filters selection
+    $scope.selectFilter = function(filter) {
+        $scope.currentFilter = filter;
+        $scope.showFiltersModal();
     };
 
     // Filters Modal
@@ -189,6 +213,7 @@ angular.module('livewireApp')
 
     $scope.filterToggles = {
         medical_specialty: {},
-        institutions: {}
+        institutions: {},
+        provider_type: {}
     };
 });
