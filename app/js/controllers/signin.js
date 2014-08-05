@@ -14,7 +14,7 @@ angular.module('livewireApp')
             disableAnimate: true,
             disableBack: true
         });
-        $state.go('app.providers');
+        $state.go('app.dashboard.providers');
     };
 
     if (AuthService.retrieveAccessToken()) {

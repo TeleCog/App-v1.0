@@ -66,14 +66,21 @@
             controller: "AppCtrl"
         })
 
-        .state('app.providers', {
-            url: "/providers",
+        .state('app.dashboard', {
+            url: "/dashboard",
             views: {
                 'menuContent': {
-                    templateUrl: "/partials/app/providers/providers.html",
-                    controller: "ProvidersCtrl"
+                    abstract: true,
+                    template: '<ui-view/>',
+                    controller: "DashboardCtrl"
                 }
             }
+        })
+
+        .state('app.dashboard.providers', {
+            url: "/dashboard/providers",
+            templateUrl: "/partials/app/dashboard/customer/providers.html",
+            controller: "ProvidersCtrl"
         });
 
         // if none of the above states are matched, use this as the fallback

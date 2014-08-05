@@ -10,5 +10,7 @@ ion-side-menus
             h1.title Menu
         ion-content.has-header
             ion-list
-                ion-item(nav-clear="", menu-close="", href="#/app/providers")
+                ion-item(nav-clear="", menu-close="", href="#/app/customer/providers", ng-show="isPatient()")
                     | Providers
+                ion-item(nav-clear="", menu-close="", href="#/app/provider/customers", ng-show="isProvider()")
+                    | Customers
