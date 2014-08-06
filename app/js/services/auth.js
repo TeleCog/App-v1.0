@@ -29,6 +29,7 @@ angular.module('livewireApp')
         invalidateToken: function () {
             var auth = angular.fromJson(window.localStorage.getItem("auth"));
             delete auth.access_token;
+            delete auth.role;
             window.localStorage.setItem("auth", angular.toJson(auth));
         },
 

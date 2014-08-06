@@ -58,8 +58,21 @@ angular.module('livewireApp')
                 }).error(function (data, status) {
                     authFailure(status);
                 });
+            },
 
-
+            index: function () {
+                return $http.get(config.paths.prefix + config.paths.api.customers.index +
+                                 '?access_token=' + encodeURIComponent(AuthService.retrieveAccessToken()),
+                {
+                    'headers': {
+                        'Accept': 'application/vnd.livewire+json;version=1'
+                    }
+                }).success(function (data) {
+                    apiData.customers = apiData.customers || {};
+                    apiData.customers.index = data;
+                }).error(function (data, status) {
+                    authFailure(status);
+                });
             }
         },
 

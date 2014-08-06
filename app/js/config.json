@@ -10,7 +10,8 @@
             },
 
             "customers": {
-                "me": "/api/customer/customers/me.json"
+                "me": "/api/customer/customers/me.json",
+                "index": "/api/provider/customers.json"
             },
 
             "institutions": {

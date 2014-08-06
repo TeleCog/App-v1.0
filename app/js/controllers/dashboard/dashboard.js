@@ -5,7 +5,7 @@ angular.module('livewireApp')
 
     var createVCModal = function () {
         // Video Conferencing Modal
-        $ionicModal.fromTemplateUrl('/partials/app/providers/_vc.html', {
+        $ionicModal.fromTemplateUrl('/partials/app/dashboard/_vc.html', {
             scope: $scope
         }).then(function (modal) {
             $scope.createVisibleModalFn('vcModal', modal);
@@ -34,7 +34,7 @@ angular.module('livewireApp')
     };
 
     // Chat Messages Modal
-    $ionicModal.fromTemplateUrl('/partials/app/providers/_chat.html', {
+    $ionicModal.fromTemplateUrl('/partials/app/dashboard/_chat.html', {
         scope: $scope
     }).then(function (modal) {
         $scope.createVisibleModalFn('chatModal', modal);

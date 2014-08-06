@@ -28,6 +28,6 @@ ion-view(title="Providers")
                         | {{provider.provider.name}}
                     p {{provider.provider.type_abbr}} {{provider.provider.medical_specialty}}
                 .item.item-image
-                    img(src="{{provider.provider.img}}")
+                    img(ng-src="{{provider.provider.img}}")
                 .badge.badge-energized.provider-availability(ng-show="provider.provider.availability_new")
                     span Available Now
