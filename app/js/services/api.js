@@ -26,6 +26,21 @@ angular.module('livewireApp')
         },
 
         providers: {
+            me: function () {
+                return $http.get(config.paths.prefix + config.paths.api.providers.me +
+                                 '?access_token=' + encodeURIComponent(AuthService.retrieveAccessToken()),
+                {
+                    'headers': {
+                        'Accept': 'application/vnd.livewire+json;version=1'
+                    }
+                }).success(function (data) {
+                    apiData.providers = apiData.providers || {};
+                    apiData.providers.me = data;
+                }).error(function (data, status) {
+                    authFailure(status);
+                });
+            },
+
             index: function () {
                 return $http.get(config.paths.prefix + config.paths.api.providers.index +
                                  '?access_token=' + encodeURIComponent(AuthService.retrieveAccessToken()),

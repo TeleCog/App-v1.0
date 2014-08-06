@@ -49,7 +49,7 @@ angular.module('livewireApp')
 
         showLoading();
 
-        AuthService.login(credentials || {}, $scope.roleSelection, response).then(function () {
+        AuthService.login(credentials || {}, $scope.roleSelection || window.sessionStorage.getItem("roleSelection"), response).then(function () {
             $ionicLoading.hide();
             goHome();
         }, function () {

@@ -6,6 +6,7 @@
         "chat": "/chats/send_message",
         "api": {
             "providers": {
+                "me": "/api/provider/providers/me.json",
                 "index": "/api/customer/providers.json"
             },
 
