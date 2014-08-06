@@ -47,6 +47,17 @@ angular.module('livewireApp')
         $scope.showCustomerModal();
     };
 
+    // Refresh On Slide Up
+    $scope.doRefresh = function () {
+        ApiService.customers.index().then(function () {
+            $scope.$parent.customers = ApiService.getApiData().customers.index;
+            $scope.filterCustomers($scope.customers);
+            $scope.$broadcast('scroll.refreshComplete');
+        }, function () {
+            console.log("Error");
+        });
+    };
+
     // Filters
     $scope.filters = {
         firstName: '',
