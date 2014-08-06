@@ -2,9 +2,11 @@ angular.module('livewireApp')
 
 .controller('VideoCtrl', function ($scope, $rootScope, $ionicLoading, ApiService) {
 
+    var name = $rootScope.isProvider() ? 'providers' : 'customers';
+
     // Request Customer Information
-    ApiService.customers.me().then(function () {
-        $scope.user = ApiService.getApiData().customers.me;
+    ApiService[name].me().then(function () {
+        $scope.user = ApiService.getApiData()[name].me;
         $rootScope.$broadcast('videoCtrlDataLoaded');
         $scope.isDataLoaded = true;
     });
