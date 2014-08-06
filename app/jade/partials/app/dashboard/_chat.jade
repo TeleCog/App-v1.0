@@ -3,4 +3,4 @@ ion-modal-view.chat-modal
         h1.title LiveWire
         .buttons
             button.button.button-clear(ng-click="closeChat()") Close
-    chat-container(provider-id="currentProvider.provider.id")
+    chat-container(agent-id="currentProvider ? currentProvider.provider.id : currentCustomer.id")

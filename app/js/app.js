@@ -77,10 +77,18 @@
             }
         })
 
+        // Customer's dashboard with list of providers
         .state('app.dashboard.providers', {
-            url: "/dashboard/providers",
+            url: "/providers",
             templateUrl: "/partials/app/dashboard/customer/providers.html",
             controller: "ProvidersCtrl"
+        })
+
+        // Provider's dashboard with list of customers
+        .state('app.dashboard.customers', {
+            url: "/customers",
+            templateUrl: "/partials/app/dashboard/provider/customers.html",
+            controller: "CustomersCtrl"
         });
 
         // if none of the above states are matched, use this as the fallback

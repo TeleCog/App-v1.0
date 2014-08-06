@@ -14,7 +14,12 @@ angular.module('livewireApp')
             disableAnimate: true,
             disableBack: true
         });
-        $state.go('app.dashboard.providers');
+
+        if ($scope.isProvider()) {
+            $state.go('app.dashboard.customers');
+        } else {
+            $state.go('app.dashboard.providers');
+        }
     };
 
     if (AuthService.retrieveAccessToken()) {
@@ -44,7 +49,7 @@ angular.module('livewireApp')
 
         showLoading();
 
-        AuthService.login(credentials || {}, $scope.roleSelection, response).then(function () {
+        AuthService.login(credentials || {}, $scope.roleSelection || window.sessionStorage.getItem("roleSelection"), response).then(function () {
             $ionicLoading.hide();
             goHome();
         }, function () {

@@ -5,7 +5,7 @@ angular.module('livewireApp')
 
     var createVCModal = function () {
         // Video Conferencing Modal
-        $ionicModal.fromTemplateUrl('/partials/app/providers/_vc.html', {
+        $ionicModal.fromTemplateUrl('/partials/app/dashboard/_vc.html', {
             scope: $scope
         }).then(function (modal) {
             $scope.createVisibleModalFn('vcModal', modal);
@@ -34,7 +34,7 @@ angular.module('livewireApp')
     };
 
     // Chat Messages Modal
-    $ionicModal.fromTemplateUrl('/partials/app/providers/_chat.html', {
+    $ionicModal.fromTemplateUrl('/partials/app/dashboard/_chat.html', {
         scope: $scope
     }).then(function (modal) {
         $scope.createVisibleModalFn('chatModal', modal);
@@ -69,29 +69,34 @@ angular.module('livewireApp')
 
     // Chat Message Notification Popup
     // Triggered on a button click, or some other target
-    $scope.showChatPopup = function (provider) {
+    $scope.showChatPopup = function (agent, name) {
         // An elaborate, custom popup
         var chatPopup = $ionicPopup.confirm({
-            template: 'You have a new message from ' + provider.provider.name,
+            template: 'You have a new message from ' + name,
             title: 'New Message',
             cancelText: 'Close',
             okText: 'View',
             okType: 'button-calm'
         });
         chatPopup.then(function(res) {
+            var type = $rootScope.isProvider() ? 'Customer' : 'Provider';
+
             if (res) {
-                $scope.currentProvider = provider;
+                $scope['current' + type] = agent;
                 chatPopup.close();
                 $scope.showChat();
             }
         });
     };
-    $rootScope.$on('chatReceived', function (chatEvent, providerId) {
-        var i, l;
+    $rootScope.$on('chatReceived', function (chatEvent, agentId) {
+        var i, l, type, cur;
 
-        for (i = 0, l = $scope.providers.length; i < l; i++) {
-            if ($scope.providers[i].provider.id === parseInt(providerId, 10)) {
-                $scope.showChatPopup($scope.providers[i]);
+        type = $rootScope.isProvider() ? 'customers' : 'providers';
+
+        for (i = 0, l = $scope[type].length; i < l; i++) {
+            cur = $scope[type][i].provider || $scope[type][i];
+            if (cur.id === parseInt(agentId, 10)) {
+                $scope.showChatPopup($scope[type][i], cur.name || cur.first_name);
                 return;
             }
         }

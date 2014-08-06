@@ -3,38 +3,43 @@ var config = require('../config.json');
 module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, ApiService) {
     'use strict';
 
-    var chatRef, syncChat, customerOnlineRef, customerRef, syncCustomer, chatWindowOpen;
+    var chatRef, syncChat, name, othername, customerOnlineRef, customerRef, syncCustomer, chatWindowOpen;
 
     $scope.messages = {};
 
+    name = $rootScope.isProvider() ? 'providers' : 'customers';
+    othername = $rootScope.isProvider() ? 'customers' : 'providers';
+
     // Request Customer Information
-    ApiService.customers.me().then(function () {
-        $scope.user = ApiService.getApiData().customers.me;
+    ApiService[name].me().then(function () {
+        $scope.user = ApiService.getApiData()[name].me;
 
         // Customer Online Firebase
-        customerOnlineRef = new Firebase(config.firebase.chatURL + config.paths.prefix.split(/\.+/g)[1] + "/customer_online_status/" + $scope.user.id);
-        customerOnlineRef.set(true);
-        customerOnlineRef.onDisconnect().remove();
+        if (!$rootScope.isProvider()) {
+            customerOnlineRef = new Firebase(config.firebase.chatURL + config.paths.prefix.split(/\.+/g)[1] + "/customer_online_status/" + $scope.user.id);
+            customerOnlineRef.set(true);
+            customerOnlineRef.onDisconnect().remove();
+        }
 
         // Chat Customer Receive Firebase
-        customerRef = new Firebase(config.firebase.chatURL + config.paths.prefix.split(/\.+/g)[1] + '/customers/' + $scope.user.id);
+        customerRef = new Firebase(config.firebase.chatURL + config.paths.prefix.split(/\.+/g)[1] + '/' + name + '/' + $scope.user.id);
         syncCustomer = $firebase(customerRef).$asArray();
 
         syncCustomer.$watch(function (event) {
-            var indexToRemove, providerId;
+            var indexToRemove, agentId;
 
             if (event.event === 'child_added') {
                 indexToRemove = (syncCustomer.length === 0) ? 0 : syncCustomer.length - 1;
-                providerId = syncCustomer[indexToRemove].id;
+                agentId = syncCustomer[indexToRemove].id;
 
-                $scope.messages[providerId] = $scope.messages[providerId] || [];
-                $scope.messages[providerId].push(syncCustomer[indexToRemove]);
+                $scope.messages[agentId] = $scope.messages[agentId] || [];
+                $scope.messages[agentId].push(syncCustomer[indexToRemove]);
 
                 // Make the chat window scroll to the bottom 
                 if (chatWindowOpen) {
                     $ionicScrollDelegate.scrollBottom();
                 } else {
-                    $rootScope.$broadcast('chatReceived', providerId);
+                    $rootScope.$broadcast('chatReceived', agentId);
                 }
 
                 syncCustomer.$remove(indexToRemove);
@@ -45,7 +50,7 @@ module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, 
             chatWindowOpen = true;
 
             // Chat Provider Firebase
-            chatRef = new Firebase(config.firebase.chatURL + config.paths.prefix.split(/\.+/g)[1] + '/providers/' + $scope.providerId);
+            chatRef = new Firebase(config.firebase.chatURL + config.paths.prefix.split(/\.+/g)[1] + '/' + othername + '/' + $scope.agentId);
             syncChat = $firebase(chatRef);
 
             $scope.addMessage = function (message) {
@@ -54,14 +59,14 @@ module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, 
                     name: $scope.user.first_name,
                     message: message,
                     time: Date.now(),
-                    image: 'https://www.livewiremedical.com/assets/default_customer.png'
+                    image: $scope.user.image.thumb.url || 'https://www.livewiremedical.com/assets/default_customer.png'
                 };
 
                 syncChat.$push(packet).then(function () {
                     packet.name = 'Me';
 
-                    $scope.messages[$scope.providerId] = $scope.messages[$scope.providerId] || [];
-                    $scope.messages[$scope.providerId].push(packet);
+                    $scope.messages[$scope.agentId] = $scope.messages[$scope.agentId] || [];
+                    $scope.messages[$scope.agentId].push(packet);
 
                     // Make the chat window scroll to the bottom 
                     $ionicScrollDelegate.scrollBottom();

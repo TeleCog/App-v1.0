@@ -62,14 +62,14 @@ angular.module('livewireApp')
     };
 
     // Filters Modal
-    $ionicModal.fromTemplateUrl('/partials/app/providers/_filters.html', {
+    $ionicModal.fromTemplateUrl('/partials/app/dashboard/customer/_filters.html', {
         scope: $scope
     }).then(function (modal) {
         $scope.createVisibleModalFn('filtersModal', modal);
     });
 
     // Providers Description Modal
-    $ionicModal.fromTemplateUrl('/partials/app/providers/_provider.html', {
+    $ionicModal.fromTemplateUrl('/partials/app/dashboard/customer/_provider.html', {
         scope: $scope
     }).then(function (modal) {
         $scope.createVisibleModalFn('providerModal', modal);

@@ -22,4 +22,5 @@ require('./signin');
 require('./register');
 require('./dashboard/dashboard');
 require('./dashboard/providers');
+require('./dashboard/customers');
 require('./video');
