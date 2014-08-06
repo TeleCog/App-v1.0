@@ -18,3 +18,12 @@ ion-modal-view
                         input(type="text", placeholder="e.g. Inouye", ng-model="filters.lastName")
                 .item.item-divider(ng-show="currentFilter === 'dob'")
                     | Date Of Birth
+                .list(ng-show="currentFilter === 'dob'")
+                    label.item.item-input.item-select
+                        .input-label Year
+                        select(ng-model="filters.dobYear")
+                            option(ng-repeat="year in years", ng-selected="year === 'All'") {{year}}
+                    label.item.item-input.item-select
+                        .input-label Month
+                        select(ng-model="filters.dobMonth")
+                            option(ng-repeat="month in months", ng-selected="month === 'All'") {{month}}

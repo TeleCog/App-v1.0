@@ -64,6 +64,20 @@ angular.module('livewireApp')
         lastName: ''
     };
 
+    // Years for DOB filter
+    $scope.years = (function () {
+        var i = 0, start = (new Date()).getFullYear(), years = ['All'];
+
+        for (i = 0; i < 100; i++) {
+            years.push(start - i);
+        }
+
+        return years;
+    }());
+
+    // Months for DOB filter
+    $scope.months = ['All', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
     // Filters Modal
     $ionicModal.fromTemplateUrl('/partials/app/dashboard/provider/_filters.html', {
         scope: $scope
@@ -85,6 +99,8 @@ angular.module('livewireApp')
             if ($scope.filters.lastName.length > 0) {
                 result = customer.last_name.indexOf($scope.filters.lastName) !== -1;
             }
+
+            // TODO DOB Filtering
 
             return result;
         });
