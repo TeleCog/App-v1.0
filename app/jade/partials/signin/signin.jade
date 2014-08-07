@@ -1,0 +1,24 @@
+ion-view(title="LiveWire Sign-In")
+    ion-nav-bar.bar-calm(ng-hide="true")
+        ion-nav-back-button.button-icon.ion-arrow-left-c
+    ion-content(class="livewire-signin has-header")
+        h2.calm Log in to your account
+
+        .list.list-inset
+            label(class="item {{authError}} validation-message", ng-show="authError") Incorrect Email/Password
+            .row
+                label(class="item item-input signin-field col col-75 {{authError}}")
+                    input(type="email", ng-model="user.email", class="{{authError}}", placeholder="Email")
+            .row
+                label(class="item item-input signin-field col col-75 {{authError}}")
+                    input(type="password", ng-model="user.password", class="{{authError}}", placeholder="Password")
+        .row
+            button.button.button-calm.col.col-75(ng-click="signIn(user)")
+                | Enter LiveWire
+        .padding
+            .row
+                p.text-center.col.col-75
+                    a.calm(ng-href="{{(getRoleSelection() === 'provider') ? 'https://provider.livewiremedical.com/providers/sign_up' : '#/register'}}") New to LiveWire? Sign up here
+            .row
+                p.text-center.col.col-75
+                    a.calm(ng-href="https://{{(getRoleSelection() === 'provider') ? 'provider' : 'www'}}.livewiremedical.com/{{getRoleSelection()}}s/password/new") Forgot your password?

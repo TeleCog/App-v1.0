@@ -1,8 +1,8 @@
 ion-header-bar.bar.bar-subheader.bar-positive
     h1.title Chat
-ion-content.has-header.has-subheader.has-footer.has-subfooter(has-header="true", has-subheader="true", has-footer="true", has-subfooter="true")
+ion-content.chat-content.has-header.has-subheader.has-footer.has-subfooter(has-header="true", has-subheader="true", has-footer="true", has-subfooter="true")
     .list
-        label.item-input.item-stacked-label(ng-repeat="item in messages")
+        label.item-input.item-stacked-label(ng-repeat="item in messages[agentId]")
             span.input-label {{item.name}}
             p
                 | {{item.message}}

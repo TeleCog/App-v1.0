@@ -20,5 +20,7 @@ angular.module('livewireApp')
 // Require sub controllers
 require('./signin');
 require('./register');
-require('./providers');
+require('./dashboard/dashboard');
+require('./dashboard/providers');
+require('./dashboard/customers');
 require('./video');

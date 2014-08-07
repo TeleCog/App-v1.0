@@ -1,0 +1,33 @@
+ion-view(title="Patients")
+    ion-nav-buttons(side="left")
+        button.button.button-icon.icon.ion-navicon(menu-toggle="left")
+    ion-nav-buttons(side="right")
+        button.button(ng-click="signOut()")
+            | Sign Out
+    ion-header-bar.bar.bar-subheader.bar-calm.livewire-filterbar(push-content="true")
+        .row.responsive-sm
+            h5.col.col-25
+                | Refine your search:
+            .col.col-filterbuttons
+                .row
+                    button.button.button-light.col(ng-click="selectFilter('firstName')")
+                        | First Name
+                    button.button.button-light.col(ng-click="selectFilter('lastName')")
+                        | Last Name
+                    button.button.button-light.col(ng-click="selectFilter('dob')")
+                        | D.O.B
+    ion-content.has-header.livewire-providers
+        ion-refresher(pulling-text="Pull to refresh...", on-refresh="doRefresh()")
+        .bar.bar-positive.bar-filterinfo
+            .row
+                h5.col Select the patient's picture to view more information, send a message, or start a call
+        ion-list.provider-cards
+            .list.card.provider-card(ng-repeat="customer in (filteredCustomers || customers)", ng-click="showCustomer(customer)")
+                .item.item-avatar(ng-class="{ available: isCustomerOnline(customer) }")
+                    h2
+                        | {{customer.first_name}} {{customer.last_name}}
+                    p {{customer.dob || '--'}}
+                .item.item-image
+                    img(ng-src="{{customer.image.thumb.url}}")
+                .badge.badge-energized.provider-availability(ng-show="isCustomerOnline(customer)")
+                    span Available Now

@@ -57,20 +57,40 @@ angular.module('opentok', [])
                 session.publish(publisher);
                 publisher.on({
                     'streamCreated': function (event) {
+                        var sessionID, firebasePath, sessionRef;
+
                         // Notify provider
                         console.log("Notifying Provider");
-                        var sessionID = OpentokService.getSessionID(),
-                        sessionRef = new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] + '/vccameramode/pendingsessions/' + sessionID + '/node');
-                        sessionRef.set({
-                            customerId: attrs.userId,
-                            sessionId: sessionID,
-                            isvalid: 1,
-                            ifWebRTCSupported: true,
-                            agentIdToCall: attrs.agentId,
-                            ifAdminCalling: 0,
-                            streamId: event.stream.streamId,
-                            customerName: attrs.userName
-                        });
+                        sessionID = OpentokService.getSessionID();
+
+                        if ($rootScope.isProvider()) {
+                            firebasePath = '/agenttocustomer/pendingsessions/';
+                        } else {
+                            firebasePath = '/vccameramode/pendingsessions/';
+                        }
+
+                        sessionRef = new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] + firebasePath + sessionID + '/node');
+
+                        if ($rootScope.isProvider()) {
+                            sessionRef.set({
+                                sessionId: sessionID,
+                                agentId: attrs.userId,
+                                customerToCall: attrs.agentId,
+                                providerName: attrs.userName,
+                                isAdminCalling: 0
+                            });
+                        } else {
+                            sessionRef.set({
+                                customerId: attrs.userId,
+                                sessionId: sessionID,
+                                isvalid: 1,
+                                ifWebRTCSupported: true,
+                                agentIdToCall: attrs.agentId,
+                                ifAdminCalling: 0,
+                                streamId: event.stream.streamId,
+                                customerName: attrs.userName
+                            });
+                        }
                     }
                 });
             });

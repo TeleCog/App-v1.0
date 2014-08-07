@@ -1,0 +1,33 @@
+ion-view(title="Providers")
+    ion-nav-buttons(side="left")
+        button.button.button-icon.icon.ion-navicon(menu-toggle="left")
+    ion-nav-buttons(side="right")
+        button.button(ng-click="signOut()")
+            | Sign Out
+    ion-header-bar.bar.bar-subheader.bar-calm.livewire-filterbar(push-content="true")
+        .row.responsive-sm
+            h5.col.col-25
+                | Refine your search:
+            .col.col-filterbuttons
+                .row
+                    button.button.button-light.col(ng-click="selectFilter('institution')")
+                        | Institution
+                    button.button.button-light.col(ng-click="selectFilter('specialty')")
+                        | Specialty
+                    button.button.button-light.col(ng-click="selectFilter('providerType')")
+                        | Provider Type
+    ion-content.has-header.livewire-providers
+        ion-refresher(pulling-text="Pull to refresh...", on-refresh="doRefresh()")
+        .bar.bar-positive.bar-filterinfo
+            .row
+                h5.col Select the provider's picture to view more information, send a message, or start a call
+        ion-list.provider-cards
+            .list.card.provider-card(ng-repeat="provider in (filteredProviders || providers)", ng-click="showProvider(provider)")
+                .item.item-avatar(ng-class="{ available: provider.provider.availability_new }")
+                    h2
+                        | {{provider.provider.name}}
+                    p {{provider.provider.type_abbr}} {{provider.provider.medical_specialty}}
+                .item.item-image
+                    img(ng-src="{{provider.provider.img}}")
+                .badge.badge-energized.provider-availability(ng-show="provider.provider.availability_new")
+                    span Available Now

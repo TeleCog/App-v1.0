@@ -1,8 +1,8 @@
 angular.module('chat', ['firebase'])
 .directive('chatContainer', function () {
     var link = function (scope, elem, attrs) {
-        scope.$watch('providerId', function (newValue) {
-            scope.providerId = newValue;
+        scope.$watch('agentId', function (newValue) {
+            scope.agentId = newValue;
         });
     };
 
@@ -13,7 +13,7 @@ angular.module('chat', ['firebase'])
         },
         templateUrl: '/partials/directives/chat.html',
         scope: {
-            "providerId": "="
+            "agentId": "="
         },
         controller: require('./chatCtrl')
     };

@@ -1,0 +1,50 @@
+.livewire-signin {
+    h2 {
+        text-align: center;
+        font-weight: 200;
+    }
+
+    .list-inset {
+        margin-bottom: 0;
+    }
+
+    .row {
+        justify-content: center;
+        -webkit-justify-content: center;
+    }
+
+    .signin-field {
+        border-radius: 5px !important;
+    }
+
+    .list-inset > .row {
+        margin-bottom: 10px;
+    }
+
+    /* Only keep margin on first element */
+    .list-inset > .row ~ .row {
+        margin-bottom: 0;
+    }
+
+    input {
+        text-align: center;
+    }
+
+    button {
+        border-radius: 30px;
+        border: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .error {
+        color: $assertive;
+    }
+
+    .validation-message {
+        text-align: center;
+        border: none;
+    }
+}

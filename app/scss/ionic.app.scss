@@ -4,16 +4,17 @@ in ionic's _variables.scss file.
 
 For example, you might change some of the default colors:
 
+*/
+
 $light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #4a87ee !default;
-$calm:                            #43cee6 !default;
+$stable:                          #f2f2f2 !default;
+$positive:                        #0f6698 !default;
+$calm:                            #0697d0 !default;
 $balanced:                        #66cc33 !default;
-$energized:                       #f0b840 !default;
+$energized:                       #ff9b00 !default;
 $assertive:                       #ef4e3a !default;
 $royal:                           #8a6de9 !default;
 $dark:                            #444 !default;
-*/
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -22,9 +23,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 // Custom styles
-@import "validation";
-@import "termsofservice";
-@import "provider_card";
-@import "provider_view";
+@import "signin/signin"; // Sign In Page
+@import "signin/selectrole";
+
+@import "register/register";
+@import "register/_termsofservice";
+
+@import "providers/providers";
+
 @import "opentok";
 @import "chat";

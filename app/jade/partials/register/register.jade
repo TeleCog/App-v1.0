@@ -1,0 +1,39 @@
+ion-view(title="LiveWire Registration")
+    ion-nav-bar.bar-calm
+        ion-nav-back-button.button-icon.ion-arrow-left-c
+    ion-content.livewire-registration
+        form(name="registrationForm", ng-submit="termsOfService()", novalidate)
+            .list.list-inset
+                .row
+                    .col.col-75
+                        h6.assertive(ng-show!="registrationForm.first_name.$dirty && registrationForm.first_name.$error.required")
+                            | First name is required
+                        label.item.item-input
+                            input(type="text", name="first_name", ng-model="user.first_name", placeholder="First Name", required)
+                .row
+                    .col.col-75
+                        h6.assertive(ng-show!="registrationForm.last_name.$dirty && registrationForm.last_name.$error.required")
+                            | Last name is required
+                        label.item.item-input
+                            input(type="text", name="last_name", ng-model="user.last_name", placeholder="Last Name", required)
+                .row
+                    .col.col-75
+                        h6.assertive(ng-show!="registrationForm.email.$error.email")
+                            | Please enter a valid email
+                        label.item.item-input
+                            input(type="email", name="email", ng-model="user.email", placeholder="Email (e.g. daniel@inouye.com)", required)
+                .row
+                    .col.col-75
+                        h6.assertive.password(ng-show!="registrationForm.password.$error.pattern")
+                            | Password must have at least:
+                            ul
+                                li &middot; one lowercase letter
+                                li &middot; one uppercase letter
+                                li &middot; one digit
+                                li &middot; 8 characters
+                        label.item.item-input
+                            input(type="password", name="password", ng-pattern!="passwordPattern", ng-model="user.password", placeholder="Password", required)
+            .padding
+                .row
+                    button.button.button-block.button-calm.col.col-75(type="submit", ng-disabled!="registrationForm.$invalid")
+                        | Register

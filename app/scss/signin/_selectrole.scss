@@ -1,0 +1,27 @@
+.livewire-roleselection {
+    h2 {
+        text-align: center;
+        font-weight: 200;
+    }
+
+    .row {
+        justify-conent: center;
+        -webkit-justify-content: center;
+    }
+
+    button {
+        border-radius: 30px;
+        border: none;
+        font-size: 160%;
+        margin: 10px;
+    }
+
+}
+
+.selectrole-modal {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}

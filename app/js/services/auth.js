@@ -16,13 +16,24 @@ angular.module('livewireApp')
             return (auth ? auth.access_token : null);
         },
 
+        Role: {
+            provider: 'provider',
+            patient: 'patient'
+        },
+
+        getRole: function () {
+            var auth = angular.fromJson(window.localStorage.getItem("auth"));
+            return (auth ? auth.role : null);
+        },
+
         invalidateToken: function () {
             var auth = angular.fromJson(window.localStorage.getItem("auth"));
             delete auth.access_token;
+            delete auth.role;
             window.localStorage.setItem("auth", angular.toJson(auth));
         },
 
-        login: function (credentials, response) {
+        login: function (credentials, role, response) {
             var data = {
                 "grant_type": "password",
                 "client_id": config.oauth.client_id,
@@ -35,6 +46,7 @@ angular.module('livewireApp')
             .post(config.paths.prefix + config.paths.login, data)
             .success(function (data) {
                 persist("access_token", data.access_token);
+                persist("role", role);
 
                 response.data = data;
             }).error(function (data, status) {

@@ -1,40 +1,63 @@
 angular.module('livewireApp')
 
-    .controller('SigninCtrl', function ($scope, $state, $ionicLoading, $ionicViewService, AuthService) {
-        'use strict';
+.controller('SigninCtrl', function ($scope, $state, $ionicModal, $ionicLoading, $ionicViewService, AuthService) {
+    'use strict';
 
-        var showLoading = function () {
-            $ionicLoading.show({
-                template: 'Signing In <i class=ion-loading-c></i>'
-            });
-        },
-            goHome = function () {
-                // So that there won't be back button to login page
-                $ionicViewService.nextViewOptions({
-                    disableAnimate: true,
-                    disableBack: true
-                });
-                $state.go('app.providers');
-            };
+    var showLoading = function () {
+        $ionicLoading.show({
+            template: 'Signing In <i class=ion-loading-c></i>'
+        });
+    },
+    goHome = function () {
+        // So that there won't be back button to login page
+        $ionicViewService.nextViewOptions({
+            disableAnimate: true,
+            disableBack: true
+        });
 
-        if (AuthService.retrieveAccessToken()) {
-            goHome();
+        if ($scope.isProvider()) {
+            $state.go('app.dashboard.customers');
+        } else {
+            $state.go('app.dashboard.providers');
         }
+    };
 
-        $scope.signIn = function (credentials) {
-            var response = {};
+    if (AuthService.retrieveAccessToken()) {
+        goHome();
+    } else if (!$scope.roleSelection && !window.sessionStorage.getItem("roleSelection")) {
+        // Select Role Modal
+        $ionicModal.fromTemplateUrl('/partials/signin/_selectrole.html', {
+            scope: $scope
+        }).then(function (modal) {
+            $scope.selectRoleModal = modal;
+            $scope.selectRoleModal.show();
+        });
+    }
 
-            showLoading();
+    $scope.selectRole = function (selectedRole) {
+        $scope.roleSelection = selectedRole;
+        window.sessionStorage.setItem("roleSelection", selectedRole);
+        $scope.selectRoleModal.remove();
+    };
 
-            AuthService.login(credentials || {}, response).then(function () {
-                $ionicLoading.hide();
-                goHome();
-            }, function () {
-                $ionicLoading.hide();
-                // Incorrect Signin
-                if (Math.floor(response.status / 10) === 40) {
-                    $scope.authError = 'error';
-                }
-            });
-        };
-    });
+    $scope.getRoleSelection = function () {
+        return $scope.roleSelection || window.sessionStorage.getItem("roleSelection");
+    };
+
+    $scope.signIn = function (credentials) {
+        var response = {};
+
+        showLoading();
+
+        AuthService.login(credentials || {}, $scope.roleSelection || window.sessionStorage.getItem("roleSelection"), response).then(function () {
+            $ionicLoading.hide();
+            goHome();
+        }, function () {
+            $ionicLoading.hide();
+            // Incorrect Signin
+            if (Math.floor(response.status / 10) === 40) {
+                $scope.authError = 'error';
+            }
+        });
+    };
+});

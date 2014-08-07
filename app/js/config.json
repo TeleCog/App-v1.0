@@ -6,11 +6,13 @@
         "chat": "/chats/send_message",
         "api": {
             "providers": {
+                "me": "/api/provider/providers/me.json",
                 "index": "/api/customer/providers.json"
             },
 
             "customers": {
-                "me": "/api/customer/customers/me.json"
+                "me": "/api/customer/customers/me.json",
+                "index": "/api/provider/customers.json"
             },
 
             "institutions": {

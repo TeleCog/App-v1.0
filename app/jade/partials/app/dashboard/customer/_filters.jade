@@ -1,0 +1,29 @@
+ion-modal-view
+    ion-header-bar
+        h1.title Filter Providers
+        .buttons
+            button.button.button-clear(ng-click="filterProviders(providers)") Done
+    ion-content
+        .padding
+            .list
+                .item.item-divider(ng-show="currentFilter === 'institution'")
+                    | Institution
+                ul.list(ng-show="currentFilter === 'institution'")
+                    li.item.item-checkbox(ng-repeat="institution in institutions")
+                        label.checkbox.checkbox-calm
+                            input(type="checkbox", ng-model="filterToggles.institutions[institution.institution.id]")
+                        | {{institution.institution.name}} ({{institution.institution.city}}, {{institution.institution.state}})
+                .item.item-divider(ng-show="currentFilter === 'specialty'")
+                    | Medical Specialty
+                ul.list(ng-show="currentFilter === 'specialty'")
+                    li.item.item-checkbox(ng-repeat="specialty in filters.medical_specialty")
+                        label.checkbox.checkbox-calm
+                            input(type="checkbox", ng-model="filterToggles.medical_specialty[specialty]")
+                        | {{specialty}}
+                .item.item-divider(ng-show="currentFilter === 'providerType'")
+                    | Provider Type
+                ul.list(ng-show="currentFilter === 'providerType'")
+                    li.item.item-checkbox(ng-repeat="providerType in filters.provider_type")
+                        label.checkbox.checkbox-calm
+                            input(type="checkbox", ng-model="filterToggles.provider_type[providerType]")
+                        | {{providerType}}
