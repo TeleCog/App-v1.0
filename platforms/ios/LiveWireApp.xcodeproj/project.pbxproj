@@ -65,6 +65,7 @@
 		E81AD8CF0B70467AA1298775 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 173694A9C32D400BB43D2E2A /* CoreVideo.framework */; };
 		FE853014A5B449BD89105A73 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BB6593E5344F55B5BC90B8 /* AudioToolbox.framework */; };
 		FEEA109840AE46708219672C /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BA23A7CA2D17428B99862F95 /* HockeySDKResources.bundle */; };
+		7C06FF6041A0430AB887A4A0 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A74F4837DD48508C89E39F /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,8 @@
 		F74E1BFDA2D343D59BA553A4 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = LiveWireApp/config.xml; sourceTree = "<group>"; };
 		FD344F0CA31A40E0871118B7 /* Opentok.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Opentok.framework; path = LiveWireApp/Plugins/com.tokbox.cordova.opentok/Opentok.framework; sourceTree = "<group>"; };
+		01A74F4837DD48508C89E39F /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		BFA3C195541C4693B06894F0 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,6 +338,8 @@
 				D6BC1C8D66AA4202A9FDD120 /* CDVLogger.h */,
 				22A334F9783B49F88F954C5F /* CDVDevice.m */,
 				E08082A0CCDD4B819E537151 /* CDVDevice.h */,
+				01A74F4837DD48508C89E39F /* CDVInAppBrowser.m */,
+				BFA3C195541C4693B06894F0 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = LiveWireApp/Plugins;
@@ -546,6 +551,7 @@
 				48A57C54C0E14056B85C055C /* HockeyApp.m in Sources */,
 				9502A8E6B41A4B01B3781365 /* CDVLogger.m in Sources */,
 				1C428A5DB05F4BF4804721B9 /* CDVDevice.m in Sources */,
+				7C06FF6041A0430AB887A4A0 /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
