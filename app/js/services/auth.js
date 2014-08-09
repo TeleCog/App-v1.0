@@ -42,6 +42,9 @@ angular.module('livewireApp')
                 "password": credentials.password
             };
 
+            // Customer or Provider
+            data.type = (role === 'provider') ? 'provider' : 'customer';
+
             return $http
             .post(config.paths.prefix + config.paths.login, data)
             .success(function (data) {
