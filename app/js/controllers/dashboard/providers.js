@@ -12,11 +12,13 @@ angular.module('livewireApp')
 
         // Medical Specialty
         for (specialty_key in $scope.filterToggles.medical_specialty) {
-            count += 1;
+            if ($scope.filterToggles.medical_specialty[specialty_key]) {
+                count += 1;
 
-            if ($scope.filterToggles.medical_specialty[specialty_key] && provider.provider.medical_specialty === specialty_key) {
-                result = true;
-                break;
+                if (provider.provider.medical_specialty === specialty_key) {
+                    result = true;
+                    break;
+                }
             }
         }
         if (count === 0) {
