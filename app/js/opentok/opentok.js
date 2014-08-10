@@ -96,6 +96,8 @@ angular.module('opentok', [])
             });
 
             $rootScope.$on('opentokSessionDisconnect', function () {
+                session.unpublish(publisher);
+                publisher.destroy();
                 session.disconnect();
                 console.log("Disconnecting Session");
             });
