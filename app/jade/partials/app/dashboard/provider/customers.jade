@@ -1,6 +1,7 @@
 ion-view(title="Patients")
+    //- Hide menu button for now
     ion-nav-buttons(side="left")
-        button.button.button-icon.icon.ion-navicon(menu-toggle="left")
+        button.button.button-icon.icon.ion-navicon(menu-toggle="left", ng-hide="true")
     ion-nav-buttons(side="right")
         button.button(ng-click="signOut()")
             | Sign Out
