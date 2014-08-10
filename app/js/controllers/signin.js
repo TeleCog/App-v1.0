@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-.controller('SigninCtrl', function ($scope, $state, $ionicModal, $ionicLoading, $ionicViewService, AuthService) {
+.controller('SigninCtrl', function ($scope, $rootScope, $state, $ionicModal, $ionicLoading, $ionicViewService, AuthService) {
     'use strict';
 
     var showLoading = function () {
@@ -22,9 +22,7 @@ angular.module('livewireApp')
         }
     };
 
-    if (AuthService.retrieveAccessToken()) {
-        goHome();
-    } else if (!$scope.roleSelection && !window.sessionStorage.getItem("roleSelection")) {
+    $scope.createRoleModal = function () {
         // Select Role Modal
         $ionicModal.fromTemplateUrl('/partials/signin/_selectrole.html', {
             scope: $scope
@@ -32,7 +30,19 @@ angular.module('livewireApp')
             $scope.selectRoleModal = modal;
             $scope.selectRoleModal.show();
         });
+    };
+
+    if (AuthService.retrieveAccessToken()) {
+        goHome();
+    } else if (!$scope.roleSelection && !window.sessionStorage.getItem("roleSelection")) {
+        $scope.createRoleModal();
     }
+
+    // Go back to role selection if needed
+    $rootScope.$broadcast('$viewHistory.historyChange', {
+        showBack: true
+    });
+    $scope.backButtonShown = true;
 
     $scope.selectRole = function (selectedRole) {
         $scope.roleSelection = selectedRole;
