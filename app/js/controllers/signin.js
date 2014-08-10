@@ -44,6 +44,22 @@ angular.module('livewireApp')
         return $scope.roleSelection || window.sessionStorage.getItem("roleSelection");
     };
 
+    // Browser window for registration/password reset
+    $scope.registrationLink = function () {
+        var link;
+
+        if ($scope.getRoleSelection() === 'provider') {
+            link = 'https://provider.livewiremedical.com/providers/sign_up';
+            window.open(link, '_system');
+        }
+    };
+
+    $scope.resetPasswordLink = function () {
+        var subdomain = ($scope.getRoleSelection() === 'provider') ? 'provider' : 'www',
+        link = 'https://' + subdomain + '.livewiremedical.com/' + $scope.getRoleSelection() + 's/password/new';
+        window.open(link, '_system');
+    };
+
     $scope.signIn = function (credentials) {
         var response = {};
 
