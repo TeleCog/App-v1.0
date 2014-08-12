@@ -1,5 +1,3 @@
-var isodate = require('../../util/isodate');
-
 angular.module('livewireApp')
 .controller('CustomersCtrl', function ($scope, $ionicModal, $ionicLoading, orderByFilter, ApiService) {
     'use strict';
@@ -21,18 +19,7 @@ angular.module('livewireApp')
 
     // Determine if user is online
     $scope.isCustomerOnline = function (customer) {
-        var interval;
-
-        if (!customer || !customer.last_time_online) {
-            return false;
-        }
-
-        interval = Date.now() - isodate(customer.last_time_online);
-        if (interval > 10 * 60 * 1000) { // Ten minutes
-            return false;
-        }
-
-        return true;
+        return customer.online;
     };
 
     // Customers Description Modal
