@@ -17,7 +17,7 @@
  under the License.
  */
 //
-// Prefix header for all source files of the 'LiveWireApp' target in the 'LiveWireApp' project
+// Prefix header for all source files of the 'LiveWire' target in the 'LiveWire' project
 //
 
 #ifdef __OBJC__

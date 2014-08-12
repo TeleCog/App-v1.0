@@ -22,7 +22,7 @@ package com.livewiretax.livewireapp;
 import android.os.Bundle;
 import org.apache.cordova.*;
 
-public class LiveWireApp extends CordovaActivity 
+public class LiveWire extends CordovaActivity 
 {
     @Override
     public void onCreate(Bundle savedInstanceState)
