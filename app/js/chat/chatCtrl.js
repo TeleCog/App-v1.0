@@ -49,6 +49,17 @@ module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, 
         $rootScope.$on('providersCtrlChatModalShown', function () {
             chatWindowOpen = true;
 
+            ApiService.chats.index({ myId: $scope.user.id, foreignId: $scope.agentId }).then(function () {
+                var messages = ApiService.getApiData().chats.index[$scope.agentId];
+
+                $scope.messages[$scope.agentId] = $scope.messages[$scope.agentId] || [];
+                // Merge fetched messages with messages (rightmost element is removed to avoid message duplication)
+                Array.prototype.unshift.apply($scope.messages[$scope.agentId], messages.slice(0, messages.length - 1));
+
+                // Make the chat window scroll to the bottom 
+                $ionicScrollDelegate.scrollBottom();
+            });
+
             // Chat Provider Firebase
             chatRef = new Firebase(config.firebase.chatURL + config.paths.prefix.split(/\.+/g)[1] + '/' + othername + '/' + $scope.agentId);
             syncChat = $firebase(chatRef);

@@ -12,6 +12,10 @@
                 "index": "/api/customer/providers.json"
             },
 
+            "chats": {
+                "index": "/api/chats.json"
+            },
+
             "customers": {
                 "me": "/api/customer/customers/me.json",
                 "setOnlineHeartBeat": "/api/customer/customers/setOnlineHeartBeat.json",
