@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-.controller('DashboardCtrl', function ($scope, $rootScope, $ionicModal, $ionicPopup) {
+.controller('DashboardCtrl', function ($scope, $rootScope, $ionicModal, $ionicPopup, HeartbeatService) {
     'use strict';
 
     var createVCModal = function () {
@@ -11,6 +11,9 @@ angular.module('livewireApp')
             $scope.createVisibleModalFn('vcModal', modal);
         });
     };
+
+    // Run HeartBeats
+    HeartbeatService.run();
 
     // Create modal show/hide function in scope
     $scope.createVisibleModalFn = function (name, modal) {

@@ -1,6 +1,6 @@
 {
     "paths": {
-        "prefix": "https://www.livewiremedical.com",
+        "prefix": "http://www.lvh.me:3000",
         "login": "/oauth/token",
         "register": "/api/customer/registrations.json",
         "chat": "/chats/send_message",
@@ -12,6 +12,7 @@
 
             "customers": {
                 "me": "/api/customer/customers/me.json",
+                "setOnlineHeartBeat": "/api/customer/customers/setOnlineHeartBeat.json",
                 "index": "/api/provider/customers.json"
             },
 

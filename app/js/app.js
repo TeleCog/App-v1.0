@@ -123,4 +123,5 @@
     require('./services/api');
     require('./services/auth');
     require('./services/opentok');
+    require('./services/heartbeat');
 }());
