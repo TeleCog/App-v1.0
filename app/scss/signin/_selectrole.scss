@@ -4,6 +4,11 @@
         font-weight: 200;
     }
 
+    .center {
+        margin-top: 50%;
+        transform: translateY(-50%);
+    }
+
     .row {
         justify-conent: center;
         -webkit-justify-content: center;
