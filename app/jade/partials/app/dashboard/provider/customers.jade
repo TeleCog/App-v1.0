@@ -29,6 +29,6 @@ ion-view(title="Patients")
                         | {{customer.first_name}} {{customer.last_name}}
                     p {{customer.dob || '--'}}
                 .item.item-image
-                    img(ng-src="{{customer.image.thumb.url}}")
+                    img(ng-src="{{customer.image.image.thumb.url}}")
                 .badge.badge-energized.provider-availability(ng-show="isCustomerOnline(customer)")
                     span Available Now

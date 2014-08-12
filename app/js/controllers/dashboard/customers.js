@@ -1,11 +1,15 @@
 angular.module('livewireApp')
-.controller('CustomersCtrl', function ($scope, $ionicModal, $ionicLoading, orderByFilter, ApiService) {
+.controller('CustomersCtrl', function ($scope, $ionicModal, $ionicLoading, orderByFilter, HeartbeatService, ApiService) {
     'use strict';
 
     // Spinner on page load while customers are being fetched
     $ionicLoading.show({
         template: 'Loading <i class=ion-loading-c></i>'
     });
+
+    // Set Provider Available
+    // in_call is false
+    HeartbeatService.available(false);
 
     // Fetch list of provider's customers
     ApiService.customers.index().then(function () {
@@ -19,7 +23,7 @@ angular.module('livewireApp')
 
     // Determine if user is online
     $scope.isCustomerOnline = function (customer) {
-        return customer.online;
+        return customer ? customer.online : false;
     };
 
     // Customers Description Modal
