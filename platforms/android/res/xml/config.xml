@@ -20,7 +20,7 @@
     <feature name="OpenTokPlugin">
         <param name="android-package" value="com.tokbox.cordova.OpenTokAndroidPlugin" />
     </feature>
-    <name>LiveWireApp</name>
+    <name>LiveWire</name>
     <description>
         LiveWire mobile app
     </description>

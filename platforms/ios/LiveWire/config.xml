@@ -40,7 +40,7 @@
             <param name="ios-package" value="OpenTokPlugin" />
         </feature>
     </plugins>
-    <name>LiveWireApp</name>
+    <name>LiveWire</name>
     <description>
         LiveWire mobile app
     </description>
