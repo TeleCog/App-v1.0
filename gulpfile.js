@@ -13,7 +13,8 @@
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
     o = require('open'),
-    ripple = require('ripple-emulator');
+    ripple = require('ripple-emulator'),
+    runSequence = require('run-sequence');
 
     gulp.task('refresh', function () {
         exec('./node_modules/cordova/bin/cordova', ['prepare']);
@@ -23,7 +24,7 @@
     gulp.task('templates', function () {
         var YOUR_LOCALS = {};
 
-        gulp.src('./app/jade/**/*.jade')
+        return gulp.src('./app/jade/**/*.jade')
         .pipe(jade({
             locals: YOUR_LOCALS
         }))
@@ -38,8 +39,8 @@
     });
 
     // using vinyl-source-stream:
-    gulp.task('scripts', ['templates'], function () {
-        browserify({
+    gulp.task('scripts', function () {
+        return browserify({
             debug: true
         })
         .add('./www/js/templates.js')
@@ -55,7 +56,7 @@
 
     // Compiles the SASS styles
     gulp.task('sass', function () {
-        gulp.src('./app/scss/ionic.app.scss')
+        return gulp.src('./app/scss/ionic.app.scss')
         .pipe(sass())
         .pipe(minifyCss({
             keepSpecialComments: 0
@@ -82,7 +83,7 @@
     });
 
     // The default task
-    gulp.task('default', ['templates', 'scripts', 'sass'], function () {
+    gulp.task('default', function () {
         var paths = {
             sass: ['./app/scss/**/*.scss'],
             js: ['./app/js/**/*.js'],
@@ -94,18 +95,33 @@
             port: 4400
         };
 
+        runSequence(['templates', 'sass'], 'scripts', 'refresh');
+
         // Start livereload server
         livereload.listen();
 
         // Watch the JS directory for changes and re-run scripts task when it changes
-        gulp.watch(paths.js, ['scripts', 'refresh']).on('change', livereload.changed);
+        gulp.watch(paths.js, function () {
+            runSequence('scripts',
+                        'refresh',
+                        livereload.changed);
+        });
 
         // Watch the CSS directory for changes and re-run styles task when it changes
-        gulp.watch(paths.sass, ['sass', 'refresh']).on('change', livereload.changed);
+        gulp.watch(paths.sass, function () {
+            runSequence('sass',
+                        'refresh',
+                        livereload.changed);
+        });
 
         // Watch the Templates directory for changes and re-run scripts task when it changes
         // Scripts depends on templates (semi-hack to get templates to run before scripts
-        gulp.watch(paths.templates, ['scripts', 'refresh']).on('change', livereload.changed);
+        gulp.watch(paths.templates, function () {
+            runSequence('templates',
+                        'scripts',
+                        'refresh',
+                        livereload.changed);
+        });
 
         // Start the ripple server
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
