@@ -1,6 +1,6 @@
 {
     "paths": {
-        "prefix": "http://www.lvh.me:3000",
+        "prefix": "http://www.livewiremed.tk",
         "login": "/oauth/token",
         "register": "/api/customer/registrations.json",
         "chat": "/chats/send_message",
