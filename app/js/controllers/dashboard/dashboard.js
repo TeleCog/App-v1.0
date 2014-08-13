@@ -53,9 +53,7 @@ angular.module('livewireApp')
 
     $scope.closeVC = function () {
         $rootScope.$broadcast('opentokSessionDisconnect');
-        $scope.vcModal.remove().then(function () {
-            createVCModal();
-        });
+        $scope.vcModal.hide();
     };
 
     $scope.showChat = function () {

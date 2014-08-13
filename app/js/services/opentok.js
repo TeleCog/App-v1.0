@@ -39,7 +39,7 @@ angular.module('livewireApp')
         requestSessionID: function () {
             return $http({
                 method: 'POST',
-                url: 'https://api.opentok.com/hl/session/create',
+                url: 'https://api.opentok.com/session/create',
                 data: {"p2p.preference": "disabled"},
                 headers: {
                     'X-TB-PARTNER-AUTH': config.opentok.apiKey + ':' + config.opentok.apiSecret,

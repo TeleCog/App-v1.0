@@ -33,7 +33,16 @@ angular.module('opentok', [])
         $rootScope.$broadcast('opentokLoading');
 
         OpentokService.requestSessionID().then(function () {
+            var publisherDiv = null;
             publisherSize = calculatePublisherSize();
+
+            // Create opentok-publisher div if it does not exists
+            if (!document.getElementById('opentok-publisher')) {
+                publisherDiv = document.createElement('div');
+                publisherDiv.id = 'opentok-publisher';
+                element[0].insertBefore(publisherDiv, element[0].firstChild);
+            }
+
             publisher = TB.initPublisher(config.opentok.apiKey, 'opentok-publisher', {height: publisherSize, width: publisherSize});
             session = TB.initSession(config.opentok.apiKey, OpentokService.getSessionID());
 
@@ -57,7 +66,7 @@ angular.module('opentok', [])
                 session.publish(publisher);
                 publisher.on({
                     'streamCreated': function (event) {
-                        var sessionID, firebasePath, sessionRef;
+                        var sessionID, firebasePath, sessionRef, cameraModeRef;
 
                         // Notify provider
                         console.log("Notifying Provider");
@@ -77,7 +86,16 @@ angular.module('opentok', [])
                                 agentId: attrs.userId,
                                 customerToCall: attrs.agentId,
                                 providerName: attrs.userName,
+                                cameraOrientation: 1,
                                 isAdminCalling: 0
+                            });
+                            cameraModeRef = new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] + "/vccameramode/tempcameramode/" + sessionID + "/node");
+                            cameraModeRef.set({
+                                sessionId: sessionID,
+                                cameramode: 1,
+                                isvalid: 1,
+                                agentId: attrs.userId,
+                                agentStreamId: event.stream.streamId
                             });
                         } else {
                             sessionRef.set({
@@ -96,7 +114,6 @@ angular.module('opentok', [])
             });
 
             $rootScope.$on('opentokSessionDisconnect', function () {
-                session.unpublish(publisher);
                 publisher.destroy();
                 session.disconnect();
                 console.log("Disconnecting Session");
@@ -116,7 +133,9 @@ angular.module('opentok', [])
         template: '<div id="opentok-publisher"></div><div class="opentok-subscribers"><div class="opentok-subscriber"></div></div>',
         link: function (scope, elem, attrs) {
             if (scope.isDataLoaded) {
-                link(scope, elem, attrs);
+                $rootScope.$on('providersCtrlVCModalShown', function () {
+                    link(scope, elem, attrs);
+                });
             } else {
                 $rootScope.$on('videoCtrlDataLoaded', function () {
                     $rootScope.$on('providersCtrlVCModalShown', function () {
