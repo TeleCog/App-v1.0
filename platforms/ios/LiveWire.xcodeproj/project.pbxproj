@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		070CFD4994B04FA78063C6AE /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBD34357A4D489A987BC30B /* CoreVideo.framework */; };
 		11914F1BB0F7433FA4021FB5 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 7892E3E8064D4E27A07A324B /* CDVSplashScreen.m */; };
