@@ -49,11 +49,21 @@ angular.module('livewireApp')
         $scope.vcModal.show().then(function () {
             $rootScope.$broadcast('providersCtrlVCModalShown');
         });
+        if ($rootScope.isProvider()) {
+            // Set Provider Available
+            // in_call is true
+            HeartbeatService.available(true);
+        }
     };
 
     $scope.closeVC = function () {
         $rootScope.$broadcast('opentokSessionDisconnect');
         $scope.vcModal.hide();
+        if ($rootScope.isProvider()) {
+            // Set Provider Available
+            // in_call is false
+            HeartbeatService.available(false);
+        }
     };
 
     $scope.showChat = function () {
