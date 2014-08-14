@@ -114,7 +114,9 @@ angular.module('opentok', [])
             });
 
             $rootScope.$on('opentokSessionDisconnect', function () {
-                publisher.destroy();
+                if (!document.body.classList.contains('platform-android')) {
+                    publisher.destroy();
+                }
                 session.disconnect();
                 console.log("Disconnecting Session");
             });
