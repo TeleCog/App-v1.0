@@ -45,9 +45,9 @@ angular.module('livewireApp')
 
     createVCModal();
 
-    $scope.showVC = function () {
+    $scope.showVC = function (sessionId) {
         $scope.vcModal.show().then(function () {
-            $rootScope.$broadcast('providersCtrlVCModalShown');
+            $rootScope.$broadcast('providersCtrlVCModalShown', sessionId);
         });
         if ($rootScope.isProvider()) {
             // Set Provider Available
@@ -89,7 +89,7 @@ angular.module('livewireApp')
             okText: 'View',
             okType: 'button-calm'
         });
-        chatPopup.then(function(res) {
+        chatPopup.then(function (res) {
             var type = $rootScope.isProvider() ? 'Customer' : 'Provider';
 
             if (res) {
@@ -108,6 +108,41 @@ angular.module('livewireApp')
             cur = $scope[type][i].provider || $scope[type][i];
             if (cur.id === parseInt(agentId, 10)) {
                 $scope.showChatPopup($scope[type][i], cur.name || cur.first_name);
+                return;
+            }
+        }
+    });
+
+    // VC Notification Popup
+    // Triggered on a button click, or some other target
+    $scope.showVCPopup = function (agent, name, sessionId) {
+        // An elaborate, custom popup
+        var vcPopup = $ionicPopup.confirm({
+            template: 'You have a new video call from ' + name,
+            title: 'New Video Call',
+            cancelText: 'Hang Up',
+            okText: 'Answer',
+            okType: 'button-calm'
+        });
+        vcPopup.then(function (res) {
+            var type = $rootScope.isProvider() ? 'Customer' : 'Provider';
+
+            if (res) {
+                $scope['current' + type] = agent;
+                vcPopup.close();
+                $scope.showVC(sessionId);
+            }
+        });
+    };
+    $rootScope.$on('vcReceived', function (vcEvent, agentId, agentName, sessionId) {
+        var i, l, type, cur;
+
+        type = $rootScope.isProvider() ? 'customers' : 'providers';
+
+        for (i = 0, l = $scope[type].length; i < l; i++) {
+            cur = $scope[type][i].provider || $scope[type][i];
+            if (cur.id === parseInt(agentId, 10)) {
+                $scope.showVCPopup($scope[type][i], agentName, sessionId);
                 return;
             }
         }

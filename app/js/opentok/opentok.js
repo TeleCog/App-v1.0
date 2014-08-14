@@ -27,7 +27,7 @@ angular.module('opentok', [])
         TB.updateViews();
     },
 
-    link = function (scope, element, attrs) {
+    link = function (scope, element, attrs, sessionId) {
         var publisher, session, publisherSize;
 
         $rootScope.$broadcast('opentokLoading');
@@ -44,7 +44,7 @@ angular.module('opentok', [])
             }
 
             publisher = TB.initPublisher(config.opentok.apiKey, 'opentok-publisher', {height: publisherSize, width: publisherSize});
-            session = TB.initSession(config.opentok.apiKey, OpentokService.getSessionID());
+            session = TB.initSession(config.opentok.apiKey, sessionId || OpentokService.getSessionID());
 
             session.on({
                 'streamCreated': function (event) {
@@ -64,7 +64,8 @@ angular.module('opentok', [])
                 }
             });
 
-            session.connect(OpentokService.generateToken(), function () {
+            // Generate token with sessionId (if not null), else it will use Opentok.requestSessionId
+            session.connect(OpentokService.generateToken(sessionId), function () {
                 session.publish(publisher);
                 publisher.on({
                     'streamCreated': function (event) {
@@ -83,17 +84,19 @@ angular.module('opentok', [])
                         sessionRef = new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] + firebasePath + sessionID + '/node');
 
                         if ($rootScope.isProvider()) {
-                            sessionRef.set({
-                                sessionId: sessionID,
-                                agentId: attrs.userId,
-                                customerToCall: attrs.agentId,
-                                providerName: attrs.userName,
-                                cameraOrientation: 1,
-                                isAdminCalling: 0
-                            });
+                            if (!sessionId) { // No need to notify customer if they called first (hence sessionId exists)
+                                sessionRef.set({
+                                    sessionId: sessionID,
+                                    agentId: attrs.userId,
+                                    customerToCall: attrs.agentId,
+                                    providerName: attrs.userName,
+                                    cameraOrientation: 1,
+                                    isAdminCalling: 0
+                                });
+                            }
                             cameraModeRef = new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] + "/vccameramode/tempcameramode/" + sessionID + "/node");
                             cameraModeRef.set({
-                                sessionId: sessionID,
+                                sessionId: sessionId || sessionID, // sessionId if it exists (from customer call), else use sessionID
                                 cameramode: 1,
                                 isvalid: 1,
                                 agentId: attrs.userId,
@@ -135,13 +138,13 @@ angular.module('opentok', [])
         template: '<div id="opentok-publisher"></div><div class="opentok-subscribers"><div class="opentok-subscriber"></div></div>',
         link: function (scope, elem, attrs) {
             if (scope.isDataLoaded) {
-                $rootScope.$on('providersCtrlVCModalShown', function () {
-                    link(scope, elem, attrs);
+                $rootScope.$on('providersCtrlVCModalShown', function (vcEvent, sessionId) {
+                    link(scope, elem, attrs, sessionId);
                 });
             } else {
                 $rootScope.$on('videoCtrlDataLoaded', function () {
-                    $rootScope.$on('providersCtrlVCModalShown', function () {
-                        link(scope, elem, attrs);
+                    $rootScope.$on('providersCtrlVCModalShown', function (vcEvent, sessionId) {
+                        link(scope, elem, attrs, sessionId);
                     });
                 });
             }
