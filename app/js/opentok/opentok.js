@@ -48,6 +48,8 @@ angular.module('opentok', [])
 
             session.on({
                 'streamCreated': function (event) {
+                    $rootScope.$broadcast('opentokLoaded');
+
                     var div = document.getElementsByClassName('opentok-subscriber')[0];
 
                     if (!div) {
@@ -120,8 +122,6 @@ angular.module('opentok', [])
                 session.disconnect();
                 console.log("Disconnecting Session");
             });
-
-            $rootScope.$broadcast('opentokLoaded');
         });
     };
 

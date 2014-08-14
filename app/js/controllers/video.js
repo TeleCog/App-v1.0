@@ -14,7 +14,7 @@ angular.module('livewireApp')
     $rootScope.$on('opentokLoading', function () {
         console.log('Received: OpentokLoading');
         $ionicLoading.show({
-            template: 'Loading <i class=ion-loading-c></i>'
+            template: 'Connecting <i class=ion-loading-c></i>'
         });
     });
 
