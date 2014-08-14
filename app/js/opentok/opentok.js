@@ -93,6 +93,7 @@ angular.module('opentok', [])
                                     cameraOrientation: 1,
                                     isAdminCalling: 0
                                 });
+                                sessionRef.onDisconnect().remove();
                             }
                             cameraModeRef = new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] + "/vccameramode/tempcameramode/" + sessionID + "/node");
                             cameraModeRef.set({
@@ -102,10 +103,11 @@ angular.module('opentok', [])
                                 agentId: attrs.userId,
                                 agentStreamId: event.stream.streamId
                             });
+                            cameraModeRef.onDisconnect().remove();
                         } else {
                             sessionRef.set({
                                 customerId: attrs.userId,
-                                sessionId: sessionID,
+                                sessionId: sessionId || sessionID,
                                 isvalid: 1,
                                 ifWebRTCSupported: true,
                                 agentIdToCall: attrs.agentId,
@@ -113,6 +115,7 @@ angular.module('opentok', [])
                                 streamId: event.stream.streamId,
                                 customerName: attrs.userName
                             });
+                            sessionRef.onDisconnect().remove();
                         }
                     }
                 });
