@@ -105,17 +105,19 @@ angular.module('opentok', [])
                             });
                             cameraModeRef.onDisconnect().remove();
                         } else {
-                            sessionRef.set({
-                                customerId: attrs.userId,
-                                sessionId: sessionId || sessionID,
-                                isvalid: 1,
-                                ifWebRTCSupported: true,
-                                agentIdToCall: attrs.agentId,
-                                ifAdminCalling: 0,
-                                streamId: event.stream.streamId,
-                                customerName: attrs.userName
-                            });
-                            sessionRef.onDisconnect().remove();
+                            if (!sessionId) {
+                                sessionRef.set({
+                                    customerId: attrs.userId,
+                                    sessionId: sessionID,
+                                    isvalid: 1,
+                                    ifWebRTCSupported: true,
+                                    agentIdToCall: attrs.agentId,
+                                    ifAdminCalling: 0,
+                                    streamId: event.stream.streamId,
+                                    customerName: attrs.userName
+                                });
+                                sessionRef.onDisconnect().remove();
+                            }
                         }
                     }
                 });

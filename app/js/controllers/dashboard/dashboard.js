@@ -58,6 +58,7 @@ angular.module('livewireApp')
 
     $scope.closeVC = function () {
         $rootScope.$broadcast('opentokSessionDisconnect');
+        $rootScope.$broadcast('opentokLoaded'); // So that connecting notification goes away if it exists
         $scope.vcModal.hide();
         if ($rootScope.isProvider()) {
             // Set Provider Available
@@ -131,6 +132,9 @@ angular.module('livewireApp')
                 $scope['current' + type] = agent;
                 vcPopup.close();
                 $scope.showVC(sessionId);
+            } else {
+                vcPopup.close();
+                $rootScope.$broadcast('opentokCallCanceled', sessionId);
             }
         });
     };
