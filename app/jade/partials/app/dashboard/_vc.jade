@@ -3,7 +3,7 @@ ion-modal-view.vc-modal
         button.button(ng-click="showChatFromVC()") Show Chat
         h1.title Video Conferencing
         .buttons
-            button.button.button-clear(ng-click="closeVC()") Close
+            button.button.button-assertive(ng-click="closeVC()") End Call
     ion-content
         div(ng-controller="VideoCtrl")
             opentok-container(user-id="{{user.id}}", user-name="{{user.first_name}}", agent-id="{{currentProvider ? currentProvider.provider.id : currentCustomer.id}}")
