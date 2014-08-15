@@ -1,10 +1,12 @@
 ion-modal-view.selectrole-modal
-    ion-content.has-header.has-subheader.livewire-roleselection
-        .center
-            h2.calm I am a LiveWire ______.
+    ion-content.livewire-roleselection
+        .row.center
+            .col
+                .row.row-center
+                    h2.calm I am a LiveWire ______.
 
-            .row.row-center
-                button.button.button-calm.col-33(ng-click="selectRole('patient')")
-                    | Patient
-                button.button.button-calm.col-33(ng-click="selectRole('provider')")
-                    | Provider
+                .row.row-center
+                    button.button.button-calm.col-33(ng-click="selectRole('patient')")
+                        | Patient
+                    button.button.button-calm.col-33(ng-click="selectRole('provider')")
+                        | Provider

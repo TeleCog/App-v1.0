@@ -1,13 +1,17 @@
 .livewire-roleselection {
+    .scroll {
+        height: 100%;
+    }
+
     h2 {
         text-align: center;
         font-weight: 200;
     }
 
     .center {
-        margin-top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
+        -webkit-align-items: center;
+        align-items: center;
+        height: 100%;
     }
 
     .row {
