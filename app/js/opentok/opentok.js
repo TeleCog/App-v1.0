@@ -7,24 +7,26 @@ angular.module('opentok', [])
         return Math.floor(Math.min(document.height, document.width) * 0.30);
     },
 
+    showViews = true,
+
     updateViews = function () {
         var publisherDiv, subscriberDiv;
 
         publisherDiv = document.getElementById('opentok-publisher');
         if (publisherDiv.style) {
-            publisherDiv.style.width = calculatePublisherSize() + 'px';
+            publisherDiv.style.width = (showViews ? calculatePublisherSize() : 1) + 'px';
             publisherDiv.style.height = publisherDiv.style.width;
             publisherDiv.style.zindex = 20;
         }
 
         subscriberDiv = document.getElementsByClassName('opentok-subscriber')[0];
         if (subscriberDiv.style) {
-            subscriberDiv.style.width = document.width + 'px';
-            subscriberDiv.style.height = document.height + 'px';
+            subscriberDiv.style.width = (showViews ? document.width : 1) + 'px';
+            subscriberDiv.style.height = (showViews ? document.height : 1) + 'px';
             subscriberDiv.style.zindex = 2;
         }
 
-        TB.updateViews();
+        OT.updateViews();
     },
 
     link = function (scope, element, attrs, sessionId) {
@@ -123,7 +125,23 @@ angular.module('opentok', [])
                 });
             });
 
+            $rootScope.$on('maximizeVC', function () {
+                showViews = true;
+                updateViews();
+
+                setTimeout(function () {
+                    OT.updateViews();
+                }, 1000);
+            });
+
+            $rootScope.$on('minimizeVC', function () {
+                showViews = false;
+                updateViews();
+            });
+
             $rootScope.$on('opentokSessionDisconnect', function () {
+                $rootScope.vc = $rootScope.vc || {};
+                $rootScope.vc.vcWindowOpen = false;
                 if (!document.body.classList.contains('platform-android')) {
                     publisher.destroy();
                 }
@@ -144,11 +162,15 @@ angular.module('opentok', [])
         link: function (scope, elem, attrs) {
             if (scope.isDataLoaded) {
                 $rootScope.$on('providersCtrlVCModalShown', function (vcEvent, sessionId) {
+                    $rootScope.vc = $rootScope.vc || {};
+                    $rootScope.vc.vcWindowOpen = true;
                     link(scope, elem, attrs, sessionId);
                 });
             } else {
                 $rootScope.$on('videoCtrlDataLoaded', function () {
                     $rootScope.$on('providersCtrlVCModalShown', function (vcEvent, sessionId) {
+                        $rootScope.vc = $rootScope.vc || {};
+                        $rootScope.vc.vcWindowOpen = true;
                         link(scope, elem, attrs, sessionId);
                     });
                 });

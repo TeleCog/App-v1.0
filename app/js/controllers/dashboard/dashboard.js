@@ -80,8 +80,25 @@ angular.module('livewireApp')
     };
 
     $scope.showVCFromChat = function () {
-        $scope.closeChat();
-        $scope.showVC();
+        $scope.chatModal.hide();
+
+        if ($rootScope.vc && $rootScope.vc.vcWindowOpen) {
+            $rootScope.$broadcast('maximizeVC');
+            $scope.vcModal.show();
+        } else {
+            $scope.showVC();
+        }
+    };
+
+    $scope.showChatFromVC = function () {
+        $rootScope.$broadcast('minimizeVC');
+        $scope.vcModal.hide();
+
+        if ($rootScope.chat && $rootScope.chat.chatWindowOpen) {
+            $scope.chatModal.show();
+        } else {
+            $scope.showChat();
+        }
     };
 
     // Chat Message Notification Popup
