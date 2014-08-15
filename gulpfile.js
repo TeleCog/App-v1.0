@@ -13,8 +13,11 @@
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
     o = require('open'),
+    fs = require('fs'),
     ripple = require('ripple-emulator'),
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence'),
+    exorcist = require('exorcist'),
+    UglifyJS = require("uglify-js");
 
     gulp.task('refresh', function () {
         exec('./node_modules/cordova/bin/cordova', ['prepare']);
@@ -40,18 +43,31 @@
 
     // using vinyl-source-stream:
     gulp.task('scripts', function () {
-        return browserify({
-            debug: true
-        })
+        return browserify()
         .add('./www/js/templates.js')
         .add('./app/js/app.js')
         .transform('debowerify')
-        .bundle()
+        .bundle({
+            debug: true
+        })
+        .pipe(exorcist('./www/js/app.bundle.map'))
         .pipe(source('app.bundle.js'))
-        //.pipe(streamify(uglify()))
         .on('error', gutil.log)
         .on('error', gutil.beep)
         .pipe(gulp.dest('./www/js/'));
+    });
+
+    gulp.task('uglify', function () {
+        var result = UglifyJS.minify([ './www/js/app.bundle.js' ], {
+            inSourceMap: './www/js/app.bundle.map',
+            outSourceMap: 'app.bundle.map',
+            mangle: false
+        });
+        /*jslint stupid: true */
+        fs.writeFileSync('./www/js/app.bundle.js', result.code);
+        fs.writeFileSync('./www/js/app.bundle.map', result.map);
+
+        return gulp.src('./www/js/app.bundle.js');
     });
 
     // Compiles the SASS styles
@@ -95,7 +111,7 @@
             port: 4400
         };
 
-        runSequence(['templates', 'sass'], 'scripts', 'refresh');
+        runSequence(['templates', 'sass'], 'scripts', 'uglify', 'refresh');
 
         // Start livereload server
         livereload.listen();
@@ -103,6 +119,7 @@
         // Watch the JS directory for changes and re-run scripts task when it changes
         gulp.watch(paths.js, function () {
             runSequence('scripts',
+                        'uglify',
                         'refresh',
                         livereload.changed);
         });
@@ -119,6 +136,7 @@
         gulp.watch(paths.templates, function () {
             runSequence('templates',
                         'scripts',
+                        'uglify',
                         'refresh',
                         livereload.changed);
         });
