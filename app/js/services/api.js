@@ -50,6 +50,32 @@ angular.module('livewireApp')
                 }).error(function (data, status) {
                     authFailure(status);
                 });
+            },
+
+            create: function (args) {
+                var type = 'customer', customer_id = args.myId, provider_id = args.foreignId;
+
+                if (AuthService.getRole() === AuthService.Role.provider) {
+                    customer_id = args.foreignId;
+                    provider_id = args.myId;
+                    type = 'provider';
+                }
+
+                return $http.post(config.paths.prefix + config.paths.api.chats.create,
+                                  {
+                                      'access_token': AuthService.retrieveAccessToken(),
+                                      'customer_id': customer_id,
+                                      'provider_id': provider_id,
+                                      'type': type,
+                                      'message': args.message
+                                  },
+                                  {
+                                      'headers': {
+                                          'Accept': 'application/vnd.livewire+json;version=1'
+                                      }
+                                  }).error(function (data, status) {
+                                      authFailure(status);
+                                  });
             }
         },
 

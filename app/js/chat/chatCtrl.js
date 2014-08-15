@@ -55,7 +55,7 @@ module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, 
 
                 $scope.messages[$scope.agentId] = $scope.messages[$scope.agentId] || [];
                 // Merge fetched messages with messages (rightmost element is removed to avoid message duplication)
-                Array.prototype.unshift.apply($scope.messages[$scope.agentId], messages.slice(0, messages.length - 1));
+                Array.prototype.unshift.apply($scope.messages[$scope.agentId], messages);
 
                 // Make the chat window scroll to the bottom 
                 $ionicScrollDelegate.scrollBottom();
@@ -73,6 +73,8 @@ module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, 
                     time: Date.now(),
                     image: $scope.user.image.thumb.url || 'https://www.livewiremedical.com/assets/default_customer.png'
                 };
+
+                ApiService.chats.create({ myId: $scope.user.id, foreignId: $scope.agentId, message: message });
 
                 syncChat.$push(packet).then(function () {
                     packet.name = 'Me';

@@ -13,7 +13,8 @@
             },
 
             "chats": {
-                "index": "/api/chats.json"
+                "index": "/api/chats.json",
+                "create": "/api/chats.json"
             },
 
             "customers": {
