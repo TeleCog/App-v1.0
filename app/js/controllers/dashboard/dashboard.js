@@ -79,6 +79,11 @@ angular.module('livewireApp')
         });
     };
 
+    $scope.showVCFromChat = function () {
+        $scope.closeChat();
+        $scope.showVC();
+    };
+
     // Chat Message Notification Popup
     // Triggered on a button click, or some other target
     $scope.showChatPopup = function (agent, name) {
