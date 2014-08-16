@@ -61,4 +61,15 @@ angular.module('livewireApp')
 
         $scope.filteredCustomers = orderByFilter(customers, $scope.currentFilter);
     };
+
+    $scope.$on('refetchUsers', function (event, deferred) {
+        ApiService.customers.index().then(function () {
+            $scope.$parent.customers = ApiService.getApiData().customers.index;
+            $scope.filterCustomers($scope.customers);
+            deferred.resolve();
+        }, function () {
+            deferred.resolve();
+            console.log("Error");
+        });
+    });
 });

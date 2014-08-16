@@ -138,6 +138,7 @@ angular.module('livewireApp')
             $scope.filterProviders($scope.providers);
             deferred.resolve();
         }, function () {
+            deferred.resolve();
             console.log("Error");
         });
     });

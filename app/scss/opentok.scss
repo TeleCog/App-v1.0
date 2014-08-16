@@ -17,6 +17,48 @@
     z-index: 12;
 }
 
+.livewire-vc {
+    .scroll {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.livewire-loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 13;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-transition: 0.2s opacity linear;
+    -moz-transition: 0.2s opacity linear;
+    transition: 0.2s opacity linear;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 15px;
+}
+
 .platform-ios.platform-cordova .modal-wrapper .vc-modal {
     .bar-header:not(.bar-subheader) {
         height: $bar-height + 20px !important;
