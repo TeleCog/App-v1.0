@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-.controller('DashboardCtrl', function ($scope, $rootScope, $ionicModal, $ionicPopup, HeartbeatService) {
+.controller('DashboardCtrl', function ($scope, $rootScope, $q, $ionicModal, $ionicPopup, HeartbeatService) {
     'use strict';
 
     var createVCModal = function () {
@@ -42,7 +42,7 @@ angular.module('livewireApp')
             return false;
         }
 
-        return ((current.provider && current.provider.availability_new) || current.online);
+        return !!((current.provider && current.provider.availability_new) || current.online);
     };
 
     // Chat Messages Modal
@@ -89,13 +89,53 @@ angular.module('livewireApp')
     };
 
     $scope.showVCFromChat = function () {
+        var deferred, formerCurrentAgent, notOnlinePopup;
+
         $scope.chatModal.hide();
 
         if ($rootScope.vc && $rootScope.vc.vcWindowOpen) {
             $rootScope.$broadcast('maximizeVC');
             $scope.vcModal.show();
         } else {
-            $scope.showVC();
+            // Check if agent is still online
+            deferred = $q.defer();
+            formerCurrentAgent = $scope.currentProvider ? $scope.currentProvider.provider.id : $scope.currentCustomer.id;
+            $scope.$broadcast("refetchUsers", deferred);
+            deferred.promise.then(function () {
+                var type, currentType, i, l, cur;
+
+                // Readd current customer/provider
+                type = $rootScope.isProvider() ? 'customers' : 'providers';
+                currentType = $rootScope.isProvider() ? 'Customer' : 'Provider';
+
+                for (i = 0, l = $scope[type].length; i < l; i++) {
+                    cur = $scope[type][i].provider || $scope[type][i];
+                    if (cur.id === formerCurrentAgent) {
+                        $scope['current' + currentType] = $scope[type][i];
+                        break;
+                    }
+                }
+
+                if (!$scope.isAgentOnline()) {
+                    // Show notification that agent is offline
+                    notOnlinePopup = $ionicPopup.confirm({
+                        template: ($scope.currentProvider ? $scope.currentProvider.provider.name : $scope.currentCustomer.first_name) +
+                            ' is not currently online. Would you like to send them a message?',
+                        title: 'Currently Offline',
+                        cancelText: 'Cancel',
+                        okText: 'Send Message',
+                        okType: 'button-calm'
+                    });
+                    notOnlinePopup.then(function (res) {
+                        if (res) {
+                            notOnlinePopup.close();
+                            $scope.chatModal.show();
+                        }
+                    });
+                } else {
+                    $scope.showVC();
+                }
+            });
         }
     };
 
