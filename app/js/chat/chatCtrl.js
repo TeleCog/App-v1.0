@@ -1,6 +1,6 @@
 var config = require('../config.json');
 
-module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, ApiService) {
+module.exports = function ($scope, $rootScope, $timeout, $ionicScrollDelegate, $firebase, ApiService) {
     'use strict';
 
     var chatRef, syncChat, name, othername, customerOnlineRef, customerRef, syncCustomer;
@@ -37,7 +37,7 @@ module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, 
 
                 // Make the chat window scroll to the bottom 
                 if ($rootScope.chat && $rootScope.chat.chatWindowOpen) {
-                    $ionicScrollDelegate.scrollBottom();
+                    $ionicScrollDelegate.$getByHandle('chatScroll').scrollBottom();
                 } else {
                     $rootScope.$broadcast('chatReceived', agentId);
                 }
@@ -58,7 +58,9 @@ module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, 
                 Array.prototype.unshift.apply($scope.messages[$scope.agentId], messages);
 
                 // Make the chat window scroll to the bottom 
-                $ionicScrollDelegate.scrollBottom();
+                $timeout(function () {
+                    $ionicScrollDelegate.$getByHandle('chatScroll').scrollBottom();
+                }, 60);
             });
 
             // Chat Provider Firebase
@@ -83,7 +85,7 @@ module.exports = function ($scope, $rootScope, $ionicScrollDelegate, $firebase, 
                     $scope.messages[$scope.agentId].push(packet);
 
                     // Make the chat window scroll to the bottom 
-                    $ionicScrollDelegate.scrollBottom();
+                    $ionicScrollDelegate.$getByHandle('chatScroll').scrollBottom();
 
                     // Clear textarea
                     $scope.chat.message = '';
