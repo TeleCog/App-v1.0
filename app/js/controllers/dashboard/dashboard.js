@@ -36,6 +36,15 @@ angular.module('livewireApp')
         $scope.filtersModal.show();
     };
 
+    $scope.isAgentOnline = function () {
+        var current = $scope.currentProvider || $scope.currentCustomer;
+        if (!current) {
+            return false;
+        }
+
+        return ((current.provider && current.provider.availability_new) || current.online);
+    };
+
     // Chat Messages Modal
     $ionicModal.fromTemplateUrl('/partials/app/dashboard/_chat.html', {
         scope: $scope
