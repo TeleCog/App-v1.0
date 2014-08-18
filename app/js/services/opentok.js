@@ -7,10 +7,10 @@ angular.module('livewireApp')
     var sessionID, token;
 
     return {
-        generateToken: function () {
+        generateToken: function (sessionIdParam) { // sessionIdParam can be undefined, if so, sessionID will be used
             var data, time, hash, preCoded;
 
-            if (angular.isUndefined(sessionID) || sessionID === null) {
+            if (!sessionIdParam && (angular.isUndefined(sessionID) || sessionID === null)) {
                 throw {
                     name: 'SessionNotSet',
                     message: 'Session ID is not defined'
@@ -19,7 +19,7 @@ angular.module('livewireApp')
 
             time = Math.floor(Date.now() / 1000);
 
-            data = "session_id=" + sessionID +
+            data = "session_id=" + (sessionIdParam || sessionID) +
                 "&create_time=" + time +
                 "&expire_time=" + (time + 86400) + // seconds in a day
                 "&role=" + 'publisher' +
@@ -39,7 +39,7 @@ angular.module('livewireApp')
         requestSessionID: function () {
             return $http({
                 method: 'POST',
-                url: 'https://api.opentok.com/hl/session/create',
+                url: 'https://api.opentok.com/session/create',
                 data: {"p2p.preference": "disabled"},
                 headers: {
                     'X-TB-PARTNER-AUTH': config.opentok.apiKey + ':' + config.opentok.apiSecret,

@@ -1,8 +1,13 @@
 ion-modal-view.vc-modal
     ion-header-bar
+        button.button(ng-click="showChatFromVC()") Show Chat
         h1.title Video Conferencing
         .buttons
-            button.button.button-clear(ng-click="closeVC()") Close
-    ion-content
+            button.button.button-assertive(ng-click="closeVC()") End Call
+    ion-content.livewire-vc
         div(ng-controller="VideoCtrl")
             opentok-container(user-id="{{user.id}}", user-name="{{user.first_name}}", agent-id="{{currentProvider ? currentProvider.provider.id : currentCustomer.id}}")
+            .row(ng-show="videoLoading")
+                .col
+                    .livewire-loading
+                        | Connecting&nbsp;<i class=ion-loading-c></i>

@@ -13,7 +13,11 @@
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
     o = require('open'),
-    ripple = require('ripple-emulator');
+    fs = require('fs'),
+    ripple = require('ripple-emulator'),
+    runSequence = require('run-sequence'),
+    exorcist = require('exorcist'),
+    UglifyJS = require("uglify-js");
 
     gulp.task('refresh', function () {
         exec('./node_modules/cordova/bin/cordova', ['prepare']);
@@ -23,7 +27,7 @@
     gulp.task('templates', function () {
         var YOUR_LOCALS = {};
 
-        gulp.src('./app/jade/**/*.jade')
+        return gulp.src('./app/jade/**/*.jade')
         .pipe(jade({
             locals: YOUR_LOCALS
         }))
@@ -38,24 +42,37 @@
     });
 
     // using vinyl-source-stream:
-    gulp.task('scripts', ['templates'], function () {
-        browserify({
-            debug: true
-        })
+    gulp.task('scripts', function () {
+        return browserify()
         .add('./www/js/templates.js')
         .add('./app/js/app.js')
         .transform('debowerify')
-        .bundle()
+        .bundle({
+            debug: true
+        })
+        .pipe(exorcist('./www/js/app.bundle.map'))
         .pipe(source('app.bundle.js'))
-        //.pipe(streamify(uglify()))
         .on('error', gutil.log)
         .on('error', gutil.beep)
         .pipe(gulp.dest('./www/js/'));
     });
 
+    gulp.task('uglify', function () {
+        var result = UglifyJS.minify([ './www/js/app.bundle.js' ], {
+            inSourceMap: './www/js/app.bundle.map',
+            outSourceMap: 'app.bundle.map',
+            mangle: false
+        });
+        /*jslint stupid: true */
+        fs.writeFileSync('./www/js/app.bundle.js', result.code);
+        fs.writeFileSync('./www/js/app.bundle.map', result.map);
+
+        return gulp.src('./www/js/app.bundle.js');
+    });
+
     // Compiles the SASS styles
     gulp.task('sass', function () {
-        gulp.src('./app/scss/ionic.app.scss')
+        return gulp.src('./app/scss/ionic.app.scss')
         .pipe(sass())
         .pipe(minifyCss({
             keepSpecialComments: 0
@@ -82,7 +99,7 @@
     });
 
     // The default task
-    gulp.task('default', ['templates', 'scripts', 'sass'], function () {
+    gulp.task('default', function () {
         var paths = {
             sass: ['./app/scss/**/*.scss'],
             js: ['./app/js/**/*.js'],
@@ -94,18 +111,35 @@
             port: 4400
         };
 
+        runSequence(['templates', 'sass'], 'scripts', 'uglify', 'refresh');
+
         // Start livereload server
         livereload.listen();
 
         // Watch the JS directory for changes and re-run scripts task when it changes
-        gulp.watch(paths.js, ['scripts', 'refresh']).on('change', livereload.changed);
+        gulp.watch(paths.js, function () {
+            runSequence('scripts',
+                        'uglify',
+                        'refresh',
+                        livereload.changed);
+        });
 
         // Watch the CSS directory for changes and re-run styles task when it changes
-        gulp.watch(paths.sass, ['sass', 'refresh']).on('change', livereload.changed);
+        gulp.watch(paths.sass, function () {
+            runSequence('sass',
+                        'refresh',
+                        livereload.changed);
+        });
 
         // Watch the Templates directory for changes and re-run scripts task when it changes
         // Scripts depends on templates (semi-hack to get templates to run before scripts
-        gulp.watch(paths.templates, ['scripts', 'refresh']).on('change', livereload.changed);
+        gulp.watch(paths.templates, function () {
+            runSequence('templates',
+                        'scripts',
+                        'uglify',
+                        'refresh',
+                        livereload.changed);
+        });
 
         // Start the ripple server
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;

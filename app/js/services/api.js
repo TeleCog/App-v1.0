@@ -25,6 +25,60 @@ angular.module('livewireApp')
             return apiData;
         },
 
+        chats: {
+            index: function (args) {
+                var type = 'customer', foreignId = args.foreignId,
+                customer_id = args.myId, provider_id = args.foreignId;
+
+                if (AuthService.getRole() === AuthService.Role.provider) {
+                    customer_id = args.foreignId;
+                    provider_id = args.myId;
+                    type = 'provider';
+                }
+
+                return $http.get(config.paths.prefix + config.paths.api.chats.index +
+                                 '?access_token=' + encodeURIComponent(AuthService.retrieveAccessToken()) +
+                                 '&customer_id=' + customer_id + '&provider_id=' + provider_id + '&type=' + type,
+                {
+                    'headers': {
+                        'Accept': 'application/vnd.livewire+json;version=1'
+                    }
+                }).success(function (data) {
+                    apiData.chats = apiData.chats || {};
+                    apiData.chats.index = apiData.chats.index || {};
+                    apiData.chats.index[foreignId] = data;
+                }).error(function (data, status) {
+                    authFailure(status);
+                });
+            },
+
+            create: function (args) {
+                var type = 'customer', customer_id = args.myId, provider_id = args.foreignId;
+
+                if (AuthService.getRole() === AuthService.Role.provider) {
+                    customer_id = args.foreignId;
+                    provider_id = args.myId;
+                    type = 'provider';
+                }
+
+                return $http.post(config.paths.prefix + config.paths.api.chats.create,
+                                  {
+                                      'access_token': AuthService.retrieveAccessToken(),
+                                      'customer_id': customer_id,
+                                      'provider_id': provider_id,
+                                      'type': type,
+                                      'message': args.message
+                                  },
+                                  {
+                                      'headers': {
+                                          'Accept': 'application/vnd.livewire+json;version=1'
+                                      }
+                                  }).error(function (data, status) {
+                                      authFailure(status);
+                                  });
+            }
+        },
+
         providers: {
             me: function () {
                 return $http.get(config.paths.prefix + config.paths.api.providers.me +

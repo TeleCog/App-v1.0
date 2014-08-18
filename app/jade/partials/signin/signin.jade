@@ -1,6 +1,6 @@
-ion-view(title="LiveWire Sign-In")
-    ion-nav-bar.bar-calm(ng-hide="true")
-        ion-nav-back-button.button-icon.ion-arrow-left-c
+ion-view(title="LiveWire {{getRoleSelection().charAt(0).toUpperCase() + getRoleSelection().slice(1)}} Sign-In")
+    ion-nav-bar.bar-calm(ng-show="true")
+        ion-nav-back-button.button-icon.ion-arrow-left-c(ng-click="createRoleModal()")
     ion-content(class="livewire-signin has-header")
         h2.calm Log in to your account
 
@@ -18,7 +18,8 @@ ion-view(title="LiveWire Sign-In")
         .padding
             .row
                 p.text-center.col.col-75
-                    a.calm(ng-href="{{(getRoleSelection() === 'provider') ? 'https://provider.livewiremedical.com/providers/sign_up' : '#/register'}}") New to LiveWire? Sign up here
+                    a.calm(ng-click="registrationLink()", ng-show="getRoleSelection() === 'provider'") New to LiveWire? Sign up here
+                    a.calm(href="#/register", ng-show="getRoleSelection() !== 'provider'") New to LiveWire? Sign up here
             .row
                 p.text-center.col.col-75
-                    a.calm(ng-href="https://{{(getRoleSelection() === 'provider') ? 'provider' : 'www'}}.livewiremedical.com/{{getRoleSelection()}}s/password/new") Forgot your password?
+                    a.calm(ng-click="resetPasswordLink()") Forgot your password?

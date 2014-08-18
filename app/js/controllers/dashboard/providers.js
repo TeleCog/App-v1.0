@@ -12,11 +12,13 @@ angular.module('livewireApp')
 
         // Medical Specialty
         for (specialty_key in $scope.filterToggles.medical_specialty) {
-            count += 1;
+            if ($scope.filterToggles.medical_specialty[specialty_key]) {
+                count += 1;
 
-            if ($scope.filterToggles.medical_specialty[specialty_key] && provider.provider.medical_specialty === specialty_key) {
-                result = true;
-                break;
+                if (provider.provider.medical_specialty === specialty_key) {
+                    result = true;
+                    break;
+                }
             }
         }
         if (count === 0) {
@@ -88,6 +90,7 @@ angular.module('livewireApp')
         $scope.filteredProviders = filterFilter(providers, evalProvider);
         $scope.filteredProviders = orderByFilter($scope.filteredProviders, '-provider.availability_new');
 
+        // So that the initial select institution modal stays open
         if (!show) {
             $scope.closeFiltersModal();
         }
@@ -127,5 +130,17 @@ angular.module('livewireApp')
         institutions: {},
         provider_type: {}
     };
+
+    $scope.$on('refetchUsers', function (event, deferred) {
+        ApiService.providers.index().then(function () {
+            $scope.$parent.providers = ApiService.getApiData().providers.index.providers;
+            $scope.filters = ApiService.getApiData().providers.index.filters;
+            $scope.filterProviders($scope.providers);
+            deferred.resolve();
+        }, function () {
+            deferred.resolve();
+            console.log("Error");
+        });
+    });
 
 });

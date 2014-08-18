@@ -10,6 +10,7 @@ app.bundle.js
 # Copied files
 platforms/android/assets/www/
 platforms/ios/www/
+www/js/app.bundle.map
 www/js/templates.js
 www/partials
 

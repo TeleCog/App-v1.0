@@ -1,13 +1,15 @@
-var isodate = require('../../util/isodate');
-
 angular.module('livewireApp')
-.controller('CustomersCtrl', function ($scope, $ionicModal, $ionicLoading, filterFilter, orderByFilter, ApiService) {
+.controller('CustomersCtrl', function ($scope, $ionicModal, $ionicLoading, orderByFilter, HeartbeatService, ApiService) {
     'use strict';
 
     // Spinner on page load while customers are being fetched
     $ionicLoading.show({
         template: 'Loading <i class=ion-loading-c></i>'
     });
+
+    // Set Provider Available
+    // in_call is false
+    HeartbeatService.available(false);
 
     // Fetch list of provider's customers
     ApiService.customers.index().then(function () {
@@ -21,18 +23,7 @@ angular.module('livewireApp')
 
     // Determine if user is online
     $scope.isCustomerOnline = function (customer) {
-        var interval;
-
-        if (!customer || !customer.last_time_online) {
-            return false;
-        }
-
-        interval = Date.now() - isodate(customer.last_time_online);
-        if (interval > 10 * 60 * 1000) { // Ten minutes
-            return false;
-        }
-
-        return true;
+        return customer ? customer.online : false;
     };
 
     // Customers Description Modal
@@ -58,52 +49,27 @@ angular.module('livewireApp')
         });
     };
 
-    // Filters
-    $scope.filters = {
-        firstName: '',
-        lastName: ''
-    };
-
-    // Years for DOB filter
-    $scope.years = (function () {
-        var i = 0, start = (new Date()).getFullYear(), years = ['All'];
-
-        for (i = 0; i < 100; i++) {
-            years.push(start - i);
+    // Filter customers
+    $scope.filterCustomers = function (customers, predicate) {
+        if (predicate) {
+            $scope.currentFilter = predicate;
         }
 
-        return years;
-    }());
+        if (!$scope.currentFilter) {
+            return;
+        }
 
-    // Months for DOB filter
-    $scope.months = ['All', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-    // Filters Modal
-    $ionicModal.fromTemplateUrl('/partials/app/dashboard/provider/_filters.html', {
-        scope: $scope
-    }).then(function (modal) {
-        $scope.createVisibleModalFn('filtersModal', modal);
-    });
-
-    // Filter customers
-    $scope.filterCustomers = function (customers) {
-        $scope.filteredCustomers = filterFilter(customers, function (customer) {
-            var result;
-
-            if ($scope.filters.firstName.length > 0) {
-                result = customer.first_name.indexOf($scope.filters.firstName) !== -1;
-            } else {
-                result = true;
-            }
-
-            if ($scope.filters.lastName.length > 0) {
-                result = customer.last_name.indexOf($scope.filters.lastName) !== -1;
-            }
-
-            // TODO DOB Filtering
-
-            return result;
-        });
-        $scope.closeFiltersModal();
+        $scope.filteredCustomers = orderByFilter(customers, $scope.currentFilter);
     };
+
+    $scope.$on('refetchUsers', function (event, deferred) {
+        ApiService.customers.index().then(function () {
+            $scope.$parent.customers = ApiService.getApiData().customers.index;
+            $scope.filterCustomers($scope.customers);
+            deferred.resolve();
+        }, function () {
+            deferred.resolve();
+            console.log("Error");
+        });
+    });
 });

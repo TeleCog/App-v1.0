@@ -15,6 +15,10 @@
         -webit-justify-content: center;
     }
 
+    .filter-active {
+        color: $light !important;
+    }
+
     button {
         margin-right: 10px;
         color: $positive !important;
@@ -25,8 +29,11 @@
     h5 {
         text-align: center;
         color: $light !important;
-        margin-top: 3px;
-        margin-bottom: 0 !important;
+
+        @media (max-width: 567px) {
+            margin: 0;
+            margin-bottom: 0 !important;
+        }
     }
 
     .col-filterbuttons {
@@ -58,6 +65,12 @@
         -webkit-flex-wrap: wrap;
         justify-content: center;
         -webkit-justify-content: center;
+        width: 100%;
+    }
+
+    // Remove margin from last card element
+    .list:last-child.card {
+        margin-bottom: auto !important;
     }
 }
 

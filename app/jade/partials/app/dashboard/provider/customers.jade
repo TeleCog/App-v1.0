@@ -1,20 +1,21 @@
 ion-view(title="Patients")
+    //- Hide menu button for now
     ion-nav-buttons(side="left")
-        button.button.button-icon.icon.ion-navicon(menu-toggle="left")
+        button.button.button-icon.icon.ion-navicon(menu-toggle="left", ng-hide="true")
     ion-nav-buttons(side="right")
         button.button(ng-click="signOut()")
             | Sign Out
     ion-header-bar.bar.bar-subheader.bar-calm.livewire-filterbar(push-content="true")
         .row.responsive-sm
             h5.col.col-25
-                | Refine your search:
+                | Sort by:
             .col.col-filterbuttons
                 .row
-                    button.button.button-light.col(ng-click="selectFilter('firstName')")
+                    button.button.col(ng-click="filterCustomers(customers, 'first_name')", ng-class="(currentFilter === 'first_name') ? 'button-positive filter-active' : 'button-light'")
                         | First Name
-                    button.button.button-light.col(ng-click="selectFilter('lastName')")
+                    button.button.col(ng-click="filterCustomers(customers, 'last_name')", ng-class="(currentFilter === 'last_name') ? 'button-positive filter-active' : 'button-light'")
                         | Last Name
-                    button.button.button-light.col(ng-click="selectFilter('dob')")
+                    button.button.col(ng-click="filterCustomers(customers, 'dob')", ng-class="(currentFilter === 'dob') ? 'button-positive filter-active' : 'button-light'")
                         | D.O.B
     ion-content.has-header.livewire-providers
         ion-refresher(pulling-text="Pull to refresh...", on-refresh="doRefresh()")
@@ -28,6 +29,6 @@ ion-view(title="Patients")
                         | {{customer.first_name}} {{customer.last_name}}
                     p {{customer.dob || '--'}}
                 .item.item-image
-                    img(ng-src="{{customer.image.thumb.url}}")
+                    img(ng-src="{{customer.image.image.thumb.url}}")
                 .badge.badge-energized.provider-availability(ng-show="isCustomerOnline(customer)")
                     span Available Now

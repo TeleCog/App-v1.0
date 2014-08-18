@@ -1,6 +1,6 @@
 {
     "name": "livewireapp",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "LiveWire mobile app",
     "dependencies": {
         "browserify": "^4.1.11",
@@ -22,6 +22,9 @@
     },
     "devDependencies": {
         "bower": "^1.3.3",
-        "shelljs": "^0.3.0"
+        "exorcist": "^0.1.6",
+        "run-sequence": "^0.3.6",
+        "shelljs": "^0.3.0",
+        "uglify-js": "^2.4.15"
     }
 }

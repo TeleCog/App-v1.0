@@ -1,0 +1,4 @@
+// Modal does not receive touch events without this
+.modal-open .modal, .modal-open .modal-backdrop {
+    pointer-events: auto !important;
+}

@@ -7,11 +7,19 @@
         "api": {
             "providers": {
                 "me": "/api/provider/providers/me.json",
+                "setOnlineHeartBeat": "/api/provider/providers/setOnlineHeartBeat.json",
+                "available": "/api/provider/providers/available.json",
                 "index": "/api/customer/providers.json"
+            },
+
+            "chats": {
+                "index": "/api/chats.json",
+                "create": "/api/chats.json"
             },
 
             "customers": {
                 "me": "/api/customer/customers/me.json",
+                "setOnlineHeartBeat": "/api/customer/customers/setOnlineHeartBeat.json",
                 "index": "/api/provider/customers.json"
             },
 
@@ -27,8 +35,8 @@
     },
 
     "opentok": {
-        "apiKey": "44899462",
-        "apiSecret": "fb2e1be11d66d44ef40f474d2b9f6d482cd7bd67"
+        "apiKey": "44942032",
+        "apiSecret": "09d9e1201742f444f586a18895a56938c11bba34"
     },
 
     "firebase": {

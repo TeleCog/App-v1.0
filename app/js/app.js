@@ -25,12 +25,19 @@
             }
 
             // HockeyApp SDK
-            if (!window.tinyHippos) {
+            if (!window.tinyHippos && window.hockeyapp) {
+                var hockeyAppKey;
+                if (document.body.classList.contains('platform-android')) {
+                    hockeyAppKey = '1ece6be4a8270fd8f507a1136670b9f3';
+                } else {
+                    hockeyAppKey = 'df827303790bb10d09a30f9622adf145';
+                }
+
                 hockeyapp.start(function () {
                     console.log("HockeyApp started");
                 }, function () {
                     console.log("HockeyApp could not start");
-                }, "df827303790bb10d09a30f9622adf145");
+                }, hockeyAppKey);
             }
 
             // Hide Splash Screen
@@ -123,4 +130,5 @@
     require('./services/api');
     require('./services/auth');
     require('./services/opentok');
+    require('./services/heartbeat');
 }());
