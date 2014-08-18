@@ -25,7 +25,7 @@
             }
 
             // HockeyApp SDK
-            if (!window.tinyHippos) {
+            if (!window.tinyHippos && window.hockeyapp) {
                 var hockeyAppKey;
                 if (document.body.classList.contains('platform-android')) {
                     hockeyAppKey = '1ece6be4a8270fd8f507a1136670b9f3';
