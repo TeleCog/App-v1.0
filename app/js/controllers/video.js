@@ -81,14 +81,12 @@ angular.module('livewireApp')
 
     $rootScope.$on('opentokLoading', function () {
         console.log('Received: OpentokLoading');
-        $ionicLoading.show({
-            template: 'Connecting <i class=ion-loading-c></i>'
-        });
+        $scope.videoLoading = true;
     });
 
     $rootScope.$on('opentokLoaded', function () {
         console.log('Received: OpentokLoaded');
-        $ionicLoading.hide();
+        $scope.videoLoading = false;
     });
 
     $rootScope.$on('opentokCallCanceled', function (event, sessionId) {

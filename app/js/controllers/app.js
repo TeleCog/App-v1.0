@@ -1,17 +1,11 @@
 angular.module('livewireApp')
 
-.controller('AppCtrl', function ($scope, $state, $ionicViewService, AuthService) {
+.controller('AppCtrl', function ($scope, $window, AuthService) {
     'use strict';
 
     $scope.signOut = function () {
         AuthService.invalidateToken();
-
-        // So that there won't be back button
-        $ionicViewService.nextViewOptions({
-            disableAnimate: true,
-            disableBack: true
-        });
-        $state.go('signin');
+        $window.location.reload();
     };
 
     console.log("AppCtrl");

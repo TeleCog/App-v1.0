@@ -90,6 +90,7 @@ angular.module('livewireApp')
         $scope.filteredProviders = filterFilter(providers, evalProvider);
         $scope.filteredProviders = orderByFilter($scope.filteredProviders, '-provider.availability_new');
 
+        // So that the initial select institution modal stays open
         if (!show) {
             $scope.closeFiltersModal();
         }
@@ -129,5 +130,17 @@ angular.module('livewireApp')
         institutions: {},
         provider_type: {}
     };
+
+    $scope.$on('refetchUsers', function (event, deferred) {
+        ApiService.providers.index().then(function () {
+            $scope.$parent.providers = ApiService.getApiData().providers.index.providers;
+            $scope.filters = ApiService.getApiData().providers.index.filters;
+            $scope.filterProviders($scope.providers);
+            deferred.resolve();
+        }, function () {
+            deferred.resolve();
+            console.log("Error");
+        });
+    });
 
 });
