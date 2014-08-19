@@ -17,10 +17,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"HockeyApp\"><param name=\"ios-package\" value=\"HockeyApp\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
                             "count": 1
                         },
@@ -50,13 +46,13 @@
                     "Foundation.framework": [
                         {
                             "xml": "false",
-                            "count": 2
+                            "count": 1
                         }
                     ],
                     "UIKit.framework": [
                         {
                             "xml": "false",
-                            "count": 2
+                            "count": 1
                         }
                     ],
                     "AVFoundation.framework": [
@@ -68,7 +64,7 @@
                     "QuartzCore.framework": [
                         {
                             "xml": "false",
-                            "count": 2
+                            "count": 1
                         }
                     ],
                     "OpenGLES.framework": [
@@ -92,7 +88,7 @@
                     "Security.framework": [
                         {
                             "xml": "false",
-                            "count": 2
+                            "count": 1
                         }
                     ],
                     "CoreMedia.framework": [
@@ -104,7 +100,7 @@
                     "SystemConfiguration.framework": [
                         {
                             "xml": "false",
-                            "count": 2
+                            "count": 1
                         }
                     ],
                     "CFNetwork.framework": [
@@ -143,16 +139,11 @@
                             "count": 1
                         }
                     ],
-                    "CoreText.framework": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
+                    "CoreText.framework": [],
                     "CoreGraphics.framework": [
                         {
                             "xml": "false",
-                            "count": 3
+                            "count": 2
                         }
                     ]
                 }
@@ -164,9 +155,6 @@
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         },
         "com.tokbox.cordova.opentok": {
-            "PACKAGE_NAME": "com.livewiretax.livewireapp"
-        },
-        "com.zengularity.cordova.hockeyapp": {
             "PACKAGE_NAME": "com.livewiretax.livewireapp"
         },
         "org.apache.cordova.console": {

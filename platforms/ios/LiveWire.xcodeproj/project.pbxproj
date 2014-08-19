@@ -58,10 +58,6 @@
 		5E2D52E660064DD8B02AF400 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB37928F84241109D807C2A /* libz.dylib */; };
 		765588E15B7342F5BF9F702F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 698E32ECA7C24EF7B52965B4 /* libsqlite3.dylib */; };
 		EA49E9297BD0423EAA0D4AEC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F63E06B7671F42FBB8B834A9 /* libxml2.dylib */; };
-		09C1A6E1C25B49D581E885C2 /* HockeyApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 756FD0DF32C24A9D8A86A843 /* HockeyApp.m */; };
-		DE248BD28A094F0F8BC43F39 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 74ADD3C353B64740986FAFCA /* HockeySDKResources.bundle */; };
-		8823973B480A471BB297CD0B /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA660E88355415CA5E58E31 /* HockeySDK.framework */; };
-		BFEAD69F5BD5461192E5B18C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263DEB14639246F8A6469BC2 /* CoreText.framework */; };
 		D9F23FA7CF7B4365B733227E /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E3B9DA8F7B4186AD176AF8 /* CDVLogger.m */; };
 		6DA9A9E3B9A34E068A026CD1 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACD68D594EE4A7485CC7A89 /* CDVDevice.m */; };
 		C107E9A257384BC0AF0268E1 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 230BE6CCA17546A7A0BCDD7C /* CDVInAppBrowser.m */; };
@@ -153,11 +149,6 @@
 		ADB37928F84241109D807C2A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libz.dylib"; path = "usr/lib/libz.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
 		698E32ECA7C24EF7B52965B4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsqlite3.dylib"; path = "usr/lib/libsqlite3.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
 		F63E06B7671F42FBB8B834A9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libxml2.dylib"; path = "usr/lib/libxml2.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
-		756FD0DF32C24A9D8A86A843 /* HockeyApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "HockeyApp.m"; path = "com.zengularity.cordova.hockeyapp/HockeyApp.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		0917B457B1E34671AEDADB31 /* HockeyApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HockeyApp.h"; path = "com.zengularity.cordova.hockeyapp/HockeyApp.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		74ADD3C353B64740986FAFCA /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "HockeySDKResources.bundle"; path = "HockeySDKResources.bundle"; sourceTree = "<group>"; };
-		BBA660E88355415CA5E58E31 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "HockeySDK.framework"; path = "LiveWire/Plugins/com.zengularity.cordova.hockeyapp/HockeySDK.framework"; sourceTree = "<group>"; };
-		263DEB14639246F8A6469BC2 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreText.framework"; path = "System/Library/Frameworks/CoreText.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		52E3B9DA8F7B4186AD176AF8 /* CDVLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLogger.m"; path = "org.apache.cordova.console/CDVLogger.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		18AAA9D0AC80409183BB1A9B /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		8ACD68D594EE4A7485CC7A89 /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
@@ -195,8 +186,6 @@
 				5E2D52E660064DD8B02AF400 /* libz.dylib in Frameworks */,
 				765588E15B7342F5BF9F702F /* libsqlite3.dylib in Frameworks */,
 				EA49E9297BD0423EAA0D4AEC /* libxml2.dylib in Frameworks */,
-				8823973B480A471BB297CD0B /* HockeySDK.framework in Frameworks */,
-				BFEAD69F5BD5461192E5B18C /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +267,6 @@
 				308D052D1370CCF300D202BF /* icons */,
 				308D05311370CCF300D202BF /* splash */,
 				8D1107310486CEB800E47090 /* LiveWire-Info.plist */,
-				74ADD3C353B64740986FAFCA /* HockeySDKResources.bundle */,
 			);
 			name = Resources;
 			path = "LiveWire/Resources";
@@ -308,8 +296,6 @@
 				ADB37928F84241109D807C2A /* libz.dylib */,
 				698E32ECA7C24EF7B52965B4 /* libsqlite3.dylib */,
 				F63E06B7671F42FBB8B834A9 /* libxml2.dylib */,
-				BBA660E88355415CA5E58E31 /* HockeySDK.framework */,
-				263DEB14639246F8A6469BC2 /* CoreText.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -331,8 +317,6 @@
 				EB072558B01D4F8990938B1A /* UIWebViewExtension.h */,
 				3328B1C90A884F22AF60F501 /* OpenTokPlugin.m */,
 				0E98C2B45BCC466CA9F38781 /* OpenTokPlugin.h */,
-				756FD0DF32C24A9D8A86A843 /* HockeyApp.m */,
-				0917B457B1E34671AEDADB31 /* HockeyApp.h */,
 				52E3B9DA8F7B4186AD176AF8 /* CDVLogger.m */,
 				18AAA9D0AC80409183BB1A9B /* CDVLogger.h */,
 				8ACD68D594EE4A7485CC7A89 /* CDVDevice.m */,
@@ -504,7 +488,6 @@
 				7E7966E11810823500FA85AD /* icon-50@2x.png in Resources */,
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
-				DE248BD28A094F0F8BC43F39 /* HockeySDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,7 +522,6 @@
 				93CEA0CF149145FD9729781B /* IonicKeyboard.m in Sources */,
 				DD0FE52BAFF74C828FAE4D5B /* UIWebViewExtension.m in Sources */,
 				0F0153424AAE4B2D8044CC1D /* OpenTokPlugin.m in Sources */,
-				09C1A6E1C25B49D581E885C2 /* HockeyApp.m in Sources */,
 				D9F23FA7CF7B4365B733227E /* CDVLogger.m in Sources */,
 				6DA9A9E3B9A34E068A026CD1 /* CDVDevice.m in Sources */,
 				C107E9A257384BC0AF0268E1 /* CDVInAppBrowser.m in Sources */,
