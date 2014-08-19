@@ -35,7 +35,7 @@
                 "parents": {
                     "/manifest": [
                         {
-                            "xml": "<uses-sdk android:minSdkVersion=\"16\" android:targetSdkVersion=\"19\" />",
+                            "xml": "<uses-sdk android:minSdkVersion=\"16\" android:targetSdkVersion=\"17\" />",
                             "count": 1
                         },
                         {
