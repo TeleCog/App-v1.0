@@ -67,9 +67,5 @@
     <splash platform="ios" src="res/splash/ios/screen-iphone-portrait-2x.png" />
     <splash platform="ios" src="res/splash/ios/screen-iphone-portrait.png" />
     <splash platform="ios" src="res/splash/ios/screen-iphone-portrait-568h-2x.png" />
-    <splash density="ldpi" orientation="port" platform="android" src="res/splash/android/screen-ldpi-portrait.png" />
-    <splash density="mdpi" orientation="port" platform="android" src="res/splash/android/screen-mdpi-portrait.png" />
-    <splash density="hdpi" orientation="port" platform="android" src="res/splash/android/screen-hdpi-portrait.png" />
-    <splash density="xhdpi" orientation="port" platform="android" src="res/splash/android/screen-xhdpi-portrait.png" />
     <icon src="res/icons/" />
 </widget>

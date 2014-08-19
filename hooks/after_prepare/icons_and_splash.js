@@ -77,10 +77,14 @@
                 'icon-48-mdpi.png': 'icon.png',
                 'icon-72-hdpi.png': 'icon.png',
                 'icon-96-xhdpi.png': 'icon.png',
-                'screen-ldpi-portrait.png': 'screen.png',
-                'screen-mdpi-portrait.png': 'screen.png',
-                'screen-hdpi-portrait.png': 'screen.png',
-                'screen-xhdpi-portrait.png': 'screen.png'
+                'screen-ldpi-portrait.9.png': 'screen.9.png',
+                'screen-mdpi-portrait.9.png': 'screen.9.png',
+                'screen-hdpi-portrait.9.png': 'screen.9.png',
+                'screen-xhdpi-portrait.9.png': 'screen.9.png',
+                'screen-ldpi-landscape.9.png': 'screen.9.png',
+                'screen-mdpi-landscape.9.png': 'screen.9.png',
+                'screen-hdpi-landscape.9.png': 'screen.9.png',
+                'screen-xhdpi-landscape.9.png': 'screen.9.png'
             }
         },
         blackberry10: {},
