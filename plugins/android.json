@@ -62,8 +62,7 @@
                             "xml": "<uses-feature android:name=\"android.hardware.camera.autofocus\" android:required=\"true\" />",
                             "count": 1
                         }
-                    ],
-                    "/manifest/application": []
+                    ]
                 }
             },
             "config.xml": {

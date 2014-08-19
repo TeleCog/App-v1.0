@@ -38,30 +38,30 @@
 		7E7966E61810823500FA85AD /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DC1810823500FA85AD /* icon-small.png */; };
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
-		93CEA0CF149145FD9729781B /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 753DDE6FC381442F8F48DDC0 /* IonicKeyboard.m */; };
-		DD0FE52BAFF74C828FAE4D5B /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67D4631B7C4CCBA42CDFBF /* UIWebViewExtension.m */; };
-		0F0153424AAE4B2D8044CC1D /* OpenTokPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3328B1C90A884F22AF60F501 /* OpenTokPlugin.m */; };
-		D61F5C5A6F90411480AB0AF7 /* Opentok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 329C89B9365B4ED8BA3178B9 /* Opentok.framework */; };
-		6BD5C3F3B1684658BF341C18 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E663D106D508469ABA7B87E3 /* Foundation.framework */; };
-		93C5B6E0357840BA8CF234FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8C628F21A54143BA69C11B /* UIKit.framework */; };
-		06588DED53C14E4BA05D1F0A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D8E2BC79B947108DD5F578 /* AVFoundation.framework */; };
-		B50AD58B522E4CE2A9877341 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1BE45DD60254F6ABEDBA6BA /* QuartzCore.framework */; };
-		781A9C92051343E2B0B4202F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73777187D240442793861E78 /* OpenGLES.framework */; };
-		FB8F17517B5B48B6A3636512 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A781E4A186E94570AA69226A /* CoreVideo.framework */; };
-		49A3E40C4C3C4DB4B2935848 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DA6E4FEDAF43E08C4AD331 /* AudioToolbox.framework */; };
-		B5CF32DD098E41D1850C0C0F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD857F284AD74356AAAB033D /* Security.framework */; };
-		192A6C77CB2D4A0A974780D4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7374606AAC264FF3AC7C0E55 /* CoreMedia.framework */; };
-		C65F8633A28B4CB9A73B807A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAFDD99F28C64939BE1C3963 /* SystemConfiguration.framework */; };
-		4DBDF0897FC44638A385538B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C7E894C24442DB9D677B7E /* CFNetwork.framework */; };
-		18746BC323534D4CA07FFD51 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E203F15DB20C46388AB45631 /* CoreTelephony.framework */; };
-		AF43BF5D8DB64B348398CF37 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 326011E1BBAD41059EF7DEBA /* libstdc++.6.0.9.dylib */; };
-		5E2D52E660064DD8B02AF400 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB37928F84241109D807C2A /* libz.dylib */; };
-		765588E15B7342F5BF9F702F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 698E32ECA7C24EF7B52965B4 /* libsqlite3.dylib */; };
-		EA49E9297BD0423EAA0D4AEC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F63E06B7671F42FBB8B834A9 /* libxml2.dylib */; };
-		D9F23FA7CF7B4365B733227E /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E3B9DA8F7B4186AD176AF8 /* CDVLogger.m */; };
-		6DA9A9E3B9A34E068A026CD1 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACD68D594EE4A7485CC7A89 /* CDVDevice.m */; };
-		C107E9A257384BC0AF0268E1 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 230BE6CCA17546A7A0BCDD7C /* CDVInAppBrowser.m */; };
-		F89FD6686AE3440094D77436 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 13AA33C2F9C9452BA46343F5 /* CDVSplashScreen.m */; };
+		710364FFEFDA4D4DBC420F50 /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBE99154601483E970DB698 /* IonicKeyboard.m */; };
+		C0FB6C44F323440AAD4619FC /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2AADCB5FE429B9E5DB4FD /* UIWebViewExtension.m */; };
+		3D28E6E3629D4538A3B4E0EA /* OpenTokPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC4513F5B44FB8BCDC9FDB /* OpenTokPlugin.m */; };
+		BEE2748F95A64826BB8ADF7B /* Opentok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51928FBE1524D968D079C9C /* Opentok.framework */; };
+		FC80B80A21A640FF9BED8DF9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF2B3BD59654E6FB2526587 /* Foundation.framework */; };
+		6FCB7D8E07A4417CB82AD2D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524FC792E4DD4F89BE73B1CE /* UIKit.framework */; };
+		AC41B0DE600E4E46981C9675 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75C93127A5B45CC8409EE44 /* AVFoundation.framework */; };
+		A17E143D58634A0B94F6A791 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB1F9D7DD6994F4DA7849015 /* QuartzCore.framework */; };
+		E8E8F31DDAE2422B89C5B02E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7513B414780F4FC7A58125C2 /* OpenGLES.framework */; };
+		B5F46808DE2241CC9DC34F4E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD130AED2E440FBBD3EEED9 /* CoreVideo.framework */; };
+		1E5BBEFE4DCE4F8480DC211C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA26310D97B4441B8DE037DB /* AudioToolbox.framework */; };
+		DC649B2B7A454322B4BE86F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2DEAD6D3B474187B27D1993 /* Security.framework */; };
+		55C4D8C76545428F8A7FA00B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B176A962C23D4C3F9083AE6F /* CoreMedia.framework */; };
+		38E01DE331DF402685EAC97A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E20F9C397E547E1A6D2C2AD /* SystemConfiguration.framework */; };
+		5C3BB4326D14495B92943CDC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA0C378CCC34E519024A471 /* CFNetwork.framework */; };
+		AA9EBA61F04B428991996D6A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C33D343A8C4DE0A3A48D0E /* CoreTelephony.framework */; };
+		9D9A8D7D33C2428C8F2B636A /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C41B517B19E249B59C44FE5F /* libstdc++.6.0.9.dylib */; };
+		2FEBEDEC8D3B494791A7BF07 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E6262B380401470D9FBD5876 /* libz.dylib */; };
+		DC728D66C9BB4F759AD237E6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCD7458BAA74549BD13D303 /* libsqlite3.dylib */; };
+		2C6CC1238F2D486F88050202 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A07C838184D047678DFD3D7D /* libxml2.dylib */; };
+		F28D9AD4D7D7400C9921586B /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEC6FD3D29B4967BED2BA53 /* CDVLogger.m */; };
+		0FEC32501BB04D56BF8BB3CE /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B39B85CA89184045B25AB5DD /* CDVDevice.m */; };
+		94997DB1E369419AA7AA9B9D /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFE3E5789C84C43A1252E88 /* CDVInAppBrowser.m */; };
+		F9CB379A6F0F48ECABB3F676 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5729460EDE450FB3D3C6D5 /* CDVSplashScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,37 +126,37 @@
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "LiveWire/config.xml"; sourceTree = "<group>"; };
-		753DDE6FC381442F8F48DDC0 /* IonicKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "IonicKeyboard.m"; path = "com.ionic.keyboard/IonicKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		AC67D4631B7C4CCBA42CDFBF /* UIWebViewExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIWebViewExtension.m"; path = "com.ionic.keyboard/UIWebViewExtension.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		5F27AC00578F493E8E2B7CB0 /* IonicKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "IonicKeyboard.h"; path = "com.ionic.keyboard/IonicKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		EB072558B01D4F8990938B1A /* UIWebViewExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIWebViewExtension.h"; path = "com.ionic.keyboard/UIWebViewExtension.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		3328B1C90A884F22AF60F501 /* OpenTokPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "OpenTokPlugin.m"; path = "com.tokbox.cordova.opentok/OpenTokPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		0E98C2B45BCC466CA9F38781 /* OpenTokPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "OpenTokPlugin.h"; path = "com.tokbox.cordova.opentok/OpenTokPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		329C89B9365B4ED8BA3178B9 /* Opentok.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Opentok.framework"; path = "LiveWire/Plugins/com.tokbox.cordova.opentok/Opentok.framework"; sourceTree = "<group>"; };
-		E663D106D508469ABA7B87E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		7F8C628F21A54143BA69C11B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		92D8E2BC79B947108DD5F578 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		F1BE45DD60254F6ABEDBA6BA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		73777187D240442793861E78 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "OpenGLES.framework"; path = "System/Library/Frameworks/OpenGLES.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		A781E4A186E94570AA69226A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreVideo.framework"; path = "System/Library/Frameworks/CoreVideo.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		D2DA6E4FEDAF43E08C4AD331 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		CD857F284AD74356AAAB033D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Security.framework"; path = "System/Library/Frameworks/Security.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		7374606AAC264FF3AC7C0E55 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreMedia.framework"; path = "System/Library/Frameworks/CoreMedia.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		AAFDD99F28C64939BE1C3963 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		37C7E894C24442DB9D677B7E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CFNetwork.framework"; path = "System/Library/Frameworks/CFNetwork.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		E203F15DB20C46388AB45631 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreTelephony.framework"; path = "System/Library/Frameworks/CoreTelephony.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		326011E1BBAD41059EF7DEBA /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
-		ADB37928F84241109D807C2A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libz.dylib"; path = "usr/lib/libz.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
-		698E32ECA7C24EF7B52965B4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsqlite3.dylib"; path = "usr/lib/libsqlite3.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
-		F63E06B7671F42FBB8B834A9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libxml2.dylib"; path = "usr/lib/libxml2.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
-		52E3B9DA8F7B4186AD176AF8 /* CDVLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLogger.m"; path = "org.apache.cordova.console/CDVLogger.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		18AAA9D0AC80409183BB1A9B /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		8ACD68D594EE4A7485CC7A89 /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		F42D09891E8A4E4AA5D2C73E /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		230BE6CCA17546A7A0BCDD7C /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		5F5D54A71BD94A82865D9DC9 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		13AA33C2F9C9452BA46343F5 /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		47B8BC9162D14D9BB4CC387F /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		1DBE99154601483E970DB698 /* IonicKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "IonicKeyboard.m"; path = "com.ionic.keyboard/IonicKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		3DF2AADCB5FE429B9E5DB4FD /* UIWebViewExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIWebViewExtension.m"; path = "com.ionic.keyboard/UIWebViewExtension.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		24D263CDF8FC46599C83B6C7 /* IonicKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "IonicKeyboard.h"; path = "com.ionic.keyboard/IonicKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		9D3D7DD6175A4660B9F93617 /* UIWebViewExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIWebViewExtension.h"; path = "com.ionic.keyboard/UIWebViewExtension.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		C3DC4513F5B44FB8BCDC9FDB /* OpenTokPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "OpenTokPlugin.m"; path = "com.tokbox.cordova.opentok/OpenTokPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		FC5B86FDF6CC427580CFCF05 /* OpenTokPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "OpenTokPlugin.h"; path = "com.tokbox.cordova.opentok/OpenTokPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		C51928FBE1524D968D079C9C /* Opentok.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Opentok.framework"; path = "LiveWire/Plugins/com.tokbox.cordova.opentok/Opentok.framework"; sourceTree = "<group>"; };
+		FAF2B3BD59654E6FB2526587 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		524FC792E4DD4F89BE73B1CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		D75C93127A5B45CC8409EE44 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		EB1F9D7DD6994F4DA7849015 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		7513B414780F4FC7A58125C2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "OpenGLES.framework"; path = "System/Library/Frameworks/OpenGLES.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		3DD130AED2E440FBBD3EEED9 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreVideo.framework"; path = "System/Library/Frameworks/CoreVideo.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		EA26310D97B4441B8DE037DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		F2DEAD6D3B474187B27D1993 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Security.framework"; path = "System/Library/Frameworks/Security.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		B176A962C23D4C3F9083AE6F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreMedia.framework"; path = "System/Library/Frameworks/CoreMedia.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		5E20F9C397E547E1A6D2C2AD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		BDA0C378CCC34E519024A471 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CFNetwork.framework"; path = "System/Library/Frameworks/CFNetwork.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		D4C33D343A8C4DE0A3A48D0E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreTelephony.framework"; path = "System/Library/Frameworks/CoreTelephony.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		C41B517B19E249B59C44FE5F /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		E6262B380401470D9FBD5876 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libz.dylib"; path = "usr/lib/libz.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		9BCD7458BAA74549BD13D303 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsqlite3.dylib"; path = "usr/lib/libsqlite3.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		A07C838184D047678DFD3D7D /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libxml2.dylib"; path = "usr/lib/libxml2.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		1CEC6FD3D29B4967BED2BA53 /* CDVLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLogger.m"; path = "org.apache.cordova.console/CDVLogger.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		413A304A837E49A0B33A3257 /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		B39B85CA89184045B25AB5DD /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		471B5591C30D457DA1272795 /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		9AFE3E5789C84C43A1252E88 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		79A4674F2192429C9C0226C0 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		7F5729460EDE450FB3D3C6D5 /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		7319F79AFE6749658CBA55FD /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,23 +169,23 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
-				D61F5C5A6F90411480AB0AF7 /* Opentok.framework in Frameworks */,
-				6BD5C3F3B1684658BF341C18 /* Foundation.framework in Frameworks */,
-				93C5B6E0357840BA8CF234FD /* UIKit.framework in Frameworks */,
-				06588DED53C14E4BA05D1F0A /* AVFoundation.framework in Frameworks */,
-				B50AD58B522E4CE2A9877341 /* QuartzCore.framework in Frameworks */,
-				781A9C92051343E2B0B4202F /* OpenGLES.framework in Frameworks */,
-				FB8F17517B5B48B6A3636512 /* CoreVideo.framework in Frameworks */,
-				49A3E40C4C3C4DB4B2935848 /* AudioToolbox.framework in Frameworks */,
-				B5CF32DD098E41D1850C0C0F /* Security.framework in Frameworks */,
-				192A6C77CB2D4A0A974780D4 /* CoreMedia.framework in Frameworks */,
-				C65F8633A28B4CB9A73B807A /* SystemConfiguration.framework in Frameworks */,
-				4DBDF0897FC44638A385538B /* CFNetwork.framework in Frameworks */,
-				18746BC323534D4CA07FFD51 /* CoreTelephony.framework in Frameworks */,
-				AF43BF5D8DB64B348398CF37 /* libstdc++.6.0.9.dylib in Frameworks */,
-				5E2D52E660064DD8B02AF400 /* libz.dylib in Frameworks */,
-				765588E15B7342F5BF9F702F /* libsqlite3.dylib in Frameworks */,
-				EA49E9297BD0423EAA0D4AEC /* libxml2.dylib in Frameworks */,
+				BEE2748F95A64826BB8ADF7B /* Opentok.framework in Frameworks */,
+				FC80B80A21A640FF9BED8DF9 /* Foundation.framework in Frameworks */,
+				6FCB7D8E07A4417CB82AD2D5 /* UIKit.framework in Frameworks */,
+				AC41B0DE600E4E46981C9675 /* AVFoundation.framework in Frameworks */,
+				A17E143D58634A0B94F6A791 /* QuartzCore.framework in Frameworks */,
+				E8E8F31DDAE2422B89C5B02E /* OpenGLES.framework in Frameworks */,
+				B5F46808DE2241CC9DC34F4E /* CoreVideo.framework in Frameworks */,
+				1E5BBEFE4DCE4F8480DC211C /* AudioToolbox.framework in Frameworks */,
+				DC649B2B7A454322B4BE86F9 /* Security.framework in Frameworks */,
+				55C4D8C76545428F8A7FA00B /* CoreMedia.framework in Frameworks */,
+				38E01DE331DF402685EAC97A /* SystemConfiguration.framework in Frameworks */,
+				5C3BB4326D14495B92943CDC /* CFNetwork.framework in Frameworks */,
+				AA9EBA61F04B428991996D6A /* CoreTelephony.framework in Frameworks */,
+				9D9A8D7D33C2428C8F2B636A /* libstdc++.6.0.9.dylib in Frameworks */,
+				2FEBEDEC8D3B494791A7BF07 /* libz.dylib in Frameworks */,
+				DC728D66C9BB4F759AD237E6 /* libsqlite3.dylib in Frameworks */,
+				2C6CC1238F2D486F88050202 /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,23 +279,23 @@
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
-				329C89B9365B4ED8BA3178B9 /* Opentok.framework */,
-				E663D106D508469ABA7B87E3 /* Foundation.framework */,
-				7F8C628F21A54143BA69C11B /* UIKit.framework */,
-				92D8E2BC79B947108DD5F578 /* AVFoundation.framework */,
-				F1BE45DD60254F6ABEDBA6BA /* QuartzCore.framework */,
-				73777187D240442793861E78 /* OpenGLES.framework */,
-				A781E4A186E94570AA69226A /* CoreVideo.framework */,
-				D2DA6E4FEDAF43E08C4AD331 /* AudioToolbox.framework */,
-				CD857F284AD74356AAAB033D /* Security.framework */,
-				7374606AAC264FF3AC7C0E55 /* CoreMedia.framework */,
-				AAFDD99F28C64939BE1C3963 /* SystemConfiguration.framework */,
-				37C7E894C24442DB9D677B7E /* CFNetwork.framework */,
-				E203F15DB20C46388AB45631 /* CoreTelephony.framework */,
-				326011E1BBAD41059EF7DEBA /* libstdc++.6.0.9.dylib */,
-				ADB37928F84241109D807C2A /* libz.dylib */,
-				698E32ECA7C24EF7B52965B4 /* libsqlite3.dylib */,
-				F63E06B7671F42FBB8B834A9 /* libxml2.dylib */,
+				C51928FBE1524D968D079C9C /* Opentok.framework */,
+				FAF2B3BD59654E6FB2526587 /* Foundation.framework */,
+				524FC792E4DD4F89BE73B1CE /* UIKit.framework */,
+				D75C93127A5B45CC8409EE44 /* AVFoundation.framework */,
+				EB1F9D7DD6994F4DA7849015 /* QuartzCore.framework */,
+				7513B414780F4FC7A58125C2 /* OpenGLES.framework */,
+				3DD130AED2E440FBBD3EEED9 /* CoreVideo.framework */,
+				EA26310D97B4441B8DE037DB /* AudioToolbox.framework */,
+				F2DEAD6D3B474187B27D1993 /* Security.framework */,
+				B176A962C23D4C3F9083AE6F /* CoreMedia.framework */,
+				5E20F9C397E547E1A6D2C2AD /* SystemConfiguration.framework */,
+				BDA0C378CCC34E519024A471 /* CFNetwork.framework */,
+				D4C33D343A8C4DE0A3A48D0E /* CoreTelephony.framework */,
+				C41B517B19E249B59C44FE5F /* libstdc++.6.0.9.dylib */,
+				E6262B380401470D9FBD5876 /* libz.dylib */,
+				9BCD7458BAA74549BD13D303 /* libsqlite3.dylib */,
+				A07C838184D047678DFD3D7D /* libxml2.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -311,20 +311,20 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				753DDE6FC381442F8F48DDC0 /* IonicKeyboard.m */,
-				AC67D4631B7C4CCBA42CDFBF /* UIWebViewExtension.m */,
-				5F27AC00578F493E8E2B7CB0 /* IonicKeyboard.h */,
-				EB072558B01D4F8990938B1A /* UIWebViewExtension.h */,
-				3328B1C90A884F22AF60F501 /* OpenTokPlugin.m */,
-				0E98C2B45BCC466CA9F38781 /* OpenTokPlugin.h */,
-				52E3B9DA8F7B4186AD176AF8 /* CDVLogger.m */,
-				18AAA9D0AC80409183BB1A9B /* CDVLogger.h */,
-				8ACD68D594EE4A7485CC7A89 /* CDVDevice.m */,
-				F42D09891E8A4E4AA5D2C73E /* CDVDevice.h */,
-				230BE6CCA17546A7A0BCDD7C /* CDVInAppBrowser.m */,
-				5F5D54A71BD94A82865D9DC9 /* CDVInAppBrowser.h */,
-				13AA33C2F9C9452BA46343F5 /* CDVSplashScreen.m */,
-				47B8BC9162D14D9BB4CC387F /* CDVSplashScreen.h */,
+				1DBE99154601483E970DB698 /* IonicKeyboard.m */,
+				3DF2AADCB5FE429B9E5DB4FD /* UIWebViewExtension.m */,
+				24D263CDF8FC46599C83B6C7 /* IonicKeyboard.h */,
+				9D3D7DD6175A4660B9F93617 /* UIWebViewExtension.h */,
+				C3DC4513F5B44FB8BCDC9FDB /* OpenTokPlugin.m */,
+				FC5B86FDF6CC427580CFCF05 /* OpenTokPlugin.h */,
+				1CEC6FD3D29B4967BED2BA53 /* CDVLogger.m */,
+				413A304A837E49A0B33A3257 /* CDVLogger.h */,
+				B39B85CA89184045B25AB5DD /* CDVDevice.m */,
+				471B5591C30D457DA1272795 /* CDVDevice.h */,
+				9AFE3E5789C84C43A1252E88 /* CDVInAppBrowser.m */,
+				79A4674F2192429C9C0226C0 /* CDVInAppBrowser.h */,
+				7F5729460EDE450FB3D3C6D5 /* CDVSplashScreen.m */,
+				7319F79AFE6749658CBA55FD /* CDVSplashScreen.h */,
 			);
 			name = Plugins;
 			path = "LiveWire/Plugins";
@@ -519,13 +519,13 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				93CEA0CF149145FD9729781B /* IonicKeyboard.m in Sources */,
-				DD0FE52BAFF74C828FAE4D5B /* UIWebViewExtension.m in Sources */,
-				0F0153424AAE4B2D8044CC1D /* OpenTokPlugin.m in Sources */,
-				D9F23FA7CF7B4365B733227E /* CDVLogger.m in Sources */,
-				6DA9A9E3B9A34E068A026CD1 /* CDVDevice.m in Sources */,
-				C107E9A257384BC0AF0268E1 /* CDVInAppBrowser.m in Sources */,
-				F89FD6686AE3440094D77436 /* CDVSplashScreen.m in Sources */,
+				710364FFEFDA4D4DBC420F50 /* IonicKeyboard.m in Sources */,
+				C0FB6C44F323440AAD4619FC /* UIWebViewExtension.m in Sources */,
+				3D28E6E3629D4538A3B4E0EA /* OpenTokPlugin.m in Sources */,
+				F28D9AD4D7D7400C9921586B /* CDVLogger.m in Sources */,
+				0FEC32501BB04D56BF8BB3CE /* CDVDevice.m in Sources */,
+				94997DB1E369419AA7AA9B9D /* CDVInAppBrowser.m in Sources */,
+				F9CB379A6F0F48ECABB3F676 /* CDVSplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,7 +608,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"LiveWire/Plugins/com.tokbox.cordova.opentok\"",
-					"\"LiveWire/Plugins/com.zengularity.cordova.hockeyapp\"",
 				);
 			};
 			name = Debug;
@@ -644,7 +643,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"LiveWire/Plugins/com.tokbox.cordova.opentok\"",
-					"\"LiveWire/Plugins/com.zengularity.cordova.hockeyapp\"",
 				);
 			};
 			name = Release;

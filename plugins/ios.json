@@ -139,7 +139,6 @@
                             "count": 1
                         }
                     ],
-                    "CoreText.framework": [],
                     "CoreGraphics.framework": [
                         {
                             "xml": "false",
