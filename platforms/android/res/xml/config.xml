@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.livewiretax.livewireapp" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.livewiretax.livewireapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <preference name="AndroidLaunchMode" value="singleTop" />
     <feature name="App">
@@ -49,9 +49,5 @@
     <splash platform="ios" src="res/splash/ios/screen-iphone-portrait-2x.png" />
     <splash platform="ios" src="res/splash/ios/screen-iphone-portrait.png" />
     <splash platform="ios" src="res/splash/ios/screen-iphone-portrait-568h-2x.png" />
-    <splash density="ldpi" orientation="port" platform="android" src="res/splash/android/screen-ldpi-portrait.png" />
-    <splash density="mdpi" orientation="port" platform="android" src="res/splash/android/screen-mdpi-portrait.png" />
-    <splash density="hdpi" orientation="port" platform="android" src="res/splash/android/screen-hdpi-portrait.png" />
-    <splash density="xhdpi" orientation="port" platform="android" src="res/splash/android/screen-xhdpi-portrait.png" />
     <icon src="res/icons/" />
 </widget>
