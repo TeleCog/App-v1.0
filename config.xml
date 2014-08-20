@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.livewiretax.livewireapp" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.livewiretax.livewireapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>LiveWire</name>
     <description>
         LiveWire mobile app
@@ -40,11 +40,6 @@
     <splash platform="ios" src="res/splash/ios/screen-iphone-portrait-2x.png" />
     <splash platform="ios" src="res/splash/ios/screen-iphone-portrait.png" />
     <splash platform="ios" src="res/splash/ios/screen-iphone-portrait-568h-2x.png" />
-
-    <splash platform="android" density="ldpi" src="res/splash/android/screen-ldpi-portrait.png" orientation="port" />
-    <splash platform="android" density="mdpi" src="res/splash/android/screen-mdpi-portrait.png" orientation="port" />
-    <splash platform="android" density="hdpi" src="res/splash/android/screen-hdpi-portrait.png" orientation="port" />
-    <splash platform="android" density="xhdpi" src="res/splash/android/screen-xhdpi-portrait.png" orientation="port" />
 
     <icon src="res/icons/" />
 </widget>
