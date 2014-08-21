@@ -36,7 +36,7 @@ angular.module('opentok', [])
     },
 
     link = function (scope, element, attrs, sessionId) {
-        var publisher, session, publisherSize;
+        var publisher, session, publisherSize, cancelCallOff; // cancelCallOff removes listener from listening to canceled calls
 
         $rootScope.$broadcast('opentokLoading');
 
@@ -81,7 +81,7 @@ angular.module('opentok', [])
                 session.publish(publisher);
                 publisher.on({
                     'streamCreated': function (event) {
-                        var sessionID, firebasePath, sessionRef, cameraModeRef;
+                        var sessionID, firebasePath, sessionRef, cameraModeRef, cancelCallRef, cancelCallCallback;
 
                         // Notify provider
                         console.log("Notifying Provider");
@@ -129,6 +129,26 @@ angular.module('opentok', [])
                                     customerName: attrs.userName
                                 });
                                 sessionRef.onDisconnect().remove();
+
+                                // Check if provider canceled call
+                                cancelCallRef = new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] +
+                                                             "/vccameramode/cancel/pendingsessions/");
+                                cancelCallCallback = function (snapshot) {
+                                    var message = snapshot.val();
+
+                                    if (message.node.sessionId === sessionID) {
+                                        $rootScope.$broadcast('opentokAgentCancelledCall');
+                                        (new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] +
+                                                      "/vccameramode/cancel/pendingsessions/" + sessionID)).remove();
+                                        (new Firebase(config.firebase.videoConferencingURL + config.paths.prefix.split(/\.+/g)[1] +
+                                                      "/vccameramode/pendingsessions/")).remove();
+
+                                    }
+                                };
+                                cancelCallRef.on('child_added', cancelCallCallback);
+                                cancelCallOff = function () {
+                                    cancelCallRef.off('child_added', cancelCallCallback);
+                                };
                             }
                         }
                     }
@@ -151,6 +171,9 @@ angular.module('opentok', [])
             $rootScope.$on('opentokSessionDisconnect', function () {
                 $rootScope.vc = $rootScope.vc || {};
                 $rootScope.vc.vcWindowOpen = false;
+                if (angular.isFunction(cancelCallOff)) {
+                    cancelCallOff();
+                }
                 if (!document.body.classList.contains('platform-android')) {
                     publisher.destroy();
                 }

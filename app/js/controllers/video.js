@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-.controller('VideoCtrl', function ($scope, $rootScope, $timeout, $ionicLoading, ApiService) {
+.controller('VideoCtrl', function ($scope, $rootScope, $timeout, ApiService) {
 
     var config = require('../config.json');
     var name = $rootScope.isProvider() ? 'providers' : 'customers';

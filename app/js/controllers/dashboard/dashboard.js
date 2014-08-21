@@ -80,6 +80,15 @@ angular.module('livewireApp')
         $scope.closeVC();
     });
 
+    $rootScope.$on('opentokAgentCancelledCall', function () {
+        $scope.closeVC();
+        $ionicPopup.alert({
+            title: 'Call Canceled',
+            template: ($scope.currentProvider ? $scope.currentProvider.provider.name : $scope.currentCustomer.first_name) +
+                ' cancelled the call.'
+        });
+    });
+
     $scope.showChat = function () {
         $scope.chatModal.show().then(function () {
             $rootScope.$broadcast('providersCtrlChatModalShown');
