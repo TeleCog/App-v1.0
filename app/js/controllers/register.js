@@ -1,6 +1,6 @@
 angular.module('livewireApp')
 
-.controller('RegisterCtrl', function ($scope, $state, $ionicLoading, $ionicModal, $ionicViewService, AuthService) {
+.controller('RegisterCtrl', function ($scope, $rootScope, $state, $ionicLoading, $ionicModal, $ionicViewService, AuthService) {
     'use strict';
 
     $ionicModal.fromTemplateUrl('/partials/register/_termsofservice.html', {
@@ -8,6 +8,16 @@ angular.module('livewireApp')
     }).then(function (modal) {
         $scope.modal = modal;
     });
+
+    // Go back to signin if needed
+    $rootScope.$broadcast('$viewHistory.historyChange', {
+        showBack: true
+    });
+    $scope.backButtonShown = true;
+
+    $scope.goBackToSignin = function () {
+        $state.go('signin');
+    };
 
     $scope.user = {};
 
