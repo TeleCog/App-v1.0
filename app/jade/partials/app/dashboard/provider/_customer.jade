@@ -8,11 +8,11 @@ ion-modal-view
             .padding
                 .row.provider-actions(ng-show="isCustomerOnline(currentCustomer)")
                     .col
-                        button.button.button-outline.button-block.button-energized.icon-left.ion-ios7-videocam-outline(ng-click="showVC()")
+                        button.button.button-outline.button-block.button-energized.icon-left.ion-ios7-videocam-outline(ng-click="showVCFromDescription(closeCustomerModal)")
                             | Video Call
                 .row.provider-actions
                     .col
-                        button.button.button-outline.button-block.icon-left.ion-ios7-chatboxes-outline(ng-class="{'button-energized': isCustomerOnline(currentCustomer)}", ng-click="showChat()")
+                        button.button.button-outline.button-block.icon-left.ion-ios7-chatboxes-outline(ng-class="{'button-energized': isCustomerOnline(currentCustomer)}", ng-click="showChatFromDescription(closeCustomerModal)")
                             | Send Message
             label.item.item-input.item-stacked-label
                 span.input-label Phone

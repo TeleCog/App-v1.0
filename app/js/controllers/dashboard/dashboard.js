@@ -76,6 +76,10 @@ angular.module('livewireApp')
         }
     };
 
+    $rootScope.$on('opentokSessionStreamDestroyed', function () {
+        $scope.closeVC();
+    });
+
     $scope.showChat = function () {
         $scope.chatModal.show().then(function () {
             $rootScope.$broadcast('providersCtrlChatModalShown');
@@ -86,6 +90,20 @@ angular.module('livewireApp')
         $scope.chatModal.hide().then(function () {
             $rootScope.$broadcast('providersCtrlChatModalClosed');
         });
+    };
+
+    $scope.showVCFromDescription = function (callback) {
+        $scope.showVC();
+        if (angular.isFunction(callback)) {
+            callback();
+        }
+    };
+
+    $scope.showChatFromDescription = function (callback) {
+        $scope.showChat();
+        if (angular.isFunction(callback)) {
+            callback();
+        }
     };
 
     $scope.showVCFromChat = function () {

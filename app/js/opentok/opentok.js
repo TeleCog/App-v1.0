@@ -69,6 +69,10 @@ angular.module('opentok', [])
                     session.subscribe(event.stream, div.id, {subscribeToAudio: true});
                     div.className += ' opentok-subscriber';
                     updateViews();
+                },
+
+                'streamDestroyed': function () {
+                    $rootScope.$broadcast('opentokSessionStreamDestroyed');
                 }
             });
 
