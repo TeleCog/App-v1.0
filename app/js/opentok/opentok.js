@@ -29,6 +29,12 @@ angular.module('opentok', [])
         OT.updateViews();
     },
 
+    timedUpdate = function () {
+        setTimeout(function () {
+            updateViews();
+        }, 60);
+    },
+
     link = function (scope, element, attrs, sessionId) {
         var publisher, session, publisherSize;
 
@@ -129,14 +135,13 @@ angular.module('opentok', [])
                 showViews = true;
                 updateViews();
 
-                setTimeout(function () {
-                    OT.updateViews();
-                }, 1000);
+                window.addEventListener('native.keyboardhide', timedUpdate);
             });
 
             $rootScope.$on('minimizeVC', function () {
                 showViews = false;
                 updateViews();
+                window.removeEventListener('native.keyboardhide', timedUpdate);
             });
 
             $rootScope.$on('opentokSessionDisconnect', function () {

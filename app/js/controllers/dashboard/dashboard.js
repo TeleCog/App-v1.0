@@ -94,8 +94,9 @@ angular.module('livewireApp')
         $scope.chatModal.hide();
 
         if ($rootScope.vc && $rootScope.vc.vcWindowOpen) {
-            $rootScope.$broadcast('maximizeVC');
-            $scope.vcModal.show();
+            $scope.vcModal.show().then(function () {
+                $rootScope.$broadcast('maximizeVC');
+            });
         } else {
             // Check if agent is still online
             deferred = $q.defer();
