@@ -70,7 +70,7 @@ module.exports = function ($scope, $rootScope, $timeout, $ionicScrollDelegate, $
             $scope.addMessage = function (message) {
                 var packet = {
                     id: $scope.user.id,
-                    name: $scope.user.first_name,
+                    name: $scope.user.first_name + " " + $scope.user.last_name,
                     message: message,
                     time: Date.now(),
                     image: $scope.user.image.thumb.url || 'https://www.livewiremedical.com/assets/default_customer.png'
@@ -79,8 +79,6 @@ module.exports = function ($scope, $rootScope, $timeout, $ionicScrollDelegate, $
                 ApiService.chats.create({ myId: $scope.user.id, foreignId: $scope.agentId, message: message });
 
                 syncChat.$push(packet).then(function () {
-                    packet.name = 'Me';
-
                     $scope.messages[$scope.agentId] = $scope.messages[$scope.agentId] || [];
                     $scope.messages[$scope.agentId].push(packet);
 

@@ -76,6 +76,19 @@ angular.module('livewireApp')
         }
     };
 
+    $rootScope.$on('opentokSessionStreamDestroyed', function () {
+        $scope.closeVC();
+    });
+
+    $rootScope.$on('opentokAgentCancelledCall', function () {
+        $scope.closeVC();
+        $ionicPopup.alert({
+            title: 'Call Canceled',
+            template: ($scope.currentProvider ? $scope.currentProvider.provider.name : $scope.currentCustomer.first_name) +
+                ' cancelled the call.'
+        });
+    });
+
     $scope.showChat = function () {
         $scope.chatModal.show().then(function () {
             $rootScope.$broadcast('providersCtrlChatModalShown');
@@ -88,14 +101,29 @@ angular.module('livewireApp')
         });
     };
 
+    $scope.showVCFromDescription = function (callback) {
+        $scope.showVC();
+        if (angular.isFunction(callback)) {
+            callback();
+        }
+    };
+
+    $scope.showChatFromDescription = function (callback) {
+        $scope.showChat();
+        if (angular.isFunction(callback)) {
+            callback();
+        }
+    };
+
     $scope.showVCFromChat = function () {
         var deferred, formerCurrentAgent, notOnlinePopup;
 
         $scope.chatModal.hide();
 
         if ($rootScope.vc && $rootScope.vc.vcWindowOpen) {
-            $rootScope.$broadcast('maximizeVC');
-            $scope.vcModal.show();
+            $scope.vcModal.show().then(function () {
+                $rootScope.$broadcast('maximizeVC');
+            });
         } else {
             // Check if agent is still online
             deferred = $q.defer();

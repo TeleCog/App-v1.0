@@ -8,6 +8,11 @@ angular.module('livewireApp')
     name = $rootScope.isProvider() ? 'providers' : 'customers',
 
     setOnlineHeartBeat = function () {
+        if (!access_token) {
+            access_token = AuthService.retrieveAccessToken();
+            name = $rootScope.isProvider() ? 'providers' : 'customers';
+        }
+
         if (access_token) {
             $http.get(config.paths.prefix + config.paths.api[name].setOnlineHeartBeat +
                       '?access_token=' + encodeURIComponent(access_token),
@@ -23,6 +28,11 @@ angular.module('livewireApp')
 
     available = function (in_call) {
         var callParam = angular.isDefined(in_call) ? '&in_call=' + in_call : '';
+
+        if (!access_token) {
+            access_token = AuthService.retrieveAccessToken();
+            name = $rootScope.isProvider() ? 'providers' : 'customers';
+        }
 
         if (access_token) {
             $http.get(config.paths.prefix + config.paths.api[name].available +

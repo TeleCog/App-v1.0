@@ -1,6 +1,6 @@
 {
     "name": "livewireapp",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "LiveWire mobile app",
     "dependencies": {
         "browserify": "^4.1.11",
