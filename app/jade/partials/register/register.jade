@@ -2,7 +2,7 @@ ion-view(title="LiveWire Registration")
     ion-nav-bar.bar-calm
         ion-nav-back-button.button-icon.ion-arrow-left-c(ng-click="goBackToSignin()")
     ion-content.livewire-registration
-        form(name="registrationForm", ng-submit="termsOfService()", novalidate)
+        form(name="registrationForm", ng-submit="termsOfService(registrationForm)", novalidate)
             .list.list-inset
                 .row
                     .col.col-75
@@ -20,6 +20,8 @@ ion-view(title="LiveWire Registration")
                     .col.col-75
                         h6.assertive(ng-show!="registrationForm.email.$error.email")
                             | Please enter a valid email
+                        h6.assertive(ng-show!="registrationForm.email.$pristine && emailTaken")
+                            | An account with that email already exists
                         label.item.item-input
                             input(type="email", name="email", ng-model="user.email", placeholder="Email (e.g. daniel@inouye.com)", required)
                 .row

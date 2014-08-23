@@ -21,7 +21,8 @@ angular.module('livewireApp')
 
     $scope.user = {};
 
-    $scope.termsOfService = function () {
+    $scope.termsOfService = function (registrationForm) {
+        $scope.registrationFormElement = registrationForm;
         $scope.modal.show();
     };
 
@@ -53,6 +54,8 @@ angular.module('livewireApp')
             $scope.modal.hide();
             if (response.data && response.data.customer && response.data.customer.oauth && response.data.customer.oauth.token) {
 
+                $scope.emailTaken = false;
+
                 // So that there won't be back button to login page
                 $ionicViewService.nextViewOptions({
                     disableAnimate: true,
@@ -65,6 +68,12 @@ angular.module('livewireApp')
             $ionicLoading.hide();
             $scope.modal.hide();
             // Registration did not work
+            if (response.status === 422) {
+                if (response.data && response.data.errors && response.data.errors.email) {
+                    $scope.registrationFormElement.email.$setPristine();
+                    $scope.emailTaken = true;
+                }
+            }
         });
     };
 
