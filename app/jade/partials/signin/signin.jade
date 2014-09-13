@@ -18,8 +18,4 @@ ion-view(title="LiveWire {{getRoleSelection().charAt(0).toUpperCase() + getRoleS
         .padding
             .row
                 p.text-center.col.col-75
-                    a.calm(ng-click="registrationLink()", ng-show="getRoleSelection() === 'provider'") New to LiveWire? Sign up here
                     a.calm(href="#/register", ng-show="getRoleSelection() !== 'provider'") New to LiveWire? Sign up here
-            .row
-                p.text-center.col.col-75
-                    a.calm(ng-click="resetPasswordLink()") Forgot your password?
